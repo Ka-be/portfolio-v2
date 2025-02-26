@@ -6,9 +6,9 @@ export default function Home() {
   return (
     <div className="min-h-screen font-[family-name:var(--font-geist-sans)]">
       <p>Kevin Bourgitteau / Software Engineer</p>
-      <TestContent textContent="Start" />
+      <TestContent textContent="Section Start" />
       <TestCarousel />
-      <TestContent textContent="End" />
+      <TestContent textContent="Coucou poupou" />
     </div>
   );
 }
