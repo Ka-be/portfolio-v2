@@ -5,11 +5,18 @@ import React, { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 
 const TestCarousel = () => {
+    // Crée une référence qui sera attachée à un élément DOM
     const targetRef = useRef(null);
+
+    // useScroll suit la progression du défilement de l'élément référencé
+    // Retourne une valeur entre 0 (début du scroll) et 1 (fin du scroll)
     const { scrollYProgress } = useScroll({
         target: targetRef
     });
 
+    // useTransform transforme la valeur du scroll (0 à 1) en une valeur de translation X
+    // Quand scrollYProgress = 0 -> x = '0%' (position initiale)
+    // Quand scrollYProgress = 1 -> x = '-90%' (translation vers la gauche de 90%)
     const x = useTransform(scrollYProgress, [0, 1], ['0%', '-90%']);
 
     return (
