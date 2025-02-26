@@ -1,9 +1,14 @@
 import Link from "next/link";
+import TestContent from "@/components/TestContent";
+import TestCarousel from "@/components/TestCarousel";
 
 export default function Home() {
   return (
-    <div className="min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
+    <div className="min-h-screen font-[family-name:var(--font-geist-sans)]">
       <p>Kevin Bourgitteau / Software Engineer</p>
+      <TestContent textContent="Start" />
+      <TestCarousel />
+      <TestContent textContent="End" />
     </div>
   );
 }
