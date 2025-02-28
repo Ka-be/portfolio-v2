@@ -6,7 +6,7 @@ const Footer = () => {
 
 	return (
 		<footer className="flex justify-between items-center h-10 absolute bottom-0 w-full px-8">
-			<p className="text-xs opacity-70">Kevin Bourgitteau / {currentYear}</p>
+			<h2 className="text-xs opacity-70">Kevin Bourgitteau / {currentYear}</h2>
 			<div className="flex gap-4 items-center">
 				<a
 					href="https://github.com/Ka-be"
