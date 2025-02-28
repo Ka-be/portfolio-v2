@@ -93,9 +93,6 @@ export const metadata: Metadata = {
 	alternates: {
 		canonical: "https://kevinbourgitteau.fr",
 	},
-	verification: {
-		google: "votre-code-verification-google",
-	},
 	category: "technology",
 	formatDetection: {
 		telephone: true,
