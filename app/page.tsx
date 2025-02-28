@@ -5,10 +5,7 @@ import TestCarousel from "@/components/TestCarousel";
 export default function Home() {
   return (
     <div className="min-h-screen font-[family-name:var(--font-geist-sans)]">
-      <p>Kevin Bourgitteau / Software Engineer</p>
-      <TestContent textContent="Section Start" />
-      <TestCarousel />
-      <TestContent textContent="Coucou poupou" />
+      <h1>Work in progress</h1>
     </div>
   );
 }
