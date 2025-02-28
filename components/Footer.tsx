@@ -1,11 +1,48 @@
-import React from 'react';
+import React from "react";
+import { FaGithub, FaDribbble, FaBehance, FaLinkedin } from "react-icons/fa";
 
 const Footer = () => {
-    return (
-        <footer className="flex justify-center items-center h-10 absolute bottom-0 w-full">
-            <p>Footer baby</p>
-        </footer>
-    );
+	const currentYear = new Date().getFullYear();
+
+	return (
+		<footer className="flex justify-between items-center h-10 absolute bottom-0 w-full px-8">
+			<p className="text-xs uppercase opacity-70">Kevin Bourgitteau / {currentYear}</p>
+			<div className="flex gap-4 items-center">
+				<a
+					href="https://github.com/Ka-be"
+					target="_blank"
+					rel="noopener noreferrer"
+					className="opacity-50 hover:opacity-100 transition-opacity"
+				>
+					<FaGithub size={15} />
+				</a>
+				<a
+					href="https://dribbble.com/Kaabee"
+					target="_blank"
+					rel="noopener noreferrer"
+					className="opacity-50 hover:opacity-100 transition-opacity"
+				>
+					<FaDribbble size={15} />
+				</a>
+				<a
+					href="https://www.behance.net/kaabe"
+					target="_blank"
+					rel="noopener noreferrer"
+					className="opacity-50 hover:opacity-100 transition-opacity"
+				>
+					<FaBehance size={15} />
+				</a>
+				<a
+					href="https://www.linkedin.com/in/kevin-bourgitteau/"
+					target="_blank"
+					rel="noopener noreferrer"
+					className="opacity-50 hover:opacity-100 transition-opacity"
+				>
+					<FaLinkedin size={15} />
+				</a>
+			</div>
+		</footer>
+	);
 };
 
 export default Footer;
