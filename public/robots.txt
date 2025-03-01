@@ -1,0 +1,22 @@
+# https://www.robotstxt.org/robotstxt.html
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://kevinbourgitteau.fr/sitemap.xml
+
+# Optimisations spécifiques pour Google
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 1
+
+# Optimisations pour les images Google
+User-agent: Googlebot-Image
+Allow: /assets/
+Allow: /public/assets/
+
+# Optimisations pour les médias sociaux
+User-agent: Twitterbot
+Allow: /
+User-agent: facebookexternalhit
+Allow: / 
