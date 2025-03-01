@@ -1,5 +1,3 @@
-import { Smile } from "lucide-react";
-
 const Navbar = () => {
 	return (
 		<nav className="w-full bg-slate-800 h-12 flex justify-evenly items-center">
