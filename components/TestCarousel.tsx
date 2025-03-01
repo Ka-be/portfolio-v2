@@ -13,7 +13,7 @@ const TestCarousel = () => {
 	});
 
 	// useTransform transforme la valeur du scroll en une valeur de translation X
-	const x = useTransform(scrollYProgress, [0, 1], ["0%", "-80%"]);
+	const x = useTransform(scrollYProgress, [0, 1], ["0%", "-85%"]);
 
 	return (
 		<>
@@ -45,7 +45,7 @@ const TestCarousel = () => {
 						{["Je conçois", "Je développe", "Je code"].map((item) => (
 							<motion.div
 								key={item}
-								className="imageItem bg-neutral-900/10 h-[100vh] w-[100vw] flex items-center justify-center text-4xl font-bold"
+								className="imageItem bg-neutral-900/10 h-full w-[100vw] flex items-center justify-center text-4xl font-bold"
 								initial={{ opacity: 0, y: 200 }}
 								whileInView={{ opacity: 1, y: 0 }}
 								transition={{ duration: 0.5, ease: "easeIn" }}
