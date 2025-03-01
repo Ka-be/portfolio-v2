@@ -4,7 +4,7 @@ import React from "react";
 
 const Overlay = () => {
 	// Utilisons une constante pour la taille du cadre
-	const frameSize = "4dvmin";
+	const frameSize = "8dvmin";
 
 	return (
 		<div className="fixed inset-0 pointer-events-none z-10 w-[100dvw] h-[100dvh] overflow-hidden">

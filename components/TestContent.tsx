@@ -6,7 +6,7 @@ interface textContentProps {
 
 const TestContent = ({ textContent }: textContentProps) => {
     return (
-        <div className="min-h-screen bg-red-800 flex items-center justify-center text-4xl font-bold font-mono">
+        <div className="min-h-screen flex items-center justify-center text-4xl font-bold">
             {textContent}
         </div>
     );

@@ -1,15 +1,13 @@
 import AnimatedLogo from "@/components/ui/AnimatedLogo";
-import Overlay from "@/components/ui/Overlay";
+import TestContent from "@/components/TestContent";
+import TestCarousel from "@/components/TestCarousel";
+
 export default function Home() {
 	return (
-		<div className="h-screen-dynamic w-full font-lexend flex flex-col relative">
-			<Overlay />
-			<main className="flex-1 flex flex-col items-center justify-center">
-				<AnimatedLogo />
-				<h1 className="text-xl uppercase font-light tracking-widest mt-4">
-					Work in progress
-				</h1>
-			</main>
+		<div className="h-screen-dynamic md:h-full w-full font-lexend flex flex-col">
+			<TestContent textContent="Moi c'est Kevin." />
+			<TestCarousel />
+			<TestContent textContent="Et c'est déjà pas mal." />
 		</div>
 	);
 }
