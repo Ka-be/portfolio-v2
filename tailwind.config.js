@@ -8,6 +8,9 @@ module.exports = {
 			fontFamily: {
 				sans: ["var(--font-lexend)", "sans-serif"],
 			},
+			height: {
+				"screen-dynamic": "100dvh",
+			},
 		},
 	},
 	plugins: [],

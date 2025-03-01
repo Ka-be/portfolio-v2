@@ -5,8 +5,10 @@ const Footer = () => {
 	const currentYear = new Date().getFullYear();
 
 	return (
-		<footer className="flex justify-between items-center h-10 absolute bottom-0 w-full px-8">
-			<h2 className="text-xs opacity-70">Kevin Bourgitteau / {currentYear}</h2>
+		<footer className="absolute bottom-0 left-0 right-0 flex justify-between items-center h-10 w-full px-8">
+			<h2 className="text-xs opacity-70">
+				Kevin Bourgitteau / {currentYear}
+			</h2>
 			<div className="flex gap-4 items-center">
 				<a
 					href="https://github.com/Ka-be"
