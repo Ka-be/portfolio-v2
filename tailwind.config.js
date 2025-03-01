@@ -11,6 +11,10 @@ module.exports = {
 			height: {
 				"screen-dynamic": "100dvh",
 			},
+			colors: {
+				background: "var(--background)",
+				foreground: "var(--foreground)",
+			},
 		},
 	},
 	plugins: [],

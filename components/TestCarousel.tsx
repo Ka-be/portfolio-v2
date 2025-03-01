@@ -22,7 +22,7 @@ const TestCarousel = () => {
 				{["Je conçois", "Je développe", "Je code"].map((item) => (
 					<motion.div
 						key={item}
-						className="bg-neutral-900 h-[80vh] w-full flex items-center justify-center text-4xl font-bold"
+						className= "h-[80vh] w-full flex items-center justify-center text-4xl font-bold"
 						initial={{ opacity: 0, y: 100 }}
 						whileInView={{ opacity: 1, y: 0 }}
 						transition={{ duration: 0.6, ease: "easeIn" }}
@@ -45,7 +45,7 @@ const TestCarousel = () => {
 						{["Je conçois", "Je développe", "Je code"].map((item) => (
 							<motion.div
 								key={item}
-								className="imageItem bg-neutral-900/10 h-full w-[100vw] flex items-center justify-center text-4xl font-bold"
+								className="imageItem h-full w-[100vw] flex items-center justify-center text-9xl font-thin"
 								initial={{ opacity: 0, y: 200 }}
 								whileInView={{ opacity: 1, y: 0 }}
 								transition={{ duration: 0.5, ease: "easeIn" }}
