@@ -13,7 +13,7 @@ const TestCarousel = () => {
 	});
 
 	// useTransform transforme la valeur du scroll en une valeur de translation X
-	const x = useTransform(scrollYProgress, [0, 1], ["0%", "-85%"]);
+	const x = useTransform(scrollYProgress, [0, 1], ["0%", "-68%"]);
 
 	return (
 		<>

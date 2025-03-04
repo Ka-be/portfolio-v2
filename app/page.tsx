@@ -2,6 +2,8 @@ import AnimatedLogo from "@/components/ui/AnimatedLogo";
 import TestContent from "@/components/TestContent";
 import TestCarousel from "@/components/TestCarousel";
 import Overlay from "@/components/ui/Overlay";
+import ParticlesPortrait from "@/components/ui/ParticlesPortrait";
+
 export default function Home() {
 	return (
 		<>

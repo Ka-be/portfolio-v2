@@ -16,8 +16,6 @@
 }
 
 html {
-  /* Forcer la barre de défilement à être toujours présente pour éviter les décalages */
-  overflow-y: scroll;
   /* Ajouter un padding-right pour compenser la barre de défilement */
   padding-right: var(--scrollbar-width);
 }
