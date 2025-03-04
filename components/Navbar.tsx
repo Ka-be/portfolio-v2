@@ -2,31 +2,21 @@
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { useState, useEffect, useRef } from "react";
-import { motion } from "framer-motion";
+import { useState, useEffect } from "react";
 
 const Navbar = () => {
 	const pathname = usePathname();
 	const [activePath, setActivePath] = useState("");
-	const [hoveredLink, setHoveredLink] = useState<string | null>(null);
-	const navRef = useRef<HTMLDivElement>(null);
 
 	useEffect(() => {
 		setActivePath(pathname);
 	}, [pathname]);
-
-	const isActive = (path: string) => {
-		return activePath === path;
-	};
 
 	const links = [
 		{ path: "/projects", label: "Projets" },
 		{ path: "/about", label: "À propos" },
 		{ path: "/contact", label: "Contact" },
 	];
-
-	// Détermine quel lien est actif ou survolé pour l'animation
-	const activeOrHoveredLink = hoveredLink || activePath;
 
 	return (
 		<nav
@@ -51,41 +41,42 @@ const Navbar = () => {
 				</Link>
 			</div>
 
-			<div
-				className="flex items-center space-x-4 text-xs font-light relative"
-				ref={navRef}
-			>
-				{links.map((link) => (
-					<Link
-						key={link.path}
-						href={link.path}
-						className={`opacity-70 hover:opacity-100 transition-opacity uppercase tracking-wide p-1 relative`}
-						onMouseEnter={() => setHoveredLink(link.path)}
-						onMouseLeave={() => setHoveredLink(null)}
-					>
-						{link.label}
-					</Link>
-				))}
+			<div className="flex items-center space-x-4 text-xs font-light">
+				{links.map((link) => {
+					const isActive = activePath === link.path;
 
-				{/* Ligne animée qui se déplace entre les liens */}
-				{links.some((link) => link.path === activeOrHoveredLink) && (
-					<motion.div
-						className="absolute bottom-0 h-[1px] bg-foreground"
-						initial={false}
-						animate={{
-							width: "2rem",
-							x:
-								links.findIndex(
-									(link) => link.path === activeOrHoveredLink
-								) * 83, // Ajustez cette valeur selon l'espacement de vos liens
-							opacity: 1,
-						}}
-						transition={{
-							duration: 0.3,
-							ease: "easeInOut",
-						}}
-					/>
-				)}
+					// Si le lien est actif, on affiche un lien vers l'accueil
+					if (isActive) {
+						return (
+							<Link
+								key={link.path}
+								href="/"
+								className="relative group p-1 flex justify-center"
+								// style={{ minWidth: "4rem" }}
+							>
+								<span className="opacity-70 group-hover:opacity-100 transition-opacity uppercase tracking-wide">
+									/
+								</span>
+								<span className="absolute bottom-0 left-0 w-full h-[1px] bg-foreground scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
+							</Link>
+						);
+					}
+
+					// Sinon on affiche le lien normal
+					return (
+						<Link
+							key={link.path}
+							href={link.path}
+							className="relative group p-1 flex justify-center"
+							// style={{ minWidth: "4rem" }}
+						>
+							<span className="opacity-70 group-hover:opacity-100 transition-opacity uppercase tracking-wide">
+								{link.label}
+							</span>
+							<span className="absolute bottom-0 left-0 w-full h-[1px] bg-foreground scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
+						</Link>
+					);
+				})}
 			</div>
 		</nav>
 	);
