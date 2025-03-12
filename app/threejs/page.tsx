@@ -1,13 +1,20 @@
 import TestContent from "@/components/TestContent";
 import Overlay from "@/components/ui/Overlay";
-import ThreeComponent from "@/components/ui/ThreeComponent";
+import AccretionRing from "@/components/ui/AccretionRing";
 
-export default function Home() {
+export default function ThreejsPage() {
 	return (
 		<>
 			<Overlay />
-			<div className="h-screen-dynamic md:h-full w-full font-lexend flex flex-col">
-				<ThreeComponent /> 
+			<div className="h-screen w-full font-lexend flex flex-col">
+				<div className="relative h-screen flex items-center justify-center">
+					<AccretionRing />
+					<div className="absolute z-20 flex flex-col items-center justify-center">
+						<h1 className="text-5xl font-light text-white mb-4 text-center">
+							Kevin Bourgitteau
+						</h1>
+					</div>
+				</div>
 			</div>
 		</>
 	);
