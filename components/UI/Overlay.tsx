@@ -5,7 +5,7 @@ import Navbar from "@/components/Navbar";
 
 const Overlay = () => {
 	// Utilisons une constante pour la taille du cadre
-	const frameSize = "7dvmin";
+	const frameSize = "8dvmin";
 
 	return (
 		<>
@@ -48,6 +48,7 @@ const Overlay = () => {
 						className="w-full h-full"
 						xmlns="http://www.w3.org/2000/svg"
 						preserveAspectRatio="none"
+						style={{ overflow: "visible" }}
 					>
 						<rect
 							x="0"
