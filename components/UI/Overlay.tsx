@@ -4,7 +4,7 @@ import React from "react";
 import Navbar from "@/components/Navbar";
 
 const Overlay = () => {
-	// Utilisons une constante pour la taille du cadre
+
 	const frameSize = "8dvmin";
 
 	return (

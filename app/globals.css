@@ -5,7 +5,10 @@
 :root {
   --background: #f4f4f5;
   --foreground: #09090b;
-  --scrollbar-width: 2px; /* Largeur de la barre de défilement */
+  --scrollbar-width: 2px;
+  /* Largeur de la barre de défilement */
+  --frame-size: 8dvmin;
+  /* Taille du cadre pour les marges et positionnements */
 }
 
 @media (prefers-color-scheme: dark) {
