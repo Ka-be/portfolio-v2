@@ -1,8 +1,10 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useLayoutEffect } from "react";
 import * as THREE from "three";
 import { useFrame, Canvas, useThree } from "@react-three/fiber";
+import { motion, AnimatePresence } from "framer-motion";
+import Loader from "./Loader";
 
 // Composant pour la surface ondulante
 const WavingGrid = () => {
@@ -15,6 +17,10 @@ const WavingGrid = () => {
   const [mousePosition, setMousePosition] = useState<{x: number, y: number} | null>(null);
   const [mouseDisturbances, setMouseDisturbances] = useState<{x: number, y: number, startTime: number, strength: number}[]>([]);
   
+  // Référence pour le throttling des mouvements de souris
+  const lastMouseMoveTime = useRef<number>(0);
+  const throttleDelay = 100; // Délai en ms entre les mises à jour (throttling)
+  
   // Paramètres de la grille
   const cols = 220; // Densité doublée en largeur
   const rows = 140; // Densité doublée en hauteur
@@ -23,6 +29,15 @@ const WavingGrid = () => {
   // Gestionnaire d'événements pour la souris
   useEffect(() => {
     const handleMouseMove = (event: MouseEvent) => {
+      const now = Date.now();
+      
+      // Appliquer un throttling pour limiter la fréquence des mises à jour
+      if (now - lastMouseMoveTime.current < throttleDelay) {
+        return;
+      }
+      
+      lastMouseMoveTime.current = now;
+      
       // Convertir les coordonnées de la souris en coordonnées normalisées (-1 à 1)
       const x = (event.clientX / window.innerWidth) * 2 - 1;
       const y = -((event.clientY / window.innerHeight) * 2 - 1); // Inverser Y pour correspondre au système de coordonnées WebGL
@@ -31,9 +46,9 @@ const WavingGrid = () => {
       setMousePosition({ x, y });
       
       // Créer une nouvelle perturbation à chaque mouvement significatif
-      // Limiter la fréquence des perturbations pour éviter d'en créer trop
+      // Limiter le nombre de perturbations actives
       if (mouseDisturbances.length === 0 || 
-          Date.now() - mouseDisturbances[mouseDisturbances.length - 1].startTime > 500) {
+          now - mouseDisturbances[mouseDisturbances.length - 1].startTime > 800) { // Augmenté à 800ms
         
         // Convertir les coordonnées normalisées en coordonnées de la scène
         const sceneX = x * viewport.width;
@@ -41,19 +56,19 @@ const WavingGrid = () => {
         
         // Ajouter une nouvelle perturbation
         setMouseDisturbances(prev => [
-          ...prev.slice(-3), // Garder seulement les 3 dernières perturbations pour plus de fluidité
+          ...prev.slice(-2), // Réduire à 2 perturbations maximum
           {
             x: sceneX,
             y: sceneY,
-            startTime: Date.now(),
-            strength: 0.3 + Math.random() * 0.3 // Force plus douce pour un effet plus fluide
+            startTime: now,
+            strength: 0.25 + Math.random() * 0.2 // Force réduite pour moins de calculs
           }
         ]);
       }
     };
     
     // Ajouter l'écouteur d'événements
-    window.addEventListener('mousemove', handleMouseMove);
+    window.addEventListener('mousemove', handleMouseMove, { passive: true }); // Ajout de passive: true pour améliorer les performances
     
     // Nettoyer l'écouteur lors du démontage
     return () => {
@@ -71,7 +86,7 @@ const WavingGrid = () => {
       newPeaks.push({
         x: (Math.random() - 0.5) * viewport.width * 2,
         y: (Math.random() - 0.5) * viewport.height * 2,
-        amplitude: Math.random() * 10 + 5, // Amplitude plus faible pour un effet moins zoomé
+        amplitude: Math.random() * 12 + 5, // Amplitude plus faible pour un effet moins zoomé
         speed: Math.random() * 0.15 + 0.05
       });
     }
@@ -164,6 +179,13 @@ const WavingGrid = () => {
     const positions = pointGeometry.attributes.position.array as Float32Array;
     const randomFactors = pointGeometry.attributes.randomFactor.array as Float32Array;
     
+    // Pré-calculer les valeurs communes pour éviter les calculs répétitifs
+    const now = Date.now();
+    const activeDisturbances = mouseDisturbances.filter(d => now - d.startTime < 4000); // Réduire à 4 secondes
+    
+    // Optimisation: ne mettre à jour que si nécessaire
+    const hasActiveDisturbances = activeDisturbances.length > 0;
+    
     // Mettre à jour chaque point
     for (let i = 0; i < count; i++) {
       const i3 = i * 3;
@@ -208,24 +230,24 @@ const WavingGrid = () => {
         }
       }
       
-      // Ajouter l'influence des perturbations de la souris
-      for (const disturbance of mouseDisturbances) {
-        const dx = baseX - disturbance.x;
-        const dy = baseY - disturbance.y;
-        const distSq = dx * dx + dy * dy;
-        const maxDistSq = 40000; // Distance d'influence de la perturbation augmentée
-        
-        if (distSq < maxDistSq) {
-          // Calculer le temps écoulé depuis la création de la perturbation
-          const elapsedTime = (Date.now() - disturbance.startTime) / 1000;
+      // Optimisation: ne calculer les perturbations de souris que s'il y en a d'actives
+      if (hasActiveDisturbances) {
+        // Ajouter l'influence des perturbations de la souris
+        for (const disturbance of activeDisturbances) {
+          const dx = baseX - disturbance.x;
+          const dy = baseY - disturbance.y;
+          const distSq = dx * dx + dy * dy;
+          const maxDistSq = 40000; // Distance d'influence de la perturbation
           
-          // Durée de vie plus longue pour un effet plus fluide (5 secondes)
-          if (elapsedTime < 5) {
-            // Calculer la distance depuis l'origine de la perturbation
+          if (distSq < maxDistSq) {
+            // Calculer le temps écoulé depuis la création de la perturbation
+            const elapsedTime = (now - disturbance.startTime) / 1000;
+            
+            // Optimisation: calcul simplifié de la distance (éviter sqrt quand possible)
             const dist = Math.sqrt(distSq);
             
             // Vitesse de propagation de l'onde plus lente pour un effet plus fluide
-            const waveSpeed = 35;
+            const waveSpeed = 60;
             
             // Rayon de l'onde qui s'étend avec le temps
             const waveRadius = elapsedTime * waveSpeed;
@@ -234,22 +256,25 @@ const WavingGrid = () => {
             const ringWidth = 30;
             
             // Calculer l'influence de l'onde avec une fonction plus douce
-            // Utiliser une fonction sinusoïdale pour un effet plus fluide
             const distFromRing = Math.abs(dist - waveRadius);
-            const normalizedDist = Math.min(distFromRing / ringWidth, 1.0);
-            const ringFactor = Math.cos(normalizedDist * Math.PI * 0.5);
-            const smoothRingFactor = ringFactor > 0 ? ringFactor * ringFactor : 0;
             
-            // Atténuation de l'amplitude avec le temps et la distance plus progressive
-            const timeAttenuation = Math.pow(1.0 - elapsedTime / 5, 1.5);
-            const distanceAttenuation = Math.exp(-dist / 150);
-            const attenuationFactor = timeAttenuation * distanceAttenuation;
-            
-            // Amplitude de la perturbation plus douce
-            const waveAmplitude = disturbance.strength * 12 * smoothRingFactor * attenuationFactor;
-            
-            // Ajouter la perturbation au mouvement
-            z += waveAmplitude;
+            // Optimisation: éviter les calculs inutiles si le point est trop loin de l'anneau
+            if (distFromRing < ringWidth) {
+              const normalizedDist = distFromRing / ringWidth;
+              const ringFactor = Math.cos(normalizedDist * Math.PI * 0.5);
+              const smoothRingFactor = ringFactor > 0 ? ringFactor * ringFactor : 0;
+              
+              // Atténuation de l'amplitude avec le temps et la distance plus progressive
+              const timeAttenuation = Math.pow(1.0 - elapsedTime / 4, 1.5); // Réduit à 4 secondes
+              const distanceAttenuation = Math.exp(-dist / 150);
+              const attenuationFactor = timeAttenuation * distanceAttenuation;
+              
+              // Amplitude de la perturbation plus douce
+              const waveAmplitude = disturbance.strength * 12 * smoothRingFactor * attenuationFactor;
+              
+              // Ajouter la perturbation au mouvement
+              z += waveAmplitude;
+            }
           }
         }
       }
@@ -264,10 +289,9 @@ const WavingGrid = () => {
     // Mettre à jour les lignes avec les mêmes positions
     lineGeometry.attributes.position.needsUpdate = true;
     
-    // Nettoyer les anciennes perturbations (plus de 5 secondes)
-    if (mouseDisturbances.length > 0) {
-      const now = Date.now();
-      setMouseDisturbances(prev => prev.filter(d => now - d.startTime < 5000));
+    // Nettoyer les anciennes perturbations (plus de 4 secondes)
+    if (mouseDisturbances.length > 0 && now % 10 === 0) { // Vérifier moins souvent
+      setMouseDisturbances(prev => prev.filter(d => now - d.startTime < 4000));
     }
   });
   
@@ -337,6 +361,9 @@ const WavingGrid = () => {
 const CameraController = () => {
   const { camera, viewport, size } = useThree();
   
+  // Référence pour suivre si la caméra a été initialisée
+  const isInitialized = useRef(false);
+  
   useEffect(() => {
     // Fonction pour ajuster la caméra en fonction des dimensions de l'écran
     const adjustCamera = () => {
@@ -367,6 +394,9 @@ const CameraController = () => {
       (camera as THREE.PerspectiveCamera).fov = fov;
       
       camera.updateProjectionMatrix();
+      
+      // Marquer comme initialisé
+      isInitialized.current = true;
     };
     
     // Ajuster la caméra immédiatement
@@ -386,13 +416,102 @@ const CameraController = () => {
 
 // Composant principal
 const WaveSurface = () => {
+  // Référence au conteneur div
+  const containerRef = useRef<HTMLDivElement>(null);
+  
+  // État pour forcer le rendu après le montage
+  const [dimensions, setDimensions] = useState({ 
+    width: typeof window !== 'undefined' ? window.innerWidth : 1920, 
+    height: typeof window !== 'undefined' ? window.innerHeight : 1080 
+  });
+  
+  // État pour suivre si le Canvas est prêt
+  const [canvasReady, setCanvasReady] = useState(false);
+  
+  // Fonction pour mettre à jour les dimensions
+  const updateDimensions = () => {
+    if (typeof window !== 'undefined') {
+      // Obtenir les dimensions réelles de la fenêtre
+      const width = window.innerWidth;
+      const height = window.innerHeight;
+      
+      // Mettre à jour l'état avec les dimensions
+      setDimensions({ width, height });
+      
+      // Forcer un redimensionnement pour Three.js
+      window.dispatchEvent(new Event('resize'));
+    }
+  };
+  
+  // Utiliser useEffect pour s'assurer que les dimensions sont correctes
+  // useEffect s'exécute côté client uniquement
+  useEffect(() => {
+    // Mettre à jour les dimensions immédiatement
+    updateDimensions();
+    
+    // Forcer plusieurs mises à jour pour s'assurer que les dimensions sont correctes
+    // Utiliser requestAnimationFrame pour synchroniser avec le cycle de rendu du navigateur
+    const rafId = requestAnimationFrame(() => {
+      updateDimensions();
+      
+      // Forcer un autre redimensionnement après un court délai
+      setTimeout(updateDimensions, 50);
+    });
+    
+    // Ajouter un écouteur pour les changements de taille de fenêtre
+    window.addEventListener('resize', updateDimensions);
+    
+    // Nettoyer les timers et l'écouteur lors du démontage
+    return () => {
+      cancelAnimationFrame(rafId);
+      window.removeEventListener('resize', updateDimensions);
+    };
+  }, []);
+  
+  // Fonction appelée lorsque le chargement est terminé
+  const handleLoaderComplete = () => {
+    // On peut ajouter un petit délai pour s'assurer que le Canvas est bien prêt
+    setTimeout(() => {
+      setCanvasReady(true);
+    }, 200);
+  };
+  
   return (
-    <div className="absolute inset-0 w-full h-full z-10">
+    <div 
+      ref={containerRef}
+      className="absolute inset-0 w-full h-full z-10"
+      style={{ width: '100vw', height: '100vh' }}
+    >
+      {/* Loader avec barre de progression */}
+      <AnimatePresence>
+        {!canvasReady && (
+          <motion.div 
+            className="absolute inset-0 flex items-center justify-center bg-background z-20"
+            initial={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.8, ease: "easeInOut" }}
+          >
+            <Loader 
+              duration={1500} 
+              onComplete={handleLoaderComplete}
+            />
+          </motion.div>
+        )}
+      </AnimatePresence>
+      
       <Canvas
         gl={{ alpha: true, antialias: true }}
         dpr={[1, 2]} // Optimisation pour les écrans haute résolution
         camera={{ fov: 30, near: 0.1, far: 1000 }}
         style={{ width: '100%', height: '100%' }}
+        resize={{ scroll: false, debounce: { scroll: 50, resize: 0 } }}
+        onCreated={({ gl, scene, size }) => {
+          // Forcer un redimensionnement après la création du Canvas
+          // en utilisant requestAnimationFrame pour synchroniser avec le cycle de rendu
+          requestAnimationFrame(() => {
+            window.dispatchEvent(new Event('resize'));
+          });
+        }}
       >
         <CameraController />
         <WavingGrid />

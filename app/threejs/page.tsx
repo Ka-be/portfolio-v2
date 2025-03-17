@@ -9,7 +9,7 @@ export default function ThreejsPage() {
 			<div className="h-screen w-full font-lexend flex flex-col">
 				<div className="relative h-screen flex items-center justify-center">
 					<WaveSurface />
-					<div className="absolute z-20 flex flex-col items-center justify-center">
+					<div className="absolute flex justify-center items-start">
 						<h1 className="text-5xl font-light text-white mb-4 text-center">
 							Kevin Bourgitteau
 						</h1>
