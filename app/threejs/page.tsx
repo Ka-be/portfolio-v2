@@ -1,11 +1,11 @@
 import TestContent from "@/components/TestContent";
-import Overlay from "@/components/ui/Overlay";
-import AccretionRing from "@/components/ui/AccretionRing";
+import Overlay from "@/components/UI/Overlay";
+import AccretionRing from "@/components/UI/AccretionRing";
 
 export default function ThreejsPage() {
 	return (
 		<>
-			<Overlay />
+			<Overlay />	
 			<div className="h-screen w-full font-lexend flex flex-col">
 				<div className="relative h-screen flex items-center justify-center">
 					<AccretionRing />
