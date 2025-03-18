@@ -12,6 +12,7 @@ const WavingGrid = () => {
   const linesRef = useRef<THREE.LineSegments>(null);
   const { viewport, size } = useThree();
   const [peaks, setPeaks] = useState<{x: number, y: number, amplitude: number, speed: number}[]>([]);
+  const [foregroundColor, setForegroundColor] = useState<string>('');
   
   // État pour suivre la position de la souris et les perturbations
   const [mousePosition, setMousePosition] = useState<{x: number, y: number} | null>(null);
@@ -124,7 +125,7 @@ const WavingGrid = () => {
         sizes[index] = Math.random() * 0.5 + 0.25;
         
         // Opacité variable
-        opacities[index] = Math.random() * 0.4 + 0.4;
+        opacities[index] = Math.random() * 0.45 + 0.45; // Augmentation légère de l'opacité de base
         
         // Facteurs aléatoires pour le mouvement
         const i4 = index * 4;
@@ -295,15 +296,34 @@ const WavingGrid = () => {
     }
   });
   
+  useEffect(() => {
+    // Récupérer la couleur foreground du CSS
+    const getForegroundColor = () => {
+      const color = getComputedStyle(document.documentElement).getPropertyValue('--foreground').trim();
+      setForegroundColor(color);
+    };
+
+    getForegroundColor();
+
+    // Observer les changements de thème
+    const observer = new MutationObserver(getForegroundColor);
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ['class', 'data-theme']
+    });
+
+    return () => observer.disconnect();
+  }, []);
+  
   return (
     <>
       {/* Lignes */}
       <lineSegments ref={linesRef}>
         <bufferGeometry />
         <lineBasicMaterial 
-          color="white" 
+          color={foregroundColor || 'currentColor'}
           transparent 
-          opacity={0.06} 
+          opacity={0.1} 
           depthTest={false}
         />
       </lineSegments>
@@ -314,6 +334,9 @@ const WavingGrid = () => {
         <shaderMaterial
           transparent
           depthTest={false}
+          uniforms={{
+            foregroundColor: { value: new THREE.Color(foregroundColor || '#ffffff') }
+          }}
           vertexShader={`
             attribute float size;
             attribute float opacity;
@@ -336,6 +359,7 @@ const WavingGrid = () => {
             }
           `}
           fragmentShader={`
+            uniform vec3 foregroundColor;
             varying float vOpacity;
             varying float vDepth;
             
@@ -345,10 +369,10 @@ const WavingGrid = () => {
               if (distance > 0.5) discard;
               
               // Opacité variable selon la profondeur
-              float alpha = vOpacity * (0.3 + vDepth * 0.7) * (1.0 - distance * 1.5);
+              float alpha = vOpacity * (0.35 + vDepth * 0.7) * (1.0 - distance * 1.4);
               
-              // Couleur blanche
-              gl_FragColor = vec4(1.0, 1.0, 1.0, alpha);
+              // Utiliser la couleur foreground
+              gl_FragColor = vec4(foregroundColor, alpha);
             }
           `}
         />
