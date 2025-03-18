@@ -12,6 +12,12 @@ export default {
         background: "var(--background)",
         foreground: "var(--foreground)",
       },
+      spacing: {
+        'frame': 'var(--frame-size)', 
+      },
+      inset: {
+        'frame': 'var(--frame-size)',
+      },
     },
   },
   plugins: [],

@@ -1,6 +1,6 @@
 
 import TestContent from "@/components/TestContent";
-import Overlay from "@/components/ui/Overlay";
+import Overlay from "@/components/UI/Overlay";
 
 export default function Home() {
 	return (

@@ -4,13 +4,11 @@ import React from "react";
 import Navbar from "@/components/Navbar";
 
 const Overlay = () => {
-	// Utilisons une constante pour la taille du cadre
 	const frameSize = "8dvmin";
-
 	return (
 		<>
 			<Navbar />
-			<div className="fixed inset-0 pointer-events-none z-10 w-[100dvw] h-[100dvh] overflow-hidden">
+			<div className="fixed inset-0 pointer-events-none z-20 w-[100dvw] h-[100dvh] overflow-hidden">
 				{/* Bandes avec effet de flou - utilisons des valeurs dynamiques et équidistantes */}
 				<div
 					className="absolute top-0 left-0 right-0 backdrop-blur-md"

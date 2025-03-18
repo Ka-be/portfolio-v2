@@ -1,8 +1,7 @@
-import AnimatedLogo from "@/components/ui/AnimatedLogo";
+import AnimatedLogo from "@/components/UI/AnimatedLogo";
 import TestContent from "@/components/TestContent";
 import TestCarousel from "@/components/TestCarousel";
-import Overlay from "@/components/ui/Overlay";
-import ParticlesPortrait from "@/components/ui/ParticlesPortrait";
+import Overlay from "@/components/UI/Overlay";
 
 export default function Home() {
 	return (
