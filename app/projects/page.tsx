@@ -2,7 +2,7 @@
 import TestContent from "@/components/TestContent";
 import Overlay from "@/components/UI/Overlay";
 
-export default function Home() {
+export default function ProjectsPage() {
 	return (
 		<>
 			<Overlay />
