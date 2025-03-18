@@ -6,8 +6,32 @@ export default function AboutPage() {
 	return (
 		<>
 			<Overlay />
-			<div className="h-screen-dynamic md:h-full w-full font-lexend flex flex-col">
-				<TestContent textContent="About" />
+			<div className="w-[calc(100%-calc(var(--frame-size)*1.8))] h-[calc(100dvh-calc(var(--frame-size)*2))] font-lexend flex items-center justify-center m-[var(--frame-size)]">
+				{/* <WaveSurface /> */}
+				<div className="absolute top-0 left-0 w-auto h-auto"
+					style={{
+						top: 'var(--frame-size)',
+						left: 'var(--frame-size)'
+					}}
+				>
+					<h1 className="text-5xl font-light text-foreground uppercase tracking-widest ml-10 mt-10">
+						Kevin <br /> Bourgitteau
+					</h1>
+					<h2 className="text-2xl font-light text-foreground tracking-widest ml-10">
+						Développeur Full-Stack
+					</h2>
+				</div>
+
+				<div className="absolute bottom-0 right-0 w-4/5 md:w-1/3 "
+					style={{
+						bottom: 'var(--frame-size)',
+						right: 'var(--frame-size)'
+					}}
+				>
+					<p className="text-md font-light text-foreground pr-10 pb-10 text-justify opacity-80">
+					Développeur concepteur d'applications web et mobile fraîchement titulaire du titre professionnel RNCP. Passionné par la création d'expériences numériques innovantes, je combine expertise technique et créativité pour donner vie à des projets web ambitieux. Basé à Bordeaux.
+					</p>
+				</div>
 			</div>
 		</>
 	);
