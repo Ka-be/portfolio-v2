@@ -4,7 +4,8 @@ import Overlay from "@/components/UI/Overlay";
 import { projects } from "@/data/projects";
 import { ArrowDownLeft } from "lucide-react";
 import { useState } from "react";
-import Marquee from "@/components/UI/marquee/Marquee";
+import Marquee from "react-fast-marquee";
+import Link from "next/link";
 
 interface Project {
 	id: number;
@@ -19,8 +20,18 @@ export default function ProjectsPage() {
 	const [selectedProject, setSelectedProject] = useState<Project | null>(projects[0]); // On initialise avec le premier projet
 	
 	return (
-		<>
-			<Marquee />
+		<div className="h-screen w-screen overflow-hidden relative">
+			<Link href="/contact">
+				<Marquee
+					speed={40}
+					gradient={false}
+					pauseOnHover={true}
+					autoFill={true}
+					className="bg-foreground text-background z-30 absolute top-1 left-0 h-6 tracking-widest cursor-pointer opacity-90 hover:opacity-100 transition-opacity font-light"
+				>
+					<span className="mx-4">OPEN TO WORK • DISPONIBLE</span>
+				</Marquee>
+			</Link>
 			<Overlay />
 			<div className="w-[calc(100%-calc(var(--frame-size)*1.8))] h-[calc(100dvh-calc(var(--frame-size)*2))] font-lexend flex items-center justify-center m-[var(--frame-size)]">
 
@@ -92,6 +103,6 @@ export default function ProjectsPage() {
 					)}
 				</div>
 			</div>
-		</>
+		</div>
 	);
 }
