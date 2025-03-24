@@ -14,12 +14,12 @@ export default function AboutPage() {
 						left: 'var(--frame-size)'
 					}}
 				>
-					<h1 className="text-5xl font-light text-foreground uppercase tracking-widest ml-10 mt-10">
-						Kevin <br /> Bourgitteau
-					</h1>
-					<h2 className="text-2xl font-light text-foreground tracking-widest ml-10">
-						Développeur Full-Stack
+					<h2 className="text-5xl font-light text-foreground uppercase tracking-widest ml-10 mt-10">
+						à propos
 					</h2>
+					<h3 className="text-2xl font-light text-foreground tracking-widest ml-10">
+						Et je développe des trucs.
+					</h3>
 				</div>
 
 				<div className="absolute bottom-0 right-0 w-4/5 md:w-1/3 "
