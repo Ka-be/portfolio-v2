@@ -6,7 +6,7 @@ import Link from "next/link";
 
 export default function AboutPage() {
 	return (
-		<div className="h-screen w-screen overflow-hidden relative">
+		<div className="h-[100dvh] w-[100dvw] overflow-hidden relative">
 			<Link href="/contact">
 				<Marquee
 					speed={40}

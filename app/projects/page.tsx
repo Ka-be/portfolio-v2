@@ -20,7 +20,7 @@ export default function ProjectsPage() {
 	const [selectedProject, setSelectedProject] = useState<Project | null>(projects[0]); // On initialise avec le premier projet
 	
 	return (
-		<div className="h-screen w-screen overflow-hidden relative">
+		<div className="h-[100dvh] w-[100dvw] overflow-hidden relative">
 			<Link href="/contact">
 				<Marquee
 					speed={40}

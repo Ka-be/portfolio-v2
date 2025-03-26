@@ -9,7 +9,7 @@ import { LiaBehance, LiaLinkedinIn, LiaGithub, LiaDribbble } from "react-icons/l
 export default function ContactPage() {
 	return (
 		//HEIGHT A 100DVH
-		<div className="h-[100dvh] w-screen overflow-hidden relative "> 
+		<div className="h-[100dvh] w-[100dvw] overflow-hidden relative "> 
 			<Link href="/contact">
 				<Marquee
 					speed={40}
