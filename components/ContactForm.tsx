@@ -3,6 +3,7 @@
 import React, { useState, FormEvent } from "react";
 import regex from "@/utils/regex";
 import Link from "next/link";
+import { Send, SendHorizontal, Check } from "lucide-react";
 
 const validateEmail = (email: string): boolean => {
 	return regex.email.test(email);
@@ -36,7 +37,7 @@ const ContactForm = () => {
 	});
 
 	const [isSubmitted, setIsSubmitted] = useState(false);
-	const [buttonText, setButtonText] = useState("Envoyer");
+	const [isHovered, setIsHovered] = useState(false);
 	const [submittedName, setSubmittedName] = useState("");
 
 	const handleChange = (
@@ -76,7 +77,6 @@ const ContactForm = () => {
 				message: "",
 			});
 			setIsSubmitted(true);
-			setButtonText("Envoyé");
 		} else {
 			console.log("Erreurs de validation :", {
 				email: !isEmailValid ? "Email invalide" : null,
@@ -143,15 +143,30 @@ const ContactForm = () => {
 			) : (
 				<span className="text-foreground/80 py-10 h-full font-light text-justify">
 					{submittedName ? `Merci ${submittedName}` : "Merci "},
-					message bien reçu ! Je vous répondrai dans les plus brefs délais 😄
+					message bien reçu ! Je vous répondrai dans les plus brefs
+					délais 😄
 				</span>
 			)}
 			<button
 				type="submit"
 				disabled={isSubmitted}
-				className="bg-foreground text-background px-4 py-2 mt-2 hover:bg-blue-500 transition-colors disabled:hover:bg-foreground disabled:cursor-default"
+				onMouseEnter={() => !isSubmitted && setIsHovered(true)}
+				onMouseLeave={() => setIsHovered(false)}
+				className="relative inline-flex items-center justify-center p-4 px-6 py-3 overflow-hidden font-medium text-foreground transition duration-300 ease-out border border-foreground/20  group disabled:opacity-50 disabled:cursor-not-allowed"
 			>
-				{buttonText}
+				<span className="absolute inset-0 flex items-center justify-center w-full h-full bg-foreground text-background duration-300 -translate-x-full group-hover:translate-x-0 ease">
+					{isSubmitted ? (
+						<Check className="w-6 h-6" />
+					) : (
+						<SendHorizontal className="w-6 h-6" />
+					)}
+				</span>
+				<span className="absolute flex items-center justify-center w-full h-full text-foreground transition-all duration-300 transform group-hover:translate-x-full ease">
+					{isSubmitted ? "Envoyé" : "Envoyer"}
+				</span>
+				<span className="relative invisible">
+					{isSubmitted ? "Envoyé" : "Envoyer"}
+				</span>
 			</button>
 		</form>
 	);
