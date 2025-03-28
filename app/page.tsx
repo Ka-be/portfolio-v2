@@ -1,5 +1,5 @@
 import Overlay from "@/components/organisms/Overlay";
-import WaveSurface from "@/components/UI/WaveSurface";
+import WaveSurface from "@/components/organisms/WaveSurface";
 import Marquee from "react-fast-marquee";
 import Link from "next/link";
 
