@@ -4,7 +4,7 @@ import { useEffect, useRef, useState, useLayoutEffect } from "react";
 import * as THREE from "three";
 import { useFrame, Canvas, useThree } from "@react-three/fiber";
 import { motion, AnimatePresence } from "framer-motion";
-import Loader from "./Loader";
+import Loader from "../atoms/Loader";
 
 // Composant pour la surface ondulante
 const WavingGrid = () => {

@@ -4,6 +4,8 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useState, useEffect } from "react";
 import DarkModeToggle from "../atoms/DarkModeToggle";
+import Logo from "../atoms/Logo";
+
 
 const Navbar = () => {
 	const pathname = usePathname();
@@ -32,14 +34,9 @@ const Navbar = () => {
 			<div className="flex items-center">
 				<Link
 					href="/"
-					className="opacity-70 hover:opacity-100 transition-opacity h-full"
+					className="opacity-70 hover:opacity-100 transition-opacity h-[4dvmin]"
 				>
-					<Image
-						src="/assets/images/logo.svg"
-						alt="Logo"
-						width={20}
-						height={20}
-					/>
+					<Logo />
 				</Link>
 			</div>
 

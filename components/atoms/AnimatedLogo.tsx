@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 const AnimatedLogo = () => {
 	return (
-		<div className="flex justify-center items-center h-32">
+		<div className="flex justify-center items-center h-full">
 			<motion.svg
 				xmlns="http://www.w3.org/2000/svg"
 				viewBox="0 0 500 500"
