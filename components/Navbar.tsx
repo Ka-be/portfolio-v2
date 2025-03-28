@@ -41,6 +41,11 @@ const Navbar = () => {
 				</Link>
 			</div>
 
+			<div className="flex items-center text-xs font-light">
+				Light / Dark
+				
+			</div>
+
 			<div className="flex items-center space-x-4 text-xs font-light">
 				{links.map((link) => {
 					const isActive = activePath === link.path;

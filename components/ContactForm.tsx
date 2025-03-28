@@ -3,7 +3,7 @@
 import React, { useState, FormEvent } from "react";
 import regex from "@/utils/regex";
 import Link from "next/link";
-import { Send, SendHorizontal, Check } from "lucide-react";
+import { Send, Check, Loader2 } from "lucide-react";
 
 const validateEmail = (email: string): boolean => {
 	return regex.email.test(email);
@@ -37,6 +37,7 @@ const ContactForm = () => {
 	});
 
 	const [isSubmitted, setIsSubmitted] = useState(false);
+	const [isPending, setIsPending] = useState(false);
 	const [isHovered, setIsHovered] = useState(false);
 	const [submittedName, setSubmittedName] = useState("");
 
@@ -50,33 +51,34 @@ const ContactForm = () => {
 		}));
 	};
 
-	const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+	const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
 
-		// Validation des champs avec les regex
 		const isEmailValid = validateEmail(formData.email);
-		const isNameValid = formData.name ? validateName(formData.name) : true; // Optionnel
+		const isNameValid = formData.name ? validateName(formData.name) : true;
 		const isMessageValid = formData.message
 			? validateMessage(formData.message)
-			: true; // Optionnel
+			: true;
 
 		if (isEmailValid && isNameValid && isMessageValid) {
-			console.log("Données du formulaire :", {
-				email: formData.email,
-				name: formData.name,
-				message: formData.message,
-			});
+			try {
+				setIsPending(true);
+				setSubmittedName(formData.name);
 
-			// Sauvegarder le nom avant de réinitialiser le formulaire
-			setSubmittedName(formData.name);
+				// Simuler un délai pour l'animation
+				await new Promise((resolve) => setTimeout(resolve, 1500));
 
-			// Réinitialisation du formulaire et affichage du message de confirmation
-			setFormData({
-				email: "",
-				name: "",
-				message: "",
-			});
-			setIsSubmitted(true);
+				setFormData({
+					email: "",
+					name: "",
+					message: "",
+				});
+				setIsSubmitted(true);
+			} catch (error) {
+				console.error("Erreur lors de l'envoi du formulaire:", error);
+			} finally {
+				setIsPending(false);
+			}
 		} else {
 			console.log("Erreurs de validation :", {
 				email: !isEmailValid ? "Email invalide" : null,
@@ -96,9 +98,9 @@ const ContactForm = () => {
 					<div className="flex flex-col gap-2">
 						<label
 							htmlFor="email"
-							className="text-sm font-light text-foreground/80"
+							className="text-xs font-light text-foreground/80 uppercase tracking-widest"
 						>
-							Email *
+							Email
 						</label>
 						<input
 							type="email"
@@ -106,13 +108,13 @@ const ContactForm = () => {
 							value={formData.email}
 							onChange={handleChange}
 							required
-							className="bg-transparent border border-foreground/20 p-2 text-foreground focus:border-foreground/60 outline-none"
+							className="bg-transparent border border-foreground p-2 text-foreground hover:border-foreground/30 focus:bg-foreground focus:text-background outline-none transition-colors duration-300"
 						/>
 					</div>
 					<div className="flex flex-col gap-2">
 						<label
 							htmlFor="name"
-							className="text-sm font-light text-foreground/80"
+							className="text-xs font-light text-foreground/80 uppercase tracking-widest"
 						>
 							Nom / Prénom
 						</label>
@@ -121,13 +123,13 @@ const ContactForm = () => {
 							id="name"
 							value={formData.name}
 							onChange={handleChange}
-							className="bg-transparent border border-foreground/20 p-2 text-foreground focus:border-foreground/60 outline-none"
+							className="bg-transparent border border-foreground p-2 text-foreground hover:border-foreground/30 focus:bg-foreground focus:text-background outline-none transition-colors duration-300"
 						/>
 					</div>
 					<div className="flex flex-col gap-2">
 						<label
 							htmlFor="message"
-							className="text-sm font-light text-foreground/80"
+							className="text-xs font-light text-foreground/80 uppercase tracking-widest"
 						>
 							Message
 						</label>
@@ -136,7 +138,7 @@ const ContactForm = () => {
 							value={formData.message}
 							onChange={handleChange}
 							rows={4}
-							className="bg-transparent border border-foreground/20 p-2 text-foreground focus:border-foreground/60 outline-none resize-none"
+							className="bg-transparent border border-foreground p-2 text-foreground hover:border-foreground/30 focus:bg-foreground focus:text-background outline-none transition-colors duration-300"
 						/>
 					</div>
 				</>
@@ -149,24 +151,28 @@ const ContactForm = () => {
 			)}
 			<button
 				type="submit"
-				disabled={isSubmitted}
-				onMouseEnter={() => !isSubmitted && setIsHovered(true)}
+				disabled={isSubmitted || isPending}
+				onMouseEnter={() =>
+					!isSubmitted && !isPending && setIsHovered(true)
+				}
 				onMouseLeave={() => setIsHovered(false)}
-				className="relative inline-flex items-center justify-center p-4 px-6 py-3 overflow-hidden font-medium text-foreground transition duration-300 ease-out border border-foreground/20  group disabled:opacity-50 disabled:cursor-not-allowed"
+				className="relative inline-flex items-center justify-center p-2 overflow-hidden font-medium text-foreground transition duration-300 ease-out border border-foreground/20 group disabled:opacity-50 disabled:cursor-not-allowed w-full h-full"
 			>
-				<span className="absolute inset-0 flex items-center justify-center w-full h-full bg-foreground text-background duration-300 -translate-x-full group-hover:translate-x-0 ease">
-					{isSubmitted ? (
-						<Check className="w-6 h-6" />
-					) : (
-						<SendHorizontal className="w-6 h-6" />
-					)}
-				</span>
-				<span className="absolute flex items-center justify-center w-full h-full text-foreground transition-all duration-300 transform group-hover:translate-x-full ease">
-					{isSubmitted ? "Envoyé" : "Envoyer"}
-				</span>
-				<span className="relative invisible">
-					{isSubmitted ? "Envoyé" : "Envoyer"}
-				</span>
+				{isSubmitted ? (
+					<Check className="w-6 h-6" strokeWidth={1} />
+				) : isPending ? (
+					<Loader2 className="w-6 h-6 animate-spin" strokeWidth={1} />
+				) : (
+					<>
+						<span className="absolute inset-0 flex items-center justify-center w-full h-full bg-foreground text-background duration-1000 -translate-x-full group-hover:translate-x-0 ease">
+							<Send className="w-6 h-6" strokeWidth={1} />
+						</span>
+						<span className="absolute flex items-center justify-center p-2 w-full h-full text-foreground transition-all duration-1000 transform group-hover:translate-x-full ease uppercase font-light tracking-widest">
+							Envoyer
+						</span>
+						<span className="relative invisible">Envoyer</span>
+					</>
+				)}
 			</button>
 		</form>
 	);
