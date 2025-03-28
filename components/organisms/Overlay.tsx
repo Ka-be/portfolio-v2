@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import Navbar from "@/components/Navbar";
+import Navbar from "@/components/molecules/Navbar";
 
 const Overlay = () => {
 	const frameSize = "8dvmin";

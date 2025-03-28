@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, FormEvent } from "react";
-import regex from "@/utils/regex";
+import regex from "@/lib/utils/regex";
 import Link from "next/link";
 import { Send, Check, Loader2 } from "lucide-react";
 

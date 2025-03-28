@@ -3,7 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useState, useEffect } from "react";
-import DarkModeToggle from "./UI/DarkModeToggle";
+import DarkModeToggle from "../atoms/DarkModeToggle";
 
 const Navbar = () => {
 	const pathname = usePathname();

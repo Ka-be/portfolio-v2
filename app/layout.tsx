@@ -1,7 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Lexend } from "next/font/google";
-// import "./reset.css";
-import "./globals.css";
+// import "../reset.css";
+import "../styles/globals.css";
 
 const lexend = Lexend({
 	variable: "--font-lexend",
