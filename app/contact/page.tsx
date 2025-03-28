@@ -4,7 +4,7 @@ import Marquee from "react-fast-marquee";
 import Link from "next/link";
 import { MapPin, Mail } from "lucide-react";
 import { LiaBehance, LiaLinkedinIn, LiaGithub, LiaDribbble } from "react-icons/lia";
-
+import ContactForm from "@/components/ContactForm";
 
 export default function ContactPage() {
 	return (
@@ -41,40 +41,8 @@ export default function ContactPage() {
 						left: 'var(--frame-size)'
 					}}
 				>
-					<section className="flex flex-col-reverse md:flex-row gap-5 md:gap-10 justify-between px-5 md:p-0 2xl:justify-center 2xl:items-center 2xl:h-full 2xl:pt-[10vh] 2xl:max-w-[50vw] 2xl:mx-auto ">
-						<form className="flex flex-col gap-4 w-full md:w-5/12 max-w-[800px] md:pl-10 pb-5 md:pb-10">
-							<div className="flex flex-col gap-2">
-								<label htmlFor="email" className="text-sm font-light text-foreground/80">Email *</label>
-								<input 
-									type="email" 
-									id="email"
-									required
-									className="bg-transparent border border-foreground/20 rounded-md p-2 text-foreground focus:border-foreground/60 outline-none"
-								/>
-							</div>
-							<div className="flex flex-col gap-2">
-								<label htmlFor="name" className="text-sm font-light text-foreground/80">Nom / Prénom</label>
-								<input 
-									type="text" 
-									id="name"
-									className="bg-transparent border border-foreground/20 rounded-md p-2 text-foreground focus:border-foreground/60 outline-none"
-								/>
-							</div>
-							<div className="flex flex-col gap-2">
-								<label htmlFor="message" className="text-sm font-light text-foreground/80">Message</label>
-								<textarea 
-									id="message"
-									rows={4}
-									className="bg-transparent border border-foreground/20 rounded-md p-2 text-foreground focus:border-foreground/60 outline-none resize-none"
-								/>
-							</div>
-							<button 
-								type="submit"
-								className="bg-foreground text-background px-4 py-2 rounded-md mt-2 hover:bg-blue-500 transition-colors"
-							>
-								Envoyer
-							</button>
-						</form>
+					<div className="flex flex-col-reverse md:flex-row gap-5 md:gap-10 justify-between px-5 md:p-0 2xl:justify-center 2xl:items-center 2xl:h-full 2xl:pt-[10vh] 2xl:max-w-[50vw] 2xl:mx-auto ">
+						<ContactForm />
 
 						<section className="flex flex-col gap-1 md:gap-2 w-full md:w-1/2 md:pr-10 md:pb-10 md:justify-end md:items-end 2xl:p-0 2xl:w-1/3">
 							<div className="text-sm font-light text-foreground/80 flex flex-row-reverse md:flex-row justify-between md:justify-end items-center gap-2">
@@ -97,7 +65,7 @@ export default function ContactPage() {
 								<span className="cursor-pointer opacity-80 hover:opacity-100 transition-opacity"><LiaBehance /></span>
 							</div>
 						</section>
-					</section>
+					</div>
 				</div>
 			</div>
 		</div>
