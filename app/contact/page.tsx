@@ -60,16 +60,16 @@ export default function ContactPage() {
 								<Mail size={24} strokeWidth={0.8} />
 							</div>
 							<div className="text-md md:text-md font-light text-foreground/80 flex justify-end md:items-center gap-2 text-2xl md:mt-5">
-								<span className="cursor-pointer opacity-80 hover:opacity-100 transition-opacity">
+								<span className="cursor-pointer opacity-40 hover:opacity-100 transition-opacity">
 									<LiaGithub />
 								</span>
-								<span className="cursor-pointer opacity-80 hover:opacity-100 transition-opacity">
+								<span className="cursor-pointer opacity-40 hover:opacity-100 transition-opacity">
 									<LiaLinkedinIn />
 								</span>
-								<span className="cursor-pointer opacity-80 hover:opacity-100 transition-opacity">
+								<span className="cursor-pointer opacity-40 hover:opacity-100 transition-opacity">
 									<LiaDribbble />
 								</span>
-								<span className="cursor-pointer opacity-80 hover:opacity-100 transition-opacity">
+								<span className="cursor-pointer opacity-40 hover:opacity-100 transition-opacity">
 									<LiaBehance />
 								</span>
 							</div>

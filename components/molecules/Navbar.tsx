@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 import { useState, useEffect } from "react";
 import DarkModeToggle from "../atoms/DarkModeToggle";
 import Logo from "../atoms/Logo";
-
+import { Home, FolderOpen, User, Mail } from "lucide-react";
 
 const Navbar = () => {
 	const pathname = usePathname();
@@ -17,9 +17,10 @@ const Navbar = () => {
 	}, [pathname]);
 
 	const links = [
-		{ path: "/projects", label: "Projets" },
-		{ path: "/about", label: "À propos" },
-		{ path: "/contact", label: "Contact" },
+		{ path: "/", label: "Accueil", icon: Home },
+		{ path: "/projects", label: "Projets", icon: FolderOpen },
+		{ path: "/about", label: "À propos", icon: User },
+		{ path: "/contact", label: "Contact", icon: Mail },
 	];
 
 	return (
@@ -47,36 +48,28 @@ const Navbar = () => {
 			<div className="flex items-center space-x-4 text-xs font-light">
 				{links.map((link) => {
 					const isActive = activePath === link.path;
-
-					// Si le lien est actif, on affiche un lien vers l'accueil
-					if (isActive) {
-						return (
-							<Link
-								key={link.path}
-								href="/"
-								className="relative group p-1 flex justify-center"
-								// style={{ minWidth: "4rem" }}
-							>
-								<span className="opacity-70 group-hover:opacity-100 transition-opacity uppercase tracking-wide">
-									/
-								</span>
-								<span className="absolute bottom-0 left-0 w-full h-[1px] bg-foreground scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
-							</Link>
-						);
-					}
-
-					// Sinon on affiche le lien normal
+					const Icon = link.icon;
 					return (
 						<Link
 							key={link.path}
 							href={link.path}
 							className="relative group p-1 flex justify-center"
-							// style={{ minWidth: "4rem" }}
 						>
-							<span className="opacity-70 group-hover:opacity-100 transition-opacity uppercase tracking-wide">
-								{link.label}
+							<span
+								className={`transition-opacity uppercase tracking-widest text-xs ${
+									isActive
+										? "opacity-100"
+										: "opacity-50 group-hover:opacity-100"
+								}`}
+							>
+								<span className="md:hidden">
+									<Icon size={16} strokeWidth={1} />
+								</span>
+								<span className="hidden md:inline">
+									{link.label}
+								</span>
 							</span>
-							<span className="absolute bottom-0 left-0 w-full h-[1px] bg-foreground scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
+							<span className="absolute bottom-0 left-0 w-full h-[0.2px] bg-foreground scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
 						</Link>
 					);
 				})}

@@ -138,7 +138,7 @@ const ContactForm = () => {
 							value={formData.message}
 							onChange={handleChange}
 							rows={4}
-							className="bg-transparent border border-foreground p-2 text-foreground hover:border-foreground/30 focus:bg-foreground focus:text-background outline-none transition-colors duration-300"
+							className="bg-transparent border border-foreground p-2 text-foreground hover:border-foreground/30 focus:bg-foreground focus:text-background outline-none transition-colors duration-300 resize-none"
 						/>
 					</div>
 				</>

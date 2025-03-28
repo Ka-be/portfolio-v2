@@ -49,4 +49,7 @@
 * {
   scrollbar-width: thin;
   scrollbar-color: var(--foreground) var(--background);
+  font-family: var(--font-lexend), Arial, Helvetica, sans-serif;
+  margin: 0;
+  padding: 0;
 }

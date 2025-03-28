@@ -27,7 +27,7 @@ export default function Home() {
 						left: "var(--frame-size)",
 					}}
 				>
-					<h1 className="text-5xl font-light text-foreground uppercase tracking-widest ml-1 mt-1 md:ml-10 md:mt-10">
+					<h1 className="text-5xl font-light text-foreground uppercase tracking-widest ml-1 mt-1 md:ml-10 md:mt-10 font-lexend">
 						Kevin <br /> Bourgitteau
 					</h1>
 					<h2 className="text-2xl font-light text-foreground tracking-widest ml-1 md:ml-10">
