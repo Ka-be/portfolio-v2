@@ -35,14 +35,14 @@ export default function ContactPage() {
 					</h2>
 				</div>
 
-				<div className="absolute bottom-0 right-0 w-[calc(100%-calc(var(--frame-size)*2))] md:w-[calc(100%-calc(var(--frame-size)*2))]"
+				<div className="absolute bottom-0 right-0 w-[calc(100%-calc(var(--frame-size)*2))] md:w-[calc(100%-calc(var(--frame-size)*2))] 2xl:h-[calc(100%-calc(var(--frame-size)*2))]"
 					style={{
 						bottom: 'var(--frame-size)',
 						left: 'var(--frame-size)'
 					}}
 				>
-					<section className="flex flex-col-reverse md:flex-row gap-5 md:gap-10 justify-between px-5 md:p-0">
-						<form className="flex flex-col gap-4 w-full md:w-5/12 md:pl-10 pb-5 md:pb-10">
+					<section className="flex flex-col-reverse md:flex-row gap-5 md:gap-10 justify-between px-5 md:p-0 2xl:justify-center 2xl:items-center 2xl:h-full 2xl:pt-[10vh] 2xl:max-w-[50vw] 2xl:mx-auto ">
+						<form className="flex flex-col gap-4 w-full md:w-5/12 max-w-[800px] md:pl-10 pb-5 md:pb-10">
 							<div className="flex flex-col gap-2">
 								<label htmlFor="email" className="text-sm font-light text-foreground/80">Email *</label>
 								<input 
@@ -76,7 +76,7 @@ export default function ContactPage() {
 							</button>
 						</form>
 
-						<section className="flex flex-col gap-1 md:gap-2 w-full md:w-1/2 md:pr-10 md:pb-10 md:justify-end md:items-end">
+						<section className="flex flex-col gap-1 md:gap-2 w-full md:w-1/2 md:pr-10 md:pb-10 md:justify-end md:items-end 2xl:p-0 2xl:w-1/3">
 							<div className="text-sm font-light text-foreground/80 flex flex-row-reverse md:flex-row justify-between md:justify-end items-center gap-2">
 								<p>Bordeaux, France</p>
 								<MapPin 
