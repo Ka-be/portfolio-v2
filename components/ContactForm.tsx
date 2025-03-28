@@ -143,8 +143,7 @@ const ContactForm = () => {
 			) : (
 				<span className="text-foreground/80 py-10 h-full font-light text-justify">
 					{submittedName ? `Merci ${submittedName}` : "Merci "},
-					message bien reçu ! Je vous répondrai dans les plus brefs délais. <br /><br />
-                    En attendant, vous pouvez aller faire un tour sur mon <Link href="/">site</Link> ou sur mes réseaux.
+					message bien reçu ! Je vous répondrai dans les plus brefs délais 😄
 				</span>
 			)}
 			<button

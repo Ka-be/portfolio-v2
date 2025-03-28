@@ -4,7 +4,7 @@ import "./globals.css";
 
 const lexend = Lexend({
 	variable: "--font-lexend",
-	subsets: ["latin"],
+  subsets: ["latin"],
 });
 
 export const viewport: Viewport = {
@@ -148,13 +148,13 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({
-	children,
+  children,
 }: Readonly<{
-	children: React.ReactNode;
+  children: React.ReactNode;
 }>) {
-	return (
+  return (
 		<html lang="fr">
 			<body className={`${lexend.variable} antialiased`}>{children}</body>
-		</html>
-	);
+    </html>
+  );
 }
