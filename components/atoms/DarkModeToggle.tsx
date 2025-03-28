@@ -10,21 +10,21 @@ const DarkModeToggle = () => {
 	return (
 		<button
 			onClick={toggleTheme}
-			className="relative h-8 w-8 flex items-center justify-center opacity-80 hover:opacity-100 transition-opacity"
+			className="relative h-8 w-8 flex items-center justify-center opacity-80 hover:opacity-100 text-foreground"
 		>
 			<div
-				className={`absolute inset-0 flex items-center justify-center transition-all duration-500 ${
+					className={`absolute inset-0 flex items-center justify-center transition-all duration-300 ${
 					theme === "dark" ? "rotate-180" : "rotate-0"
 				}`}
 			>
 				<Moon
-					className={`absolute w-4 h-4 transition-all duration-500 ${
+					className={`absolute w-4 h-4 transition-all duration-300 ${
 						theme === "dark" ? "opacity-0" : "opacity-100"
 					}`}
 					strokeWidth={1}
 				/>
 				<Sun
-					className={`absolute w-4 h-4 transition-all duration-500 ${
+					className={`absolute w-4 h-4 transition-all duration-300 ${
 						theme === "dark" ? "opacity-100" : "opacity-0"
 					}`}
 					strokeWidth={1}

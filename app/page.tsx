@@ -5,7 +5,7 @@ import Link from "next/link";
 
 export default function Home() {
 	return (
-		<div className="h-[100dvh] w-[100dvw] overflow-hidden relative">
+		<div className="h-[100dvh] w-[100dvw] overflow-hidden relative bg-background text-foreground">
 			<Link href="/contact">
 				<Marquee
 					speed={40}

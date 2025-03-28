@@ -14,12 +14,34 @@ const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
 	const [theme, setTheme] = useState<Theme>("dark");
 
+	// Ajouter la classe dark immédiatement au montage
+	useEffect(() => {
+		document.documentElement.classList.add("dark");
+	}, []);
+
 	useEffect(() => {
 		// Vérifier si un thème est déjà stocké
 		const savedTheme = localStorage.getItem("theme") as Theme;
 		if (savedTheme) {
 			setTheme(savedTheme);
-			document.documentElement.classList.toggle("dark", savedTheme === "dark");
+			if (savedTheme === "dark") {
+				document.documentElement.classList.add("dark");
+			} else {
+				document.documentElement.classList.remove("dark");
+			}
+		} else {
+			// Si aucun thème n'est stocké, utiliser la préférence système
+			const prefersDark = window.matchMedia(
+				"(prefers-color-scheme: dark)"
+			).matches;
+			const initialTheme = prefersDark ? "dark" : "light";
+			setTheme(initialTheme);
+			if (initialTheme === "dark") {
+				document.documentElement.classList.add("dark");
+			} else {
+				document.documentElement.classList.remove("dark");
+			}
+			localStorage.setItem("theme", initialTheme);
 		}
 	}, []);
 
@@ -27,7 +49,11 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
 		const newTheme = theme === "dark" ? "light" : "dark";
 		setTheme(newTheme);
 		localStorage.setItem("theme", newTheme);
-		document.documentElement.classList.toggle("dark", newTheme === "dark");
+		if (newTheme === "dark") {
+			document.documentElement.classList.add("dark");
+		} else {
+			document.documentElement.classList.remove("dark");
+		}
 	};
 
 	return (

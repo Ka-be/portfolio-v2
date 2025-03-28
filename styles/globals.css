@@ -2,34 +2,30 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #f4f4f5;
-  --foreground: #09090b;
-  --scrollbar-width: 2px;
-  /* Largeur de la barre de défilement */
-  --frame-size: 8dvmin;
-  /* Taille du cadre pour les marges et positionnements */
-}
-
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
+    --background: #f4f4f5;
+    --foreground: #09090b;
+    --scrollbar-width: 2px;
+    /* Largeur de la barre de défilement */
+    --frame-size: 8dvmin;
+    /* Taille du cadre pour les marges et positionnements */
+  }
+
+  .dark {
     --background: #09090b;
     --foreground: #f4f4f5;
   }
 }
 
-html {
-  /* Ajouter un padding-right pour compenser la barre de défilement */
-  padding-right: var(--scrollbar-width);
-}
-
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: var(--font-lexend), Arial, Helvetica, sans-serif;
-  margin: 0;
-  padding: 0;
-  overflow-x: hidden;
+@layer base {
+  body {
+    @apply bg-background text-foreground transition-colors duration-300;
+    font-family: var(--font-lexend), Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+  }
 }
 
 /* Personnalisation de la barre de défilement */
