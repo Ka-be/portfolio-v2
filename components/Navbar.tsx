@@ -3,10 +3,12 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useState, useEffect } from "react";
+import DarkModeToggle from "./UI/DarkModeToggle";
 
 const Navbar = () => {
 	const pathname = usePathname();
 	const [activePath, setActivePath] = useState("");
+	const [isDark, setIsDark] = useState(true);
 
 	useEffect(() => {
 		setActivePath(pathname);
@@ -41,9 +43,8 @@ const Navbar = () => {
 				</Link>
 			</div>
 
-			<div className="flex items-center text-xs font-light">
-				Light / Dark
-				
+			<div className="md:absolute md:left-1/2 md:-translate-x-1/2 flex items-center text-xs font-light">
+				<DarkModeToggle />
 			</div>
 
 			<div className="flex items-center space-x-4 text-xs font-light">
