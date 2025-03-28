@@ -9,7 +9,7 @@ const DarkModeToggle = () => {
     return (
             <button
 					onClick={() => setIsDark(!isDark)}
-					className="relative h-8 w-8 flex items-center justify-center"
+					className="relative h-8 w-8 flex items-center justify-center opacity-80 hover:opacity-100 transition-opacity"
 				>
 					<div
 						className={`absolute inset-0 flex items-center justify-center transition-all duration-500 ${
