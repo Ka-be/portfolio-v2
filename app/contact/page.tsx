@@ -59,19 +59,31 @@ export default function ContactPage() {
 								<p>kevin.bourgitteau@gmail.com</p>
 								<Mail size={24} strokeWidth={0.8} />
 							</div>
-							<div className="text-md md:text-md font-light text-foreground/80 flex justify-end md:items-center gap-2 text-2xl md:mt-5">
-								<span className="cursor-pointer opacity-40 hover:opacity-100 transition-opacity">
+							<div className="text-lg md:text-xl font-light text-foreground/80 flex justify-between self-end w-1/2 md:items-center gap-2 md:mt-5  md:w-1/3">
+								<a
+									href="https://github.com/ka-be"
+									className="cursor-pointer opacity-40 hover:opacity-100 transition-opacity"
+								>
 									<LiaGithub />
-								</span>
-								<span className="cursor-pointer opacity-40 hover:opacity-100 transition-opacity">
+								</a>
+								<a
+									href="https://www.linkedin.com/in/kevin-bourgitteau/"
+									className="cursor-pointer opacity-40 hover:opacity-100 transition-opacity"
+								>
 									<LiaLinkedinIn />
-								</span>
-								<span className="cursor-pointer opacity-40 hover:opacity-100 transition-opacity">
+								</a>
+								<a
+									href="https://dribbble.com/kaabee"
+									className="cursor-pointer opacity-40 hover:opacity-100 transition-opacity"
+								>
 									<LiaDribbble />
-								</span>
-								<span className="cursor-pointer opacity-40 hover:opacity-100 transition-opacity">
+								</a>
+								<a
+									href="https://www.behance.net/kaabe"
+									className="cursor-pointer opacity-40 hover:opacity-100 transition-opacity"
+								>
 									<LiaBehance />
-								</span>
+								</a>
 							</div>
 						</section>
 					</div>
