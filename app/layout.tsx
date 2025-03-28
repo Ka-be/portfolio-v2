@@ -1,12 +1,15 @@
 import type { Metadata, Viewport } from "next";
-import { Lexend } from "next/font/google";
+import { Lexend, Inter } from "next/font/google";
 // import "../reset.css";
 import "../styles/globals.css";
+import { ThemeProvider } from "@/lib/contexts/ThemeContext";
 
 const lexend = Lexend({
 	variable: "--font-lexend",
-  subsets: ["latin"],
+	subsets: ["latin"],
 });
+
+const inter = Inter({ subsets: ["latin"] });
 
 export const viewport: Viewport = {
 	themeColor: [
@@ -149,13 +152,17 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({
-  children,
+	children,
 }: Readonly<{
-  children: React.ReactNode;
+	children: React.ReactNode;
 }>) {
-  return (
+	return (
 		<html lang="fr">
-			<body className={`${lexend.variable} antialiased`}>{children}</body>
-    </html>
-  );
+			<body
+				className={`${lexend.variable} ${inter.className} antialiased`}
+			>
+				<ThemeProvider>{children}</ThemeProvider>
+			</body>
+		</html>
+	);
 }
