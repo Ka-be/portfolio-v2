@@ -8,6 +8,7 @@ import Marquee from "react-fast-marquee";
 import Link from "next/link";
 import Badge from "@/components/atoms/Badge";
 import ProjectLink from "@/components/atoms/ProjectLink";
+import Project from "@/components/templates/Project";
 
 interface Project {
 	id: number;
@@ -97,36 +98,7 @@ export default function ProjectsPage() {
 						opacity: selectedProject ? 1 : 0,
 					}}
 				>
-					{selectedProject && (
-						<section className="flex flex-col justify-between w-full h-full">
-							<div className="flex justify-center items-center w-1/2">
-								<img
-									src={selectedProject.image}
-									alt={selectedProject.title}
-									className="w-full h-auto"
-								/>
-							</div>
-							<div className="flex flex-col w-3/4 h-full justify-end pb-4">
-								<h3 className="text-3xl font-light mb-4">
-									{selectedProject.title}
-								</h3>
-								<p className="text-lg font-light mb-6 text-left">
-									{selectedProject.description}
-								</p>
-								<div className="flex flex-wrap gap-2">
-									{selectedProject.technos?.map(
-										(techno, index) => (
-											<Badge key={index}>{techno}</Badge>
-										)
-									)}
-								</div>
-								<ProjectLink
-									link={selectedProject.link}
-									github={selectedProject.github}
-								/>
-							</div>
-						</section>
-					)}
+					{selectedProject && <Project {...selectedProject} />}
 				</div>
 			</div>
 
@@ -134,34 +106,7 @@ export default function ProjectsPage() {
 			{isModalOpen && selectedProject && (
 				<div className="fixed inset-0 bg-background z-50 flex items-center justify-center p-4 md:hidden">
 					<div className="relative w-full max-h-[90dvh] overflow-y-auto">
-						<section className="flex flex-col gap-8 py-8">
-							<div className="flex justify-center items-center w-full">
-								<img
-									src={selectedProject.image}
-									alt={selectedProject.title}
-									className="w-full h-auto"
-								/>
-							</div>
-							<div className="flex flex-col gap-4">
-								<h3 className="text-3xl font-light">
-									{selectedProject.title}
-								</h3>
-								<p className="text-lg font-light text-left">
-									{selectedProject.description}
-								</p>
-								<div className="flex flex-wrap gap-2">
-									{selectedProject.technos?.map(
-										(techno, index) => (
-											<Badge key={index}>{techno}</Badge>
-										)
-									)}
-								</div>
-								<ProjectLink
-									link={selectedProject.link}
-									github={selectedProject.github}
-								/>
-							</div>
-						</section>
+						<Project {...selectedProject} isMobile />
 					</div>
 					<div className="absolute bottom-0 w-full h-16 flex justify-center items-center">
 						<button

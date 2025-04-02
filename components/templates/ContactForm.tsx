@@ -156,7 +156,7 @@ const ContactForm = () => {
 					!isSubmitted && !isPending && setIsHovered(true)
 				}
 				onMouseLeave={() => setIsHovered(false)}
-				className="relative inline-flex items-center justify-center p-2 overflow-hidden font-medium text-foreground transition duration-300 ease-out border border-foreground/20 group disabled:opacity-50 disabled:cursor-not-allowed w-full h-full"
+				className="relative inline-flex items-center justify-center p-2 overflow-hidden font-medium text-background bg-foreground transition duration-300 ease-out border border-foreground group disabled:opacity-50 disabled:cursor-not-allowed w-full h-full"
 			>
 				{isSubmitted ? (
 					<Check className="w-6 h-6" strokeWidth={1} />
@@ -167,7 +167,7 @@ const ContactForm = () => {
 						<span className="absolute inset-0 flex items-center justify-center w-full h-full bg-foreground text-background duration-1000 -translate-x-full group-hover:translate-x-0 ease">
 							<Send className="w-6 h-6" strokeWidth={1} />
 						</span>
-						<span className="absolute flex items-center justify-center p-2 w-full h-full text-foreground transition-all duration-1000 transform group-hover:translate-x-full ease uppercase font-light tracking-widest">
+						<span className="absolute flex items-center justify-center p-2 w-full h-full text-background bg-foreground transition-all duration-1000 transform group-hover:translate-x-full ease uppercase font-light tracking-widest">
 							Envoyer
 						</span>
 						<span className="relative invisible">Envoyer</span>
