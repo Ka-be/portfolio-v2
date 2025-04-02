@@ -2,11 +2,11 @@
 
 import Overlay from "@/components/organisms/Overlay";
 import { projects } from "@/data/projects";
-import { ArrowDownLeft, X } from "lucide-react";
+import { ArrowDownLeft} from "lucide-react";
 import { useState } from "react";
 import Marquee from "react-fast-marquee";
 import Link from "next/link";
-
+import Badge from "@/components/atoms/Badge";
 interface Project {
 	id: number;
 	title: string;
@@ -113,12 +113,7 @@ export default function ProjectsPage() {
 								<div className="flex flex-wrap gap-2">
 									{selectedProject.technos?.map(
 										(techno, index) => (
-											<span
-												key={index}
-												className="px-3 py-1 rounded-full border border-foreground text-sm opacity-80"
-											>
-												{techno}
-											</span>
+											<Badge key={index}>{techno}</Badge>
 										)
 									)}
 								</div>
@@ -137,12 +132,6 @@ export default function ProjectsPage() {
 			{/* Modal mobile */}
 			{isModalOpen && selectedProject && (
 				<div className="fixed inset-0 bg-background z-50 flex items-center justify-center p-4 md:hidden">
-					<button
-							onClick={() => setIsModalOpen(false)}
-							className="absolute top-0 right-4 text-foreground"
-						>
-							<X size={64} />
-					</button>
 					<div className="relative w-full max-h-[90dvh] overflow-y-auto">
 						<section className="flex flex-col gap-8 py-8">
 							<div className="flex justify-center items-center w-full">
@@ -164,7 +153,7 @@ export default function ProjectsPage() {
 										(techno, index) => (
 											<span
 												key={index}
-												className="px-3 py-1 rounded-full border border-foreground text-sm opacity-80"
+												className="px-3 py-1 border border-foreground text-sm opacity-80"
 											>
 												{techno}
 											</span>
@@ -179,6 +168,14 @@ export default function ProjectsPage() {
 								</a>
 							</div>
 						</section>
+					</div>
+					<div className="absolute bottom-0 w-full h-16 flex justify-center items-center">
+						<button
+							onClick={() => setIsModalOpen(false)}
+							className="text-background bg-foreground px-4 py-2"
+						>
+							Retour
+						</button>
 					</div>
 				</div>
 			)}

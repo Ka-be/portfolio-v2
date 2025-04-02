@@ -5,7 +5,7 @@ export const projects = [
       description: "Worduel est un jeu de type Wordle avec une interface simple et intuitive et une dimension multi-joueur.",
       image: "https://dummyimage.com/600x400/000/fff&text=1",
       link: "/",
-      technos: ["Next.js", "Tailwind", "Framer Motion"]
+      technos: ["Next.js", "Tailwind", "Framer Motion", "Socket.io", "Supabase", "Prisma", "PostgreSQL", "Docker"]
     },
     {
       id: 2,
