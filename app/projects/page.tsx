@@ -2,7 +2,7 @@
 
 import Overlay from "@/components/organisms/Overlay";
 import { projects } from "@/data/projects";
-import { ArrowDownLeft } from "lucide-react";
+import { ArrowDownLeft, X } from "lucide-react";
 import { useState } from "react";
 import Marquee from "react-fast-marquee";
 import Link from "next/link";
@@ -18,8 +18,14 @@ interface Project {
 
 export default function ProjectsPage() {
 	const [selectedProject, setSelectedProject] = useState<Project | null>(
-		projects[0]
-	); // On initialise avec le premier projet
+		null
+	);
+	const [isModalOpen, setIsModalOpen] = useState(false);
+
+	const handleProjectClick = (project: Project) => {
+		setSelectedProject(project);
+		setIsModalOpen(true);
+	};
 
 	return (
 		<div className="h-[100dvh] w-[100dvw] overflow-hidden relative">
@@ -48,11 +54,11 @@ export default function ProjectsPage() {
 					</h2>
 				</div>
 
+				{/* Liste des projets - Centrée sur mobile */}
 				<div
-					className="absolute bottom-0 right-0 w-4/5 md:w-1/3 h-[calc(100dvh-calc(var(--frame-size)*2))] flex flex-col justify-end overflow-hidden"
+					className="absolute bottom-0 w-[calc(90%-calc(var(--frame-size)*2))] md:w-1/3 h-[calc(85dvh-calc(var(--frame-size)*2))] md:h-[calc(100dvh-calc(var(--frame-size)*2))] flex flex-col justify-end overflow-hidden md:right-[var(--frame-size)]"
 					style={{
 						bottom: "var(--frame-size)",
-						right: "var(--frame-size)",
 					}}
 				>
 					<ul className="overflow-y-auto max-h-full scrollbar-thin scrollbar-track-transparent scrollbar-thumb-foreground/20 hover:scrollbar-thumb-foreground/40 pr-4">
@@ -65,6 +71,7 @@ export default function ProjectsPage() {
 										: "opacity-60 hover:opacity-80"
 								}`}
 								onMouseEnter={() => setSelectedProject(project)}
+								onClick={() => handleProjectClick(project)}
 							>
 								<div className="mr-2">
 									<ArrowDownLeft
@@ -77,8 +84,10 @@ export default function ProjectsPage() {
 						))}
 					</ul>
 				</div>
+
+				{/* Aperçu desktop */}
 				<div
-					className="absolute bottom-0 left-0 w-4/5 md:w-7/12 h-[calc(80dvh-calc(var(--frame-size)*2))] flex flex-col justify-start px-8 transition-all duration-300 "
+					className="absolute bottom-0 left-0 w-4/5 md:w-7/12 h-[calc(80dvh-calc(var(--frame-size)*2))] hidden md:flex flex-col justify-start px-8 transition-all duration-300"
 					style={{
 						bottom: "var(--frame-size)",
 						left: "var(--frame-size)",
@@ -87,7 +96,7 @@ export default function ProjectsPage() {
 				>
 					{selectedProject && (
 						<section className="flex flex-col justify-between w-full h-full">
-							<div className="flex justify-center items-center  w-1/2">
+							<div className="flex justify-center items-center w-1/2">
 								<img
 									src={selectedProject.image}
 									alt={selectedProject.title}
@@ -124,6 +133,55 @@ export default function ProjectsPage() {
 					)}
 				</div>
 			</div>
+
+			{/* Modal mobile */}
+			{isModalOpen && selectedProject && (
+				<div className="fixed inset-0 bg-background bg-opacity-10 z-50 flex items-center justify-center p-4 md:hidden backdrop-blur-sm">
+					<div className="relative w-full max-h-[90vh] overflow-y-auto">
+						<button
+							onClick={() => setIsModalOpen(false)}
+							className="absolute top-4 right-4 text-foreground"
+						>
+							<X size={24} />
+						</button>
+						<section className="flex flex-col gap-8 py-8">
+							<div className="flex justify-center items-center w-full">
+								<img
+									src={selectedProject.image}
+									alt={selectedProject.title}
+									className="w-full h-auto"
+								/>
+							</div>
+							<div className="flex flex-col gap-4">
+								<h3 className="text-3xl font-light">
+									{selectedProject.title}
+								</h3>
+								<p className="text-lg font-light text-left">
+									{selectedProject.description}
+								</p>
+								<div className="flex flex-wrap gap-2">
+									{selectedProject.technos?.map(
+										(techno, index) => (
+											<span
+												key={index}
+												className="px-3 py-1 rounded-full border border-foreground text-sm opacity-80"
+											>
+												{techno}
+											</span>
+										)
+									)}
+								</div>
+								<a
+									href={selectedProject.link}
+									className="text-sm text-foreground/80 hover:text-foreground"
+								>
+									Voir le projet
+								</a>
+							</div>
+						</section>
+					</div>
+				</div>
+			)}
 		</div>
 	);
 }
