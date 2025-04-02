@@ -4,7 +4,7 @@ export const projects = [
       title: "Worduel",
       description: "Worduel est un jeu de type Wordle avec une interface simple et intuitive et une dimension multi-joueur.",
       image: "https://dummyimage.com/600x400/000/fff&text=1",
-      link: "/",
+      link: "https://worduel.fr",
       technos: ["Next.js", "Tailwind", "Framer Motion", "Socket.io", "Supabase", "Prisma", "PostgreSQL", "Docker"]
     },
     {
@@ -12,7 +12,7 @@ export const projects = [
       title: "Un autre projet",
       description: "Encore un projet cool.",
       image: "https://dummyimage.com/600x400/000/fff&text=2",
-      link: "/",
+      github:"/",
       technos: ["React", "TypeScript"]
     },
     {
@@ -29,6 +29,7 @@ export const projects = [
       description: "Encore un projet cool.",
       image: "https://dummyimage.com/600x400/000/fff&text=2",
       link: "/",
+      github:"/",
       technos: ["React", "TypeScript"]
     },
     {
@@ -37,6 +38,7 @@ export const projects = [
       description: "Encore un projet cool.",
       image: "https://dummyimage.com/600x400/000/fff&text=2",
       link: "/",
+      github:"/",
       technos: ["React", "TypeScript"]
     },
     {
@@ -45,6 +47,7 @@ export const projects = [
       description: "Encore un projet cool.",
       image: "https://dummyimage.com/600x400/000/fff&text=2",
       link: "/",
+      github:"/",
       technos: ["React", "TypeScript"]
     },
     {
@@ -53,6 +56,7 @@ export const projects = [
       description: "Encore un projet cool.",
       image: "https://dummyimage.com/600x400/000/fff&text=2",
       link: "/",
+      github:"/",
       technos: ["React", "TypeScript"]
     },
     {
@@ -61,6 +65,7 @@ export const projects = [
       description: "Encore un projet cool.",
       image: "https://dummyimage.com/600x400/000/fff&text=2",
       link: "/",
+      github:"/",
       technos: ["React", "TypeScript"]
     },
     {
@@ -69,6 +74,7 @@ export const projects = [
       description: "Encore un projet cool.",
       image: "https://dummyimage.com/600x400/000/fff&text=2",
       link: "/",
+      github:"/",
       technos: ["React", "TypeScript"]
     },
     {
@@ -77,6 +83,7 @@ export const projects = [
       description: "Encore un projet cool.",
       image: "https://dummyimage.com/600x400/000/fff&text=2",
       link: "/",
+      github:"/",
       technos: ["React", "TypeScript"]
     },
     {
@@ -84,12 +91,17 @@ export const projects = [
       title: "Un autre projet",
       description: "Encore un projet cool.",
       image: "https://dummyimage.com/600x400/000/fff&text=2",
+      link: "/",
+      github:"/",
+      technos: ["React", "TypeScript"]
     },
     {
       id: 12,
       title: "Dernier projet",
       description: "Encore un projet cool.",
       image: "https://dummyimage.com/600x400/000/fff&text=2",
+      link: "/",
+      github:"/",
+      technos: ["React", "TypeScript"]
     },
-
   ];

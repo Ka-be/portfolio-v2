@@ -2,17 +2,20 @@
 
 import Overlay from "@/components/organisms/Overlay";
 import { projects } from "@/data/projects";
-import { ArrowDownLeft} from "lucide-react";
+import { ArrowDownLeft } from "lucide-react";
 import { useState } from "react";
 import Marquee from "react-fast-marquee";
 import Link from "next/link";
 import Badge from "@/components/atoms/Badge";
+import ProjectLink from "@/components/atoms/ProjectLink";
+
 interface Project {
 	id: number;
 	title: string;
 	description: string;
 	image: string;
 	link?: string;
+	github?: string;
 	technos?: string[];
 }
 
@@ -117,12 +120,10 @@ export default function ProjectsPage() {
 										)
 									)}
 								</div>
-								<a
-									href={selectedProject.link}
-									className="text-sm text-foreground/80 hover:text-foreground"
-								>
-									Voir le projet
-								</a>
+								<ProjectLink
+									link={selectedProject.link}
+									github={selectedProject.github}
+								/>
 							</div>
 						</section>
 					)}
@@ -155,12 +156,10 @@ export default function ProjectsPage() {
 										)
 									)}
 								</div>
-								<a
-									href={selectedProject.link}
-									className="text-sm text-foreground/80 hover:text-foreground"
-								>
-									Voir le projet
-								</a>
+								<ProjectLink
+									link={selectedProject.link}
+									github={selectedProject.github}
+								/>
 							</div>
 						</section>
 					</div>
