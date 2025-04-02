@@ -6,15 +6,13 @@ import { ArrowDownLeft } from "lucide-react";
 import { useState } from "react";
 import Marquee from "react-fast-marquee";
 import Link from "next/link";
-import Badge from "@/components/atoms/Badge";
-import ProjectLink from "@/components/atoms/ProjectLink";
 import Project from "@/components/templates/Project";
 
 interface Project {
 	id: number;
 	title: string;
 	description: string;
-	image: string;
+	images: string[];
 	link?: string;
 	github?: string;
 	technos?: string[];

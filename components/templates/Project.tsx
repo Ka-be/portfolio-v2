@@ -1,11 +1,11 @@
 import React from "react";
 import Badge from "@/components/atoms/Badge";
 import ProjectLink from "@/components/atoms/ProjectLink";
-
+import Carousel from "@/components/atoms/Carousel";
 interface ProjectProps {
 	title: string;
 	description: string;
-	image: string;
+	images: string[];
 	technos?: string[];
 	link?: string;
 	github?: string;
@@ -15,7 +15,7 @@ interface ProjectProps {
 const Project = ({
 	title,
 	description,
-	image,
+	images,
 	technos,
 	link,
 	github,
@@ -36,11 +36,7 @@ const Project = ({
 	return (
 		<section className={containerClasses}>
 			<div className={imageContainerClasses}>
-				<img
-					src={image}
-					alt={title}
-					className="w-full h-auto rounded-sm shadow-sm"
-				/>
+				<Carousel images={images} alt={title} />
 			</div>
 			<div className={contentContainerClasses}>
 				<div className="space-y-2">
