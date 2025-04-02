@@ -151,12 +151,7 @@ export default function ProjectsPage() {
 								<div className="flex flex-wrap gap-2">
 									{selectedProject.technos?.map(
 										(techno, index) => (
-											<span
-												key={index}
-												className="px-3 py-1 border border-foreground text-sm opacity-80"
-											>
-												{techno}
-											</span>
+											<Badge key={index}>{techno}</Badge>
 										)
 									)}
 								</div>
