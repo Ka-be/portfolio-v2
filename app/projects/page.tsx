@@ -136,14 +136,14 @@ export default function ProjectsPage() {
 
 			{/* Modal mobile */}
 			{isModalOpen && selectedProject && (
-				<div className="fixed inset-0 bg-background bg-opacity-10 z-50 flex items-center justify-center p-4 md:hidden backdrop-blur-sm">
-					<div className="relative w-full max-h-[90vh] overflow-y-auto">
-						<button
+				<div className="fixed inset-0 bg-background z-50 flex items-center justify-center p-4 md:hidden">
+					<button
 							onClick={() => setIsModalOpen(false)}
-							className="absolute top-4 right-4 text-foreground"
+							className="absolute top-0 right-4 text-foreground"
 						>
-							<X size={24} />
-						</button>
+							<X size={64} />
+					</button>
+					<div className="relative w-full max-h-[90dvh] overflow-y-auto">
 						<section className="flex flex-col gap-8 py-8">
 							<div className="flex justify-center items-center w-full">
 								<img
