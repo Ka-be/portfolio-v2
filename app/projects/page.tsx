@@ -72,13 +72,15 @@ export default function ProjectsPage() {
 										? "opacity-100"
 										: "opacity-60 hover:opacity-80"
 								}`}
-								onMouseEnter={() => setSelectedProject(project)}
 								onClick={() => handleProjectClick(project)}
 							>
 								<div className="mr-2">
 									<ArrowDownLeft
 										size={64}
 										strokeWidth={0.8}
+										className={`transition-transform duration-300 ${
+											selectedProject?.id === project.id ? "rotate-45" : ""
+										}`}
 									/>
 								</div>
 								{project.title}
