@@ -5,7 +5,7 @@ export const projects = [
 		description:
 			"Worduel est un jeu de type Wordle avec une interface simple et intuitive et une dimension multi-joueur.",
 		images: [
-			"https://dummyimage.com/600x400/000/fff&text=1",
+			"https://dummyimage.com/600x400/ff0000/fff&text=1",
 			"https://dummyimage.com/600x400/000/fff&text=2",
 			"https://dummyimage.com/600x400/000/fff&text=3",
 		],
@@ -24,14 +24,15 @@ export const projects = [
 	},
 	{
 		id: 2,
-		title: "Un autre projet",
+		title: "Opération prospection",
 		description: "Encore un projet cool.",
 		images: [
 			"https://dummyimage.com/600x400/000/fff&text=1",
 			"https://dummyimage.com/600x400/000/fff&text=2",
 		],
 		github: "/",
-		technos: ["React", "TypeScript"],
+		link: "https://www.operation-prospection.holostudio.fr",
+		technos: ["Showit", "JavaScript"],
 	},
 	{
 		id: 3,

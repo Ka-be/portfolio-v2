@@ -19,7 +19,7 @@ export default function Home() {
 			</Link>
 			<Overlay />
 			<div className="w-[calc(100%-calc(var(--frame-size)*1.8))] h-[calc(100dvh-calc(var(--frame-size)*2))] font-lexend flex items-center justify-center m-[var(--frame-size)]">
-				{/* <WaveSurface /> */}
+				<WaveSurface />
 				<div
 					className="absolute top-0 left-0 w-auto h-auto"
 					style={{
