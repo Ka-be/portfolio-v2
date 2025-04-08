@@ -1,8 +1,7 @@
-import TestContent from "@/components/TestContent";
 import Overlay from "@/components/organisms/Overlay";
 import Marquee from "react-fast-marquee";
 import Link from "next/link";
-
+import { TimelineDemo } from "@/components/templates/TimelineAbout";
 export default function AboutPage() {
 	return (
 		<div className="h-[100dvh] w-[100dvw] overflow-hidden relative">
@@ -33,6 +32,10 @@ export default function AboutPage() {
 						Et je développe des trucs.
 					</h3>
 				</div>
+
+				<section className="absolute bottom-0 left-20 w-4/5 md:w-1/3 overflow-y-auto h-[calc(100dvh-calc(var(--frame-size)*2))]">
+					<TimelineDemo />
+				</section>
 
 				<div
 					className="absolute bottom-0 right-0 w-4/5 md:w-1/3 "
