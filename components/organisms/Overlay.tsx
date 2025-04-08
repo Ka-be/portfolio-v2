@@ -54,7 +54,7 @@ const Overlay = () => {
 							width="100%"
 							height="100%"
 							fill="none"
-							stroke="var(--foreground)"
+							stroke="hsl(var(--foreground))"
 							strokeWidth="0.5"
 							vectorEffect="non-scaling-stroke"
 						/>

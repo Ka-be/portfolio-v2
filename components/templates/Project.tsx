@@ -1,7 +1,7 @@
 import React from "react";
 import Badge from "@/components/atoms/Badge";
 import ProjectLink from "@/components/atoms/ProjectLink";
-import Carousel from "@/components/atoms/Carousel";
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 interface ProjectProps {
 	title: string;
 	description: string;
@@ -26,8 +26,8 @@ const Project = ({
 		: "flex flex-col justify-between w-full h-full";
 
 	const imageContainerClasses = isMobile
-		? "flex justify-center items-center w-full"
-		: "flex justify-center items-center w-1/2";
+		? "flex justify-center items-center w-full px-12"
+		: "flex justify-center items-center w-1/2 ml-12";
 
 	const contentContainerClasses = isMobile
 		? "flex flex-col gap-4"
@@ -36,7 +36,17 @@ const Project = ({
 	return (
 		<section className={containerClasses}>
 			<div className={imageContainerClasses}>
-				<Carousel images={images} alt={title} />
+				<Carousel>
+  					<CarouselContent >
+    					{images.map((image, index) => (
+							<CarouselItem key={index}>
+								<img src={image} alt={`${title} - Image ${index + 1}`} className="w-full h-auto object-cover" />
+							</CarouselItem>
+						))}
+  					</CarouselContent>
+  					<CarouselPrevious />
+  					<CarouselNext />
+				</Carousel>
 			</div>
 			<div className={contentContainerClasses}>
 				<div className="space-y-2">

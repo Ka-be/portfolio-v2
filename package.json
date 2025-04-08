@@ -9,12 +9,17 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@radix-ui/react-slot": "^1.1.2",
     "@react-three/fiber": "^9.0.4",
     "@tsparticles/engine": "^3.8.1",
     "@tsparticles/plugin-emitters": "^3.8.1",
     "@tsparticles/plugin-motion": "^3.8.1",
     "@tsparticles/react": "^3.0.0",
     "@types/three": "^0.174.0",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "embla-carousel-react": "^8.6.0",
+    "framer-motion": "^12.6.3",
     "lucide-react": "^0.476.0",
     "motion": "^12.4.7",
     "next": "15.1.7",
@@ -22,6 +27,8 @@
     "react-dom": "^19.0.0",
     "react-fast-marquee": "^1.6.5",
     "react-icons": "^5.5.0",
+    "tailwind-merge": "^3.2.0",
+    "tailwindcss-animate": "^1.0.7",
     "three": "^0.174.0",
     "tsparticles": "^3.8.1"
   },
