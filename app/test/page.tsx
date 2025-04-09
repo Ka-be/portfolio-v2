@@ -27,7 +27,7 @@ export default function Test() {
 			<div className="w-[calc(100%-calc(var(--frame-size)*1.8))] h-[calc(100dvh-calc(var(--frame-size)*2))] font-lexend flex items-center justify-center m-[var(--frame-size)]">
 				
 				<div
-					className="absolute top-0 left-0 w-1/2 h-[calc(100dvh-calc(var(--frame-size)*2))]"
+					className="absolute top-0 left-0 w-full md:w-1/2 h-[calc(100dvh-calc(var(--frame-size)*2))]"
 					style={{
 						top: "var(--frame-size)",
 						left: "var(--frame-size)",
