@@ -1,8 +1,8 @@
 import Image from "next/image";
-import React from "react";
+import React, { forwardRef } from "react";
 import { Timeline } from "@/components/ui/timeline";
 
-export function AboutTimeline() {
+export const AboutTimeline = forwardRef<HTMLDivElement>((_, ref) => {
   const data = [
     {
       title: "2024",
@@ -112,11 +112,12 @@ export function AboutTimeline() {
       ),
     },
   ];
+  
   return (
-    <div className="h-full w-full">
+    <div className="h-full w-full" ref={ref}>
       <div className="absolute top-0 left-0 w-full h-full">
         <Timeline data={data} />
       </div>
     </div>
   );
-}
+});

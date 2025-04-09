@@ -31,7 +31,7 @@ export const projects = [
 			"https://dummyimage.com/600x400/000/fff&text=2",
 		],
 		github: "/",
-		link: "https://www.operation-prospection.holostudio.fr",
+		link: "https://operation-prospection.holostudio.fr/",
 		technos: ["Showit", "JavaScript"],
 	},
 	{

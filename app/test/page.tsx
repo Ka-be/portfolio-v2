@@ -1,10 +1,15 @@
+"use client";
+
 import Overlay from "@/components/organisms/Overlay";
 import WaveSurface from "@/components/organisms/WaveSurface";
 import Marquee from "react-fast-marquee";
 import Link from "next/link";
 import { AboutTimeline } from "@/components/templates/AboutTimeline";
+import { useRef } from "react";
 
 export default function Test() {
+	const timelineRef = useRef<HTMLDivElement>(null);
+
 	return (
 		<div className="h-[100dvh] w-[100dvw] overflow-hidden relative bg-background text-foreground">
 			<Link href="/contact">
@@ -22,13 +27,13 @@ export default function Test() {
 			<div className="w-[calc(100%-calc(var(--frame-size)*1.8))] h-[calc(100dvh-calc(var(--frame-size)*2))] font-lexend flex items-center justify-center m-[var(--frame-size)]">
 				
 				<div
-					className="absolute top-0 left-0 w-1/2 h-[calc(100dvh-calc(var(--frame-size)*2))] bg-red-500 overflow-y-auto"
+					className="absolute top-0 left-0 w-1/2 h-[calc(100dvh-calc(var(--frame-size)*2))]"
 					style={{
 						top: "var(--frame-size)",
 						left: "var(--frame-size)",
 					}}
 				>
-					<AboutTimeline />
+					<AboutTimeline ref={timelineRef} />
 				</div>
 
 				<div
