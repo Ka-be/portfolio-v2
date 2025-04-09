@@ -1,10 +1,12 @@
 import Overlay from "@/components/organisms/Overlay";
+import WaveSurface from "@/components/organisms/WaveSurface";
 import Marquee from "react-fast-marquee";
 import Link from "next/link";
 import { AboutTimeline } from "@/components/templates/AboutTimeline";
-export default function AboutPage() {
+
+export default function Test() {
 	return (
-		<div className="h-[100dvh] w-[100dvw] overflow-hidden relative">
+		<div className="h-[100dvh] w-[100dvw] overflow-hidden relative bg-background text-foreground">
 			<Link href="/contact">
 				<Marquee
 					speed={40}
@@ -18,33 +20,25 @@ export default function AboutPage() {
 			</Link>
 			<Overlay />
 			<div className="w-[calc(100%-calc(var(--frame-size)*1.8))] h-[calc(100dvh-calc(var(--frame-size)*2))] font-lexend flex items-center justify-center m-[var(--frame-size)]">
+				
 				<div
-					className="absolute top-0 left-0 w-auto h-auto"
+					className="absolute top-0 left-0 w-1/2 h-[calc(100dvh-calc(var(--frame-size)*2))] bg-red-500 overflow-y-auto"
 					style={{
 						top: "var(--frame-size)",
 						left: "var(--frame-size)",
 					}}
 				>
-					<h2 className="text-5xl font-light text-foreground uppercase tracking-widest ml-10 mt-10">
-						à propos
-					</h2>
-					<h3 className="text-2xl font-light text-foreground tracking-widest ml-10">
-						Et je développe des trucs.
-					</h3>
+					<AboutTimeline />
 				</div>
 
-				<section className="absolute bottom-0 left-20 w-4/5 md:w-1/3 overflow-y-auto h-screen">
-					<AboutTimeline />
-				</section>
-
 				<div
-					className="absolute bottom-0 right-0 w-4/5 md:w-1/3 "
+					className="absolute bottom-0 right-0 w-4/5 md:w-1/3"
 					style={{
 						bottom: "var(--frame-size)",
 						right: "var(--frame-size)",
 					}}
 				>
-					<p className="text-md font-light text-foreground pr-10 pb-10 text-justify opacity-80">
+					<p className="text-md font-light text-foreground pr-1 pb-1 md:pr-10 md:pb-10 text-justify opacity-80">
 						Développeur concepteur d'applications web et mobile
 						fraîchement titulaire du titre professionnel RNCP.
 						Passionné par la création d'expériences numériques

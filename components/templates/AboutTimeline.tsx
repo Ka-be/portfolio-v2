@@ -2,7 +2,7 @@ import Image from "next/image";
 import React from "react";
 import { Timeline } from "@/components/ui/timeline";
 
-export function TimelineDemo() {
+export function AboutTimeline() {
   const data = [
     {
       title: "2024",
@@ -113,8 +113,8 @@ export function TimelineDemo() {
     },
   ];
   return (
-    <div className="min-h-screen w-full">
-      <div className="absolute top-0 left-0 w-full">
+    <div className="h-full w-full">
+      <div className="absolute top-0 left-0 w-full h-full">
         <Timeline data={data} />
       </div>
     </div>
