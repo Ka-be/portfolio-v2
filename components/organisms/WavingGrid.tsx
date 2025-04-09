@@ -216,7 +216,9 @@ const WavingGrid = ({ isMobile }: WavingGridProps) => {
   
   useEffect(() => {
     const getForegroundColor = () => {
-      const color = getComputedStyle(document.documentElement).getPropertyValue('--foreground').trim();
+      const root = document.documentElement;
+      const isDark = root.classList.contains('dark');
+      const color = isDark ? 'rgb(250, 250, 250)' : 'rgb(10, 10, 10)';
       setForegroundColor(color);
     };
 
@@ -225,7 +227,7 @@ const WavingGrid = ({ isMobile }: WavingGridProps) => {
     const observer = new MutationObserver(getForegroundColor);
     observer.observe(document.documentElement, {
       attributes: true,
-      attributeFilter: ['class', 'data-theme']
+      attributeFilter: ['class']
     });
 
     return () => observer.disconnect();
