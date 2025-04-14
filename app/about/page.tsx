@@ -34,7 +34,7 @@ export default function AboutPage() {
 				</div>
 
 				<section className="absolute bottom-0 left-20 w-4/5 md:w-1/3 overflow-y-auto h-screen">
-					<AboutTimeline />
+					
 				</section>
 
 				<div

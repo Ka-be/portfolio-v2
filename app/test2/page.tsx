@@ -1,6 +1,8 @@
 "use client";
 
 import * as React from 'react';
+import { useEffect, useState } from 'react';
+import { useTheme } from '@/lib/contexts/ThemeContext';
 import Timeline from '@mui/lab/Timeline';
 import TimelineItem from '@mui/lab/TimelineItem';
 import TimelineSeparator from '@mui/lab/TimelineSeparator';
@@ -15,6 +17,19 @@ import Link from "next/link";
 
 
 export default function Test() {
+    const { theme } = useTheme(); // Récupérer le thème actuel
+    const [foregroundColor, setForegroundColor] = useState('#f5f5f5'); // Valeur par défaut
+
+    useEffect(() => {
+        // Récupérer la couleur foreground depuis les variables CSS
+        const computedStyle = getComputedStyle(document.documentElement);
+        const foregroundHsl = computedStyle.getPropertyValue('--foreground').trim();
+        
+        // Convertir en couleur utilisable
+        if (foregroundHsl) {
+            setForegroundColor(`hsl(${foregroundHsl})`);
+        }
+    }, [theme]); // Se déclencher à chaque changement de thème
 
 	return (
 		<div className="h-[100dvh] w-[100dvw] overflow-hidden relative bg-background text-foreground">
@@ -45,13 +60,13 @@ export default function Test() {
                         <TimelineItem>
                             <TimelineOppositeContent className="hidden" />
                             <TimelineSeparator>
-                                <TimelineConnector />
-                                <TimelineDot  color="primary" sx={{ borderRadius: 0, width: '0.5rem', height: '0.5rem' }} />
-                                <TimelineConnector  />
+                                <TimelineConnector sx={{ bgcolor: foregroundColor }} />
+                                <TimelineDot sx={{ bgcolor: foregroundColor, borderRadius: 0, width: '0.5rem', height: '0.5rem' }} />
+                                <TimelineConnector sx={{ bgcolor: foregroundColor }} />
                             </TimelineSeparator>
                             <TimelineContent sx={{ py: '1rem', px: 2 }} className="md:px-3">
-                                <Typography variant="h5" component="span" className="text-background bg-foreground px-2 py-1 tracking-wider font-lexend">
-                                    Hello World
+                                <Typography variant="h5" component="span" className="text-background bg-foreground px-2 py-1 tracking-wider font-lexend shadow-none">
+                                    2025
                                 </Typography>
                             </TimelineContent>
                         </TimelineItem>
@@ -59,9 +74,9 @@ export default function Test() {
                         <TimelineItem>
                             <TimelineOppositeContent className="hidden" />
                             <TimelineSeparator>
-                                <TimelineConnector  />
-                                <TimelineDot variant="outlined" sx={{ borderRadius: 0, borderColor: 'text.foreground/50', width: '0.5rem', height: '0.5rem' }} />
-                                <TimelineConnector  />
+                                <TimelineConnector sx={{ bgcolor: foregroundColor }} />
+                                <TimelineDot variant="outlined" sx={{ borderRadius: 0, borderColor: foregroundColor, width: '0.5rem', height: '0.5rem' }} />
+                                <TimelineConnector sx={{ bgcolor: foregroundColor }} />
                             </TimelineSeparator>
                             <TimelineContent sx={{ py: '1rem', px: 2 }} className="md:px-3">
                                 <Typography variant="h6" component="span" className="text-foreground font-medium text-sm">
