@@ -42,138 +42,33 @@ export default function Test() {
       
 
                     <Timeline position="right" className="text-foreground w-full">
-                        {/* 2025 */}
-                        <TimelineItem>
-                            <TimelineOppositeContent color="text.foreground" className="hidden" />
-                            <TimelineSeparator>
-                                <TimelineConnector className="bg-foreground/30" />
-                                <TimelineDot sx={{ borderRadius: 0, bgcolor: 'transparent', border: '1px solid', borderColor: 'text.foreground' }}>
-                                    <Typography className="px-2 font-bold tracking-wider">2025</Typography>
-                                </TimelineDot>
-                                <TimelineConnector className="bg-foreground/30" />
-                            </TimelineSeparator>
-                            <TimelineContent sx={{ py: '1.25rem', px: 2 }} className="md:px-3">
-                            </TimelineContent>
-                        </TimelineItem>
-                        
                         <TimelineItem>
                             <TimelineOppositeContent className="hidden" />
-                            <TimelineSeparator className="ml-[1.6rem]">
-                                <TimelineConnector className="bg-foreground/30" />
-                                <TimelineDot variant="outlined" sx={{ borderRadius: 0, borderColor: 'text.foreground/50', width: '0.5rem', height: '0.5rem' }} />
-                                <TimelineConnector className="bg-foreground/30" />
+                            <TimelineSeparator>
+                                <TimelineConnector />
+                                <TimelineDot  color="primary" sx={{ borderRadius: 0, width: '0.5rem', height: '0.5rem' }} />
+                                <TimelineConnector  />
                             </TimelineSeparator>
-                            <TimelineContent sx={{ py: '1.25rem', px: 2 }} className="md:px-3">
+                            <TimelineContent sx={{ py: '1rem', px: 2 }} className="md:px-3">
+                                <Typography variant="h5" component="span" className="text-background bg-foreground px-2 py-1 tracking-wider font-lexend">
+                                    Hello World
+                                </Typography>
+                            </TimelineContent>
+                        </TimelineItem>
+
+                        <TimelineItem>
+                            <TimelineOppositeContent className="hidden" />
+                            <TimelineSeparator>
+                                <TimelineConnector  />
+                                <TimelineDot variant="outlined" sx={{ borderRadius: 0, borderColor: 'text.foreground/50', width: '0.5rem', height: '0.5rem' }} />
+                                <TimelineConnector  />
+                            </TimelineSeparator>
+                            <TimelineContent sx={{ py: '1rem', px: 2 }} className="md:px-3">
                                 <Typography variant="h6" component="span" className="text-foreground font-medium text-sm">
                                     Projet Futur 2
                                 </Typography>
-                                <Typography className="text-foreground/60 font-light text-xs mt-1">
+                                <Typography className="text-foreground/60 font-light text-xs">
                                     Innovation prévue 🚀
-                                </Typography>
-                            </TimelineContent>
-                        </TimelineItem>
-
-                        {/* 2024 */}
-                        <TimelineItem>
-                            <TimelineOppositeContent color="text.foreground" className="hidden" />
-                                
-                            <TimelineSeparator>
-                                <TimelineConnector className="bg-foreground/30" />
-                                <TimelineDot sx={{ borderRadius: 0, bgcolor: 'transparent', border: '1px solid', borderColor: 'text.foreground' }}>
-                                    <Typography className="px-2 font-bold tracking-wider">2024</Typography>
-                                </TimelineDot>
-                                <TimelineConnector className="bg-foreground/30" />
-                            </TimelineSeparator>
-                            <TimelineContent sx={{ py: '1.25rem', px: 2 }} className="md:px-3">
-                            </TimelineContent>
-                        </TimelineItem>
-                        
-                        <TimelineItem>
-                            <TimelineOppositeContent className="hidden" />
-                            <TimelineSeparator className="ml-[1.6rem]">
-                                <TimelineConnector className="bg-foreground/30" />
-                                <TimelineDot variant="outlined" sx={{ borderRadius: 0, borderColor: 'text.foreground/50', width: '0.5rem', height: '0.5rem' }} />
-                                <TimelineConnector className="bg-foreground/30" />
-                            </TimelineSeparator>
-                            <TimelineContent sx={{ py: '1.25rem', px: 2 }} className="md:px-3">
-                                <Typography variant="h6" component="span" className="text-foreground font-medium text-sm">
-                                    Portfolio v2
-                                </Typography>
-                                <Typography className="text-foreground/60 font-light text-xs mt-1">
-                                    Next.js 15 💻
-                                </Typography>
-                            </TimelineContent>
-                        </TimelineItem>
-
-                        <TimelineItem>
-                            <TimelineOppositeContent className="hidden" />
-                            <TimelineSeparator className="ml-[1.6rem]">
-                                <TimelineConnector className="bg-foreground/30" />
-                                <TimelineDot variant="outlined" sx={{ borderRadius: 0, borderColor: 'text.foreground/50', width: '0.5rem', height: '0.5rem' }} />
-                                <TimelineConnector className="bg-foreground/30" />
-                            </TimelineSeparator>
-                            <TimelineContent sx={{ py: '1.25rem', px: 2 }} className="md:px-3">
-                                <Typography variant="h6" component="span" className="text-foreground font-medium text-sm">
-                                    Portfolio v1
-                                </Typography>
-                                <Typography className="text-foreground/60 font-light text-xs mt-1">
-                                    Next.js 15 💻
-                                </Typography>
-                            </TimelineContent>
-                        </TimelineItem>
-                        
-
-                        {/* 2023 */}
-                        <TimelineItem>
-                            <TimelineOppositeContent color="text.foreground" className="hidden">
-                                
-                            </TimelineOppositeContent>
-                            <TimelineSeparator>
-                                <TimelineConnector className="bg-foreground/30" />
-                                <TimelineDot sx={{ borderRadius: 0, bgcolor: 'transparent', border: '1px solid', borderColor: 'text.foreground' }}>
-                                    <Typography className="px-2 font-bold tracking-wider">2023</Typography>
-                                </TimelineDot>
-                                <TimelineConnector className="bg-foreground/30" />
-                            </TimelineSeparator>
-                            <TimelineContent sx={{ py: '1.25rem', px: 2 }} className="md:px-3">
-                            </TimelineContent>
-                        </TimelineItem>
-                        
-                        <TimelineItem>
-                            <TimelineOppositeContent className="hidden" />
-                            <TimelineSeparator className="ml-[1.6rem]">
-                                <TimelineConnector className="bg-foreground/30" />
-                                <TimelineDot variant="outlined" sx={{ borderRadius: 0, borderColor: 'text.foreground/50', width: '0.5rem', height: '0.5rem' }} />
-                                <TimelineConnector className="bg-foreground/30" />
-                            </TimelineSeparator>
-                            <TimelineContent sx={{ py: '1.25rem', px: 2 }} className="md:px-3">
-                                <Typography variant="h6" component="span" className="text-foreground font-medium text-sm">
-                                    Premier site web
-                                </Typography>
-                                <Typography className="text-foreground/60 font-light text-xs mt-1">
-                                    HTML/CSS 🏆
-                                </Typography>
-                            </TimelineContent>
-                        </TimelineItem>
-
-                        <TimelineItem>
-                            <TimelineOppositeContent className="hidden" />
-                            <TimelineSeparator>
-                                <TimelineConnector className="bg-foreground/30" />
-                                <TimelineDot sx={{ borderRadius: 0, bgcolor: 'transparent', border: '1px solid', borderColor: 'text.foreground' }}>
-                                <Typography className="px-2 font-bold tracking-wider">2024 → 2025</Typography>
-                                </TimelineDot>
-                                <TimelineConnector className="bg-foreground/30" />
-                            </TimelineSeparator>
-                            <TimelineContent sx={{ py: '1.25rem', px: 2 }} className="md:px-3">
-                                <Typography variant="h6" component="span" className="text-foreground font-medium text-sm">
-                                Projet longue durée
-                                </Typography>
-                                <Typography className="text-foreground/60 font-light text-xs mt-1">
-                                Développement d'une application fullstack 💼
-                                </Typography>
-                                <Typography className="text-foreground/50 font-light text-[0.65rem] mt-1">
-                                Septembre 2024 - Février 2025
                                 </Typography>
                             </TimelineContent>
                         </TimelineItem>

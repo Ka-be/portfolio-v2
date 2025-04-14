@@ -91,13 +91,13 @@ export const Timeline = ({ data }: TimelineProps) => {
             <div className="sticky flex flex-col md:flex-row z-40 items-center top-40 self-start max-w-xs lg:max-w-sm md:w-full">
               <div className={`h-4 absolute left-6 w-4 flex items-center justify-center transition-colors duration-300 ${activeIndices[index] ? 'bg-foreground' : 'bg-neutral-800'}`}>
               </div>
-              <h3 className="hidden md:block text-xl md:pl-20 md:text-5xl font-bold text-neutral-500 dark:text-neutral-500">
+              <h3 className="hidden md:block text-xl md:pl-20 md:text-5xl font-bold text-neutral-500 dark:text-neutral-500 font-lexend">
                 {item.title}
               </h3>
             </div>
 
             <div className="relative pl-20 pr-4 md:pl-4 w-full">
-              <h3 className="md:hidden block text-2xl mb-4 text-left font-bold text-neutral-500 dark:text-neutral-500">
+              <h3 className="md:hidden block text-2xl mb-4 text-left font-bold text-neutral-500 dark:text-neutral-500 font-lexend">
                 {item.title}
               </h3>
               {item.content}
