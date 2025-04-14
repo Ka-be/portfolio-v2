@@ -1,4 +1,5 @@
 "use client";
+
 import * as React from 'react';
 import Timeline from '@mui/lab/Timeline';
 import TimelineItem from '@mui/lab/TimelineItem';
@@ -11,11 +12,9 @@ import Typography from '@mui/material/Typography';
 import Overlay from "@/components/organisms/Overlay";
 import Marquee from "react-fast-marquee";
 import Link from "next/link";
-import { useRef } from "react";
-import { Banana } from 'lucide-react';
+
 
 export default function Test() {
-	const timelineRef = useRef<HTMLDivElement>(null);
 
 	return (
 		<div className="h-[100dvh] w-[100dvw] overflow-hidden relative bg-background text-foreground">
@@ -42,11 +41,10 @@ export default function Test() {
 				>
       
 
-                    <Timeline position="right" className="text-foreground w-full items-start">
+                    <Timeline position="right" className="text-foreground w-full">
                         {/* 2025 */}
                         <TimelineItem>
-                            <TimelineOppositeContent color="text.foreground" className="font-bold tracking-wider" sx={{ flex: 0 }}>
-                            </TimelineOppositeContent>
+                            <TimelineOppositeContent color="text.foreground" className="hidden" />
                             <TimelineSeparator>
                                 <TimelineConnector className="bg-foreground/30" />
                                 <TimelineDot sx={{ borderRadius: 0, bgcolor: 'transparent', border: '1px solid', borderColor: 'text.foreground' }}>
@@ -59,8 +57,8 @@ export default function Test() {
                         </TimelineItem>
                         
                         <TimelineItem>
-                            <TimelineOppositeContent sx={{ flex: 0, margin:0, paddingLeft:5.1 }} />
-                            <TimelineSeparator>
+                            <TimelineOppositeContent className="hidden" />
+                            <TimelineSeparator className="ml-[1.6rem]">
                                 <TimelineConnector className="bg-foreground/30" />
                                 <TimelineDot variant="outlined" sx={{ borderRadius: 0, borderColor: 'text.foreground/50', width: '0.5rem', height: '0.5rem' }} />
                                 <TimelineConnector className="bg-foreground/30" />
@@ -77,9 +75,8 @@ export default function Test() {
 
                         {/* 2024 */}
                         <TimelineItem>
-                            <TimelineOppositeContent color="text.foreground" className="font-bold tracking-wider" sx={{ flex: 0 }}>
+                            <TimelineOppositeContent color="text.foreground" className="hidden" />
                                 
-                            </TimelineOppositeContent>
                             <TimelineSeparator>
                                 <TimelineConnector className="bg-foreground/30" />
                                 <TimelineDot sx={{ borderRadius: 0, bgcolor: 'transparent', border: '1px solid', borderColor: 'text.foreground' }}>
@@ -92,8 +89,8 @@ export default function Test() {
                         </TimelineItem>
                         
                         <TimelineItem>
-                            <TimelineOppositeContent sx={{ flex: 0, margin:0, paddingLeft:5.1 }} />
-                            <TimelineSeparator>
+                            <TimelineOppositeContent className="hidden" />
+                            <TimelineSeparator className="ml-[1.6rem]">
                                 <TimelineConnector className="bg-foreground/30" />
                                 <TimelineDot variant="outlined" sx={{ borderRadius: 0, borderColor: 'text.foreground/50', width: '0.5rem', height: '0.5rem' }} />
                                 <TimelineConnector className="bg-foreground/30" />
@@ -109,8 +106,8 @@ export default function Test() {
                         </TimelineItem>
 
                         <TimelineItem>
-                            <TimelineOppositeContent sx={{ flex: 0, margin:0, paddingLeft:5.1 }} />
-                            <TimelineSeparator>
+                            <TimelineOppositeContent className="hidden" />
+                            <TimelineSeparator className="ml-[1.6rem]">
                                 <TimelineConnector className="bg-foreground/30" />
                                 <TimelineDot variant="outlined" sx={{ borderRadius: 0, borderColor: 'text.foreground/50', width: '0.5rem', height: '0.5rem' }} />
                                 <TimelineConnector className="bg-foreground/30" />
@@ -128,7 +125,7 @@ export default function Test() {
 
                         {/* 2023 */}
                         <TimelineItem>
-                            <TimelineOppositeContent color="text.foreground" className="font-bold tracking-wider" sx={{ flex: 0 }}>
+                            <TimelineOppositeContent color="text.foreground" className="hidden">
                                 
                             </TimelineOppositeContent>
                             <TimelineSeparator>
@@ -143,8 +140,8 @@ export default function Test() {
                         </TimelineItem>
                         
                         <TimelineItem>
-                            <TimelineOppositeContent sx={{ flex: 0, margin:0, paddingLeft:5.1 }} />
-                            <TimelineSeparator>
+                            <TimelineOppositeContent className="hidden" />
+                            <TimelineSeparator className="ml-[1.6rem]">
                                 <TimelineConnector className="bg-foreground/30" />
                                 <TimelineDot variant="outlined" sx={{ borderRadius: 0, borderColor: 'text.foreground/50', width: '0.5rem', height: '0.5rem' }} />
                                 <TimelineConnector className="bg-foreground/30" />
@@ -160,7 +157,7 @@ export default function Test() {
                         </TimelineItem>
 
                         <TimelineItem>
-                            <TimelineOppositeContent sx={{ flex: 0, margin:0, paddingLeft:5.1 }} />
+                            <TimelineOppositeContent className="hidden" />
                             <TimelineSeparator>
                                 <TimelineConnector className="bg-foreground/30" />
                                 <TimelineDot sx={{ borderRadius: 0, bgcolor: 'transparent', border: '1px solid', borderColor: 'text.foreground' }}>
