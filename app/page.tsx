@@ -31,7 +31,7 @@ export default function Home() {
 						Kevin <br /> Bourgitteau
 					</h1>
 					<h2 className="text-2xl font-light text-foreground tracking-widest ml-1 md:ml-10">
-						Développeur Full-Stack junior
+						Concepteur / Développeur d'applications
 					</h2>
 				</div>
 

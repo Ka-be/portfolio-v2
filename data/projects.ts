@@ -36,11 +36,12 @@ export const projects = [
 	},
 	{
 		id: 3,
-		title: "Un autre projet",
-		description: "Encore un projet cool.",
+		title: "The Archivist",
+		description: "Extension browser pour Chrome et Firefox. Création du site et de l'extension. Création du logo.",
 		images: ["https://dummyimage.com/600x400/000/fff&text=1"],
-		link: "/",
-		technos: ["React", "TypeScript"],
+		link: "https://thearchivist.vercel.app/",
+		github: "https://github.com/ka-be/TheArchivist",
+		technos: ["Javascript", "HTML", "CSS"],
 	},
 	{
 		id: 4,
