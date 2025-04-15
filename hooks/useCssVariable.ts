@@ -1,12 +1,11 @@
 import { useTheme } from '@/lib/contexts/ThemeContext';
 import { useState, useLayoutEffect } from 'react';
 
-// Hook personnalisé pour récupérer la couleur CSS
+// Récupération couleur css
 function useCssVariable(variableName: string, defaultValue: string) {
     const { theme } = useTheme();
     const [value, setValue] = useState(defaultValue);
     
-    // UseLayoutEffect se déclenche avant le rendu visuel
     useLayoutEffect(() => {
         function updateValue() {
             if (typeof window !== 'undefined') {
@@ -17,11 +16,7 @@ function useCssVariable(variableName: string, defaultValue: string) {
                 }
             }
         }
-        
-        // Appelé immédiatement
         updateValue();
-        
-        // Observer les changements de thème
         const observer = new MutationObserver(updateValue);
         if (typeof document !== 'undefined') {
             observer.observe(document.documentElement, { 
