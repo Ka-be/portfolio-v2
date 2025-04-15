@@ -3,6 +3,7 @@
 import React from 'react';
 import { TimelineItem, TimelineOppositeContent, TimelineSeparator, TimelineConnector, TimelineDot, TimelineContent } from "@mui/lab";
 import Typography from "@mui/material/Typography";
+import { GraduationCap, Briefcase, Code, Sparkles } from 'lucide-react';
 
 interface TimelineEventItemProps {
   id: number;
@@ -12,6 +13,7 @@ interface TimelineEventItemProps {
   description: string;
   foregroundColor: string;
   isYear?: boolean;
+  type?: 'education' | 'job' | 'project' | 'other';
   activeItemId: number | null;
   setActiveItemId: (id: number | null) => void;
 }
@@ -24,6 +26,7 @@ const TimelineEventItem: React.FC<TimelineEventItemProps> = ({
   description,
   foregroundColor,
   isYear = false,
+  type = 'job',
   activeItemId,
   setActiveItemId
 }) => {
@@ -46,6 +49,20 @@ const TimelineEventItem: React.FC<TimelineEventItemProps> = ({
 
   const handleClick = () => {
     setActiveItemId(isActive ? null : id);
+  };
+
+  // Sélectionner l'icône selon le type
+  const renderIcon = () => {
+    switch (type) {
+      case 'education':
+        return <GraduationCap size={18} className="text-foreground/70 mr-2" />;
+      case 'job':
+        return <Briefcase size={18} className="text-foreground/70 mr-2" />;
+      case 'project':
+        return <Code size={18} className="text-foreground/70 mr-2" />;
+      default:
+        return <Sparkles size={18} className="text-foreground/70 mr-2" />;
+    }
   };
 
   if (isYear) {
@@ -111,9 +128,12 @@ const TimelineEventItem: React.FC<TimelineEventItemProps> = ({
         className={`md:px-3 hover:bg-foreground/10 transition-all duration-500 cursor-pointer ${isActive ? 'bg-foreground/5' : ''}`}
         onClick={handleClick}
       >
-        <Typography component="span" className="text-foreground" sx={{ fontFamily: 'Lexend', fontWeight: 'medium', fontSize: '0.9rem'}}>
-          {period}
-        </Typography>
+        <div className="flex items-center">
+          {renderIcon()}
+          <Typography component="span" className="text-foreground" sx={{ fontFamily: 'Lexend', fontWeight: 'medium', fontSize: '0.9rem'}}>
+            {period}
+          </Typography>
+        </div>
         <Typography className="text-foreground" sx={{ fontFamily: 'Lexend', fontWeight: 'light', fontSize: '0.8rem' }}>
           {title}
         </Typography>

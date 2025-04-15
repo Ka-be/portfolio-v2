@@ -67,7 +67,9 @@ export default function AboutPage() {
                     />
                     
                     {/* Items dynamiques depuis timelineData */}
-                    {timelineData.map((item) => (
+                    {[...timelineData]
+                        .sort((a, b) => b.id - a.id) // Tri par ID décroissant
+                        .map((item) => (
                         <TimelineEventItem 
                             key={item.id}
                             id={item.id}
@@ -75,6 +77,7 @@ export default function AboutPage() {
                             title={item.title}
                             place={item.place}
                             description={item.description}
+                            type={item.type}
                             foregroundColor={foregroundColor}
                             activeItemId={activeItemId}
                             setActiveItemId={setActiveItemId}
