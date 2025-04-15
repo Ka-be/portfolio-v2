@@ -95,22 +95,22 @@ export default function AboutPage() {
 						left: "var(--frame-size)",
 					}}
 				>
-					<h2 className="text-5xl font-light text-foreground uppercase tracking-widest ml-10 mt-10">
+					<h2 className="text-2xl md:text-5xl font-light text-foreground uppercase tracking-widest ml-10 mt-10">
 						Parcours
 					</h2>
-					<h3 className="text-2xl font-light text-foreground tracking-widest ml-10">
+					<h3 className="text-lg md:text-2xl font-light text-foreground tracking-widest ml-10">
 						Pas classique, mais ça me plait.
 					</h3>
 				</div>
 
 				<section 
-					className="absolute bottom-0 left-20 w-4/5 md:w-1/3 overflow-y-auto h-screen mt-32"
+					className="absolute bottom-0 left-20 w-4/5 md:w-1/3 overflow-y-auto h-[calc(100dvh-calc(var(--frame-size)*2))] flex items-center justify-center"
 					style={{
 						top: "var(--frame-size)",
 						left: "var(--frame-size)",
 					}}>
 
-				<Timeline position="right" className="text-foreground w-full text-sm">
+				<Timeline position="right" className="text-foreground w-full text-sm self-center md:ml-5">
                     
                     {/* Item Année fixe pour "Aujourd'hui" */}
                     <TimelineEventItem 
@@ -156,7 +156,7 @@ export default function AboutPage() {
 					}}
 				>
 					{/* <img src="/assets/images/portrait.jpg" alt="Profile" className="w-1/2 h-1/2 object-cover" /> */}
-					<p className="text-md font-light text-foreground pr-10 pb-20 text-justify opacity-80">
+					<p className="text-sm md:text-md font-light text-foreground pr-10 pb-12 md:pb-20  text-justify opacity-80">
 						Développeur concepteur d'applications web et mobile
 						fraîchement titulaire du titre professionnel RNCP.
 						Passionné par la création d'expériences numériques

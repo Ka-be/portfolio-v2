@@ -51,7 +51,7 @@ export default function ProjectsPage() {
 						left: "var(--frame-size)",
 					}}
 				>
-					<h2 className="text-5xl font-light text-foreground uppercase tracking-widest ml-10 mt-10">
+					<h2 className="text-2xl md:text-5xl font-light text-foreground uppercase tracking-widest ml-10 mt-10">
 						Projets
 					</h2>
 				</div>
