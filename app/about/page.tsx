@@ -21,55 +21,55 @@ export default function AboutPage() {
 	const technos = [
 		{
 			name: "React",
-			icon: <SiReact size={22} className="mr-2" />
+			icon: <SiReact size={16} className="mr-2" />
 		},
 		{
 			name: "Next.js",
-			icon: <SiNextdotjs size={22} className="mr-2" />
+			icon: <SiNextdotjs size={16} className="mr-2" />
 		},
 		{
 			name: "Tailwind CSS",
-			icon: <SiTailwindcss size={22} className="mr-2" />
+			icon: <SiTailwindcss size={16} className="mr-2" />
 		},
 		{
 			name: "TypeScript",
-			icon: <SiTypescript size={22} className="mr-2" />
+			icon: <SiTypescript size={16} className="mr-2" />
 		},
 		{
 			name: "Node.js",
-			icon: <SiNodedotjs size={22} className="mr-2" />
+			icon: <SiNodedotjs size={16} className="mr-2" />
 		},
 		{
 			name: "Docker",
-			icon: <SiDocker size={22} className="mr-2" />
+			icon: <SiDocker size={16} className="mr-2" />
 		},
 		{
 			name: "Git",
-			icon: <SiGit size={22} className="mr-2" />
+			icon: <SiGit size={16} className="mr-2" />
 		},
 		{
 			name: "GitHub",
-			icon: <SiGithub size={22} className="mr-2" />
+			icon: <SiGithub size={16} className="mr-2" />
 		},
 		{
 			name: "Prisma",
-			icon: <SiPrisma size={22} className="mr-2" />
+			icon: <SiPrisma size={16} className="mr-2" />
 		},
 		{
 			name: "PostgreSQL",
-			icon: <SiPostgresql size={22} className="mr-2" />
+			icon: <SiPostgresql size={16} className="mr-2" />
 		},
 		{
 			name: "MongoDB",
-			icon: <SiMongodb size={22} className="mr-2" />
+			icon: <SiMongodb size={16} className="mr-2" />
 		},
 		{
 			name: "Redis",
-			icon: <SiRedis size={22} className="mr-2" />
+			icon: <SiRedis size={16} className="mr-2" />
 		},
 		{
 			name: "Express",
-			icon: <SiExpress size={22} className="mr-2" />
+			icon: <SiExpress size={16} className="mr-2" />
 		},
 	]
 
@@ -104,7 +104,7 @@ export default function AboutPage() {
 				</div>
 
 				<section 
-					className="absolute bottom-0 left-20 w-4/5 md:w-1/3 overflow-y-auto h-screen mt-40"
+					className="absolute bottom-0 left-20 w-4/5 md:w-1/3 overflow-y-auto h-screen mt-32"
 					style={{
 						top: "var(--frame-size)",
 						left: "var(--frame-size)",
@@ -155,7 +155,7 @@ export default function AboutPage() {
 						right: "var(--frame-size)",
 					}}
 				>
-					<img src="/assets/images/portrait.jpg" alt="Profile" className="w-1/2 h-1/2 object-cover" />
+					{/* <img src="/assets/images/portrait.jpg" alt="Profile" className="w-1/2 h-1/2 object-cover" /> */}
 					<p className="text-md font-light text-foreground pr-10 pb-20 text-justify opacity-80">
 						Développeur concepteur d'applications web et mobile
 						fraîchement titulaire du titre professionnel RNCP.
@@ -172,7 +172,7 @@ export default function AboutPage() {
 					pauseOnHover={false}
 					autoFill={true}
 					direction="right"
-					className="text-foreground h-10 opacity-90 hover:opacity-100 transition-opacity font-light absolute bottom-10 right-0 self-end mr-8 ml-2"
+					className="text-foreground opacity-90 hover:opacity-100 transition-opacity font-light absolute bottom-10 right-0 self-end mr-8 ml-2"
 				>
 					{technos.map((tech) => (
 						<div key={tech.name} className="flex items-center mx-4">
