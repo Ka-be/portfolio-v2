@@ -1,4 +1,14 @@
-export const projects = [
+interface Project {
+	id: number;
+	title: string;
+	description: string;
+	images: string[];
+	link?: string;
+	github?: string;
+	technos: string[];
+}
+
+export const projects: Project[] = [
 	{
 		id: 1,
 		title: "Worduel",

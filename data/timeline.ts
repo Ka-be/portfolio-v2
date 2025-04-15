@@ -1,37 +1,31 @@
-export const timelineData = [
+interface TimelineItem {
+  id: number;
+  period: string;
+  title: string;
+  place: string;
+  description: string;
+}
+
+export const timelineData: TimelineItem[] = [
   {
     id: 1,
-    title: "2024",
-    content: "Content for 2024",
+    period: "Septembre 2025 - Octobre 2025",
+    title: "Content for 2024",
+    place: "Paris",
+    description: "Description du poste avec les principales missions ici, lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.",
   },
   {
     id: 2,
-    title: "Early 2023",
-    content: "Content for Early 2023",
+    period: "Novembre 2025 - Décembre 2025",
+    title: "Content for 2025",
+    place: "Bordeaux",
+    description: "Blablabla",
   },
   {
     id: 3,
-    title: "Changelog",
-    content: "Content for Changelog",
-  },
-  {
-    id: 4,
-    title: "Changelog",
-    content: "Content for Changelog",
-  },
-  {
-    id: 5,
-    title: "Changelog",
-    content: "Content for Changelog",
-  },
-  {
-    id: 6,
-    title: "Changelog",
-    content: "Content for Changelog",
-  },
-  {
-    id: 7,
-    title: "Changelog",
-    content: "Content for Changelog",
+    period: "Janvier 2026 - Février 2026",
+    title: "Content for 2026",
+    place: "Grenoble",
+    description: "Blablabla",
   },
 ];

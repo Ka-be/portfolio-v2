@@ -1,8 +1,19 @@
+"use client";
+
 import Overlay from "@/components/organisms/Overlay";
 import Marquee from "react-fast-marquee";
 import Link from "next/link";
-import { AboutTimeline } from "@/components/templates/AboutTimeline";
+import { Timeline } from "@mui/lab";
+import Typography from "@mui/material/Typography";
+import useCssVariable from "@/hooks/useCssVariable";
+import React, { useState } from "react";
+import TimelineEventItem from "@/components/molecules/TimelineEventItem";
+import { timelineData } from "@/data/timeline";
+
 export default function AboutPage() {
+	const foregroundColor = useCssVariable('--foreground', '#333333');
+	const [activeItemId, setActiveItemId] = useState<number | null>(null);
+
 	return (
 		<div className="h-[100dvh] w-[100dvw] overflow-hidden relative">
 			<Link href="/contact">
@@ -33,7 +44,57 @@ export default function AboutPage() {
 					</h3>
 				</div>
 
-				<section className="absolute bottom-0 left-20 w-4/5 md:w-1/3 overflow-y-auto h-screen">
+				<section 
+					className="absolute bottom-0 left-20 w-4/5 md:w-1/3 overflow-y-auto h-screen mt-40"
+					style={{
+						top: "var(--frame-size)",
+						left: "var(--frame-size)",
+					}}>
+
+				<Timeline position="right" className="text-foreground w-full text-sm">
+                    
+                    {/* Item Année fixe pour "Aujourd'hui" */}
+                    <TimelineEventItem 
+                        id={-1}
+                        period="Aujourd'hui"
+                        title=""
+                        place=""
+                        description=""
+                        foregroundColor={foregroundColor}
+                        isYear={true}
+                        activeItemId={activeItemId}
+                        setActiveItemId={setActiveItemId}
+                    />
+                    
+                    {/* Items dynamiques depuis timelineData */}
+                    {timelineData.map((item) => (
+                        <TimelineEventItem 
+                            key={item.id}
+                            id={item.id}
+                            period={item.period}
+                            title={item.title}
+                            place={item.place}
+                            description={item.description}
+                            foregroundColor={foregroundColor}
+                            activeItemId={activeItemId}
+                            setActiveItemId={setActiveItemId}
+                        />
+                    ))}
+                    
+                    {/* Item Année fixe pour 2025 */}
+                    <TimelineEventItem 
+                        id={-2}
+                        period="2025"
+                        title=""
+                        place=""
+                        description=""
+                        foregroundColor={foregroundColor}
+                        isYear={true}
+                        activeItemId={activeItemId}
+                        setActiveItemId={setActiveItemId}
+                    />
+                    
+                </Timeline>
 					
 				</section>
 
