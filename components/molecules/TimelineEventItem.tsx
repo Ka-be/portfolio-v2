@@ -29,7 +29,6 @@ const TimelineEventItem: React.FC<TimelineEventItemProps> = ({
 }) => {
   const isActive = activeItemId === id;
 
-  // Style pour l'animation ultra-douce
   const descriptionStyle = {
     overflow: 'hidden',
     maxHeight: isActive ? '500px' : '0',
@@ -40,18 +39,15 @@ const TimelineEventItem: React.FC<TimelineEventItemProps> = ({
     willChange: 'max-height, opacity, transform',
   };
 
-  // Animation douce pour les points
+
   const dotTransition = {
     transition: 'background-color 0.6s ease, border-color 0.6s ease'
   };
 
   const handleClick = () => {
-    // Si l'item est déjà actif, le désélectionner
-    // sinon, l'activer (et donc désactiver les autres)
     setActiveItemId(isActive ? null : id);
   };
 
-  // Si c'est un item de type année (avec fond coloré)
   if (isYear) {
     return (
       <TimelineItem>
@@ -86,7 +82,6 @@ const TimelineEventItem: React.FC<TimelineEventItemProps> = ({
     );
   }
 
-  // Item normal avec description dépliable
   return (
     <TimelineItem>
       <TimelineOppositeContent className="hidden" />
