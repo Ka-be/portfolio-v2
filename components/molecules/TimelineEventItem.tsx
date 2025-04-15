@@ -54,7 +54,7 @@ const TimelineEventItem: React.FC<TimelineEventItemProps> = ({
         <TimelineOppositeContent className="hidden" />
         <TimelineSeparator>
           <TimelineConnector sx={{ bgcolor: foregroundColor, transition: 'background-color 0.6s ease' }} />
-          {isActive ? (
+          {isActive || isYear ? (
             <TimelineDot sx={{ 
               bgcolor: foregroundColor, 
               borderRadius: 0, 

@@ -81,19 +81,6 @@ export default function AboutPage() {
                         />
                     ))}
                     
-                    {/* Item Année fixe pour 2025 */}
-                    <TimelineEventItem 
-                        id={-2}
-                        period="2025"
-                        title=""
-                        place=""
-                        description=""
-                        foregroundColor={foregroundColor}
-                        isYear={true}
-                        activeItemId={activeItemId}
-                        setActiveItemId={setActiveItemId}
-                    />
-                    
                 </Timeline>
 					
 				</section>

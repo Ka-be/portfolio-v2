@@ -28,4 +28,11 @@ export const timelineData: TimelineItem[] = [
     place: "Grenoble",
     description: "Blablabla",
   },
+  {
+    id: 4,
+    period: "Mars 2026 - Avril 2026",
+    title: "Content for 2027",
+    place: "Paris",
+    description: "Blablabla",
+  },
 ];
