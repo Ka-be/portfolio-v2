@@ -14,6 +14,7 @@ interface TimelineEventItemProps {
   foregroundColor: string;
   isYear?: boolean;
   type?: 'education' | 'job' | 'project' | 'other';
+  skills?: string[];
   activeItemId: number | null;
   setActiveItemId: (id: number | null) => void;
 }
@@ -27,6 +28,7 @@ const TimelineEventItem: React.FC<TimelineEventItemProps> = ({
   foregroundColor,
   isYear = false,
   type = 'job',
+  skills,
   activeItemId,
   setActiveItemId
 }) => {
@@ -144,6 +146,19 @@ const TimelineEventItem: React.FC<TimelineEventItemProps> = ({
           <Typography className="text-foreground/90" sx={{ fontFamily: 'Inter', fontSize: '0.7rem' }}>
             {description}
           </Typography>
+          
+          {skills && skills.length > 0 && (
+            <div className="flex flex-wrap gap-1 mt-2">
+              {skills.map((skill, index) => (
+                <span 
+                  key={index} 
+                  className="inline-block bg-foreground border border-foreground text-background px-2 py-0.5 text-xs font-light"
+                >
+                  {skill}
+                </span>
+              ))}
+            </div>
+          )}
         </div>
       </TimelineContent>
     </TimelineItem>

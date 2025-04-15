@@ -56,7 +56,7 @@ export default function AboutPage() {
                     {/* Item Année fixe pour "Aujourd'hui" */}
                     <TimelineEventItem 
                         id={-1}
-                        period="Aujourd'hui"
+                        period="En recherche active"
                         title=""
                         place=""
                         description=""
@@ -68,7 +68,7 @@ export default function AboutPage() {
                     
                     {/* Items dynamiques depuis timelineData */}
                     {[...timelineData]
-                        .sort((a, b) => b.id - a.id) // Tri par ID décroissant
+                        .sort((a, b) => b.id - a.id) 
                         .map((item) => (
                         <TimelineEventItem 
                             key={item.id}
@@ -78,6 +78,7 @@ export default function AboutPage() {
                             place={item.place}
                             description={item.description}
                             type={item.type}
+                            skills={item.skills}
                             foregroundColor={foregroundColor}
                             activeItemId={activeItemId}
                             setActiveItemId={setActiveItemId}
