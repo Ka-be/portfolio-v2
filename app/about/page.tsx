@@ -104,7 +104,7 @@ export default function AboutPage() {
 				</div>
 
 				<section 
-					className="absolute bottom-0 left-20 w-4/5 md:w-1/3 overflow-y-auto h-[calc(100dvh-calc(var(--frame-size)*2))] flex items-center justify-center"
+					className="hidden md:flex absolute bottom-0 left-20 w-1/3 overflow-y-auto h-[calc(100dvh-calc(var(--frame-size)*2))] items-center justify-center"
 					style={{
 						top: "var(--frame-size)",
 						left: "var(--frame-size)",
@@ -148,15 +148,94 @@ export default function AboutPage() {
 					
 				</section>
 
+				<section 
+					className="md:hidden absolute top-0 left-0 w-full overflow-y-auto h-[calc(100dvh-calc(var(--frame-size)*2))] flex flex-col"
+					style={{
+						top: "calc(var(--frame-size) + 8rem)", // Espace pour le titre
+						left: "var(--frame-size)",
+						paddingBottom: "calc(var(--frame-size) + 10rem)", // Espace pour le défilement complet
+					}}>
+					
+					{/* Paragraphe bio - mobile */}
+					<div className="w-full px-4 mb-6">
+						<p className="text-sm font-light text-foreground text-justify opacity-80">
+							Développeur concepteur d'applications web et mobile
+							fraîchement titulaire du titre professionnel RNCP.
+							Passionné par la création d'expériences numériques
+							innovantes, je combine expertise technique et créativité
+							pour donner vie à des projets web ambitieux. Basé à
+							Bordeaux.
+						</p>
+					</div>
+
+					{/* Marquee - mobile - en dessous du paragraphe */}
+					<div className="w-full mb-8 px-4 md:hidden">
+						<Marquee
+							speed={20}
+							gradient={false}
+							pauseOnHover={false}
+							autoFill={true}
+							direction="right"
+							className="text-foreground opacity-90 hover:opacity-100 transition-opacity font-light"
+						>
+							{technos.map((tech) => (
+								<div key={tech.name} className="flex items-center mx-4">
+									{tech.icon}
+									<span className="text-sm">{tech.name}</span>
+								</div>
+							))}
+						</Marquee>
+					</div>
+
+					{/* Timeline - mobile */}
+					<div className="w-full flex-grow mb-8">
+						<Timeline position="right" className="text-foreground w-full text-sm">
+							{/* Item Année fixe pour "Aujourd'hui" */}
+							<TimelineEventItem 
+								id={-1}
+								period="En recherche active"
+								title=""
+								place=""
+								description=""
+								foregroundColor={foregroundColor}
+								isYear={true}
+								activeItemId={activeItemId}
+								setActiveItemId={setActiveItemId}
+							/>
+							
+							{/* Items dynamiques depuis timelineData */}
+							{[...timelineData]
+								.sort((a, b) => b.id - a.id) 
+								.map((item) => (
+								<TimelineEventItem 
+									key={item.id}
+									id={item.id}
+									period={item.period}
+									title={item.title}
+									place={item.place}
+									description={item.description}
+									type={item.type}
+									skills={item.skills}
+									foregroundColor={foregroundColor}
+									activeItemId={activeItemId}
+									setActiveItemId={setActiveItemId}
+								/>
+							))}
+						</Timeline>
+					</div>
+
+					
+				</section>
+
 				<div
-					className="absolute bottom-0 right-0 w-4/5 md:w-1/3 "
+					className="hidden md:block absolute bottom-0 right-0 w-1/3"
 					style={{
 						bottom: "var(--frame-size)",
 						right: "var(--frame-size)",
 					}}
 				>
 					{/* <img src="/assets/images/portrait.jpg" alt="Profile" className="w-1/2 h-1/2 object-cover" /> */}
-					<p className="text-sm md:text-md font-light text-foreground pr-10 pb-12 md:pb-20  text-justify opacity-80">
+					<p className="text-sm md:text-md font-light text-foreground pr-10 pb-12 md:pb-20 text-justify opacity-80">
 						Développeur concepteur d'applications web et mobile
 						fraîchement titulaire du titre professionnel RNCP.
 						Passionné par la création d'expériences numériques
@@ -164,24 +243,26 @@ export default function AboutPage() {
 						pour donner vie à des projets web ambitieux. Basé à
 						Bordeaux.
 					</p>
+
+					{/* Marquee - mobile */}
+					<div className="hidden md:block md:absolute bottom-0 right-0 pb-4 pt-2 bg-red-500">
+						<Marquee
+							speed={20}
+							gradient={false}
+							pauseOnHover={false}
+							autoFill={true}
+							direction="right"
+							className="text-foreground opacity-90 hover:opacity-100 transition-opacity font-light"
+						>
+							{technos.map((tech) => (
+								<div key={tech.name} className="flex items-center mx-4">
+									{tech.icon}
+									<span className="text-sm">{tech.name}</span>
+								</div>
+							))}
+						</Marquee>
+					</div>
 				</div>
-
-				<Marquee
-					speed={20}
-					gradient={false}
-					pauseOnHover={false}
-					autoFill={true}
-					direction="right"
-					className="text-foreground opacity-90 hover:opacity-100 transition-opacity font-light absolute bottom-10 right-0 self-end mr-8 ml-2"
-				>
-					{technos.map((tech) => (
-						<div key={tech.name} className="flex items-center mx-4">
-							{tech.icon}
-							<span className="text-sm">{tech.name}</span>
-						</div>
-					))}
-				</Marquee>
-
 			</div>
 		</div>
 	);
