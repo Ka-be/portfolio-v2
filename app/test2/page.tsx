@@ -1,8 +1,7 @@
 "use client";
 
 import * as React from 'react';
-import { useEffect, useState } from 'react';
-import { useTheme } from '@/lib/contexts/ThemeContext';
+import useCssVariable from '@/hooks/useCssVariable';
 import Timeline from '@mui/lab/Timeline';
 import TimelineItem from '@mui/lab/TimelineItem';
 import TimelineSeparator from '@mui/lab/TimelineSeparator';
@@ -15,21 +14,8 @@ import Overlay from "@/components/organisms/Overlay";
 import Marquee from "react-fast-marquee";
 import Link from "next/link";
 
-
 export default function Test() {
-    const { theme } = useTheme(); // Récupérer le thème actuel
-    const [foregroundColor, setForegroundColor] = useState('#f5f5f5'); // Valeur par défaut
-
-    useEffect(() => {
-        // Récupérer la couleur foreground depuis les variables CSS
-        const computedStyle = getComputedStyle(document.documentElement);
-        const foregroundHsl = computedStyle.getPropertyValue('--foreground').trim();
-        
-        // Convertir en couleur utilisable
-        if (foregroundHsl) {
-            setForegroundColor(`hsl(${foregroundHsl})`);
-        }
-    }, [theme]); // Se déclencher à chaque changement de thème
+    const foregroundColor = useCssVariable('--foreground', '#333333');
 
 	return (
 		<div className="h-[100dvh] w-[100dvw] overflow-hidden relative bg-background text-foreground">
