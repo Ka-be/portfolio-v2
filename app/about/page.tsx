@@ -71,7 +71,75 @@ export default function AboutPage() {
 			name: "Express",
 			icon: <SiExpress size={16} className="mr-2" />
 		},
-	]
+	];
+
+	// Composant réutilisable pour la timeline
+	const TimelineComponent = () => (
+		<Timeline position="right" className="text-foreground w-full text-sm">
+			{/* Item Année fixe pour "Aujourd'hui" */}
+			<TimelineEventItem 
+				id={-1}
+				period="En recherche active"
+				title=""
+				place=""
+				description=""
+				foregroundColor={foregroundColor}
+				isYear={true}
+				activeItemId={activeItemId}
+				setActiveItemId={setActiveItemId}
+			/>
+			
+			{/* Items dynamiques depuis timelineData */}
+			{[...timelineData]
+				.sort((a, b) => b.id - a.id) 
+				.map((item) => (
+				<TimelineEventItem 
+					key={item.id}
+					id={item.id}
+					period={item.period}
+					title={item.title}
+					place={item.place}
+					description={item.description}
+					type={item.type}
+					skills={item.skills}
+					foregroundColor={foregroundColor}
+					activeItemId={activeItemId}
+					setActiveItemId={setActiveItemId}
+				/>
+			))}
+		</Timeline>
+	);
+
+	// Composant réutilisable pour le paragraphe bio
+	const BioParagraph = ({ className = "" }) => (
+		<p className={`font-light text-foreground text-justify opacity-80 ${className}`}>
+			Développeur concepteur d'applications web et mobile
+			fraîchement titulaire du titre professionnel RNCP.
+			Passionné par la création d'expériences numériques
+			innovantes, je combine expertise technique et créativité
+			pour donner vie à des projets web ambitieux. Basé à
+			Bordeaux.
+		</p>
+	);
+
+	// Composant réutilisable pour le marquee des technologies
+	const TechnoMarquee = ({ className = "" }) => (
+		<Marquee
+			speed={20}
+			gradient={false}
+			pauseOnHover={false}
+			autoFill={true}
+			direction="right"
+			className={`text-foreground opacity-90 hover:opacity-100 transition-opacity font-light ${className}`}
+		>
+			{technos.map((tech) => (
+				<div key={tech.name} className="flex items-center mx-4">
+					{tech.icon}
+					<span className="text-sm">{tech.name}</span>
+				</div>
+			))}
+		</Marquee>
+	);
 
 	return (
 		<div className="h-[100dvh] w-[100dvw] overflow-hidden relative">
@@ -88,8 +156,9 @@ export default function AboutPage() {
 			</Link>
 			<Overlay />
 			<div className="w-[calc(100%-calc(var(--frame-size)*1.8))] h-[calc(100dvh-calc(var(--frame-size)*2))] font-lexend flex items-center justify-center m-[var(--frame-size)]">
+				{/* Titre - Toujours visible en haut */}
 				<div
-					className="absolute top-0 left-0 w-auto h-auto"
+					className="absolute top-0 left-0 w-auto h-auto pr-10"
 					style={{
 						top: "var(--frame-size)",
 						left: "var(--frame-size)",
@@ -103,130 +172,19 @@ export default function AboutPage() {
 					</h3>
 				</div>
 
+				{/* VERSION DESKTOP - Partie gauche avec Timeline */}
 				<section 
 					className="hidden md:flex absolute bottom-0 left-20 w-1/3 overflow-y-auto h-[calc(100dvh-calc(var(--frame-size)*2))] items-center justify-center"
 					style={{
 						top: "var(--frame-size)",
 						left: "var(--frame-size)",
 					}}>
-
-				<Timeline position="right" className="text-foreground w-full text-sm self-center md:ml-5">
-                    
-                    {/* Item Année fixe pour "Aujourd'hui" */}
-                    <TimelineEventItem 
-                        id={-1}
-                        period="En recherche active"
-                        title=""
-                        place=""
-                        description=""
-                        foregroundColor={foregroundColor}
-                        isYear={true}
-                        activeItemId={activeItemId}
-                        setActiveItemId={setActiveItemId}
-                    />
-                    
-                    {/* Items dynamiques depuis timelineData */}
-                    {[...timelineData]
-                        .sort((a, b) => b.id - a.id) 
-                        .map((item) => (
-                        <TimelineEventItem 
-                            key={item.id}
-                            id={item.id}
-                            period={item.period}
-                            title={item.title}
-                            place={item.place}
-                            description={item.description}
-                            type={item.type}
-                            skills={item.skills}
-                            foregroundColor={foregroundColor}
-                            activeItemId={activeItemId}
-                            setActiveItemId={setActiveItemId}
-                        />
-                    ))}
-                    
-                </Timeline>
-					
+					<div className="self-center md:ml-5 w-full">
+						<TimelineComponent />
+					</div>
 				</section>
 
-				<section 
-					className="md:hidden absolute top-0 left-0 w-full overflow-y-auto h-[calc(100dvh-calc(var(--frame-size)*2))] flex flex-col"
-					style={{
-						top: "calc(var(--frame-size) + 8rem)", // Espace pour le titre
-						left: "var(--frame-size)",
-						paddingBottom: "calc(var(--frame-size) + 10rem)", // Espace pour le défilement complet
-					}}>
-					
-					{/* Paragraphe bio - mobile */}
-					<div className="w-full px-4 mb-6">
-						<p className="text-sm font-light text-foreground text-justify opacity-80">
-							Développeur concepteur d'applications web et mobile
-							fraîchement titulaire du titre professionnel RNCP.
-							Passionné par la création d'expériences numériques
-							innovantes, je combine expertise technique et créativité
-							pour donner vie à des projets web ambitieux. Basé à
-							Bordeaux.
-						</p>
-					</div>
-
-					{/* Marquee - mobile - en dessous du paragraphe */}
-					<div className="w-full mb-8 px-4 md:hidden">
-						<Marquee
-							speed={20}
-							gradient={false}
-							pauseOnHover={false}
-							autoFill={true}
-							direction="right"
-							className="text-foreground opacity-90 hover:opacity-100 transition-opacity font-light"
-						>
-							{technos.map((tech) => (
-								<div key={tech.name} className="flex items-center mx-4">
-									{tech.icon}
-									<span className="text-sm">{tech.name}</span>
-								</div>
-							))}
-						</Marquee>
-					</div>
-
-					{/* Timeline - mobile */}
-					<div className="w-full flex-grow mb-8">
-						<Timeline position="right" className="text-foreground w-full text-sm">
-							{/* Item Année fixe pour "Aujourd'hui" */}
-							<TimelineEventItem 
-								id={-1}
-								period="En recherche active"
-								title=""
-								place=""
-								description=""
-								foregroundColor={foregroundColor}
-								isYear={true}
-								activeItemId={activeItemId}
-								setActiveItemId={setActiveItemId}
-							/>
-							
-							{/* Items dynamiques depuis timelineData */}
-							{[...timelineData]
-								.sort((a, b) => b.id - a.id) 
-								.map((item) => (
-								<TimelineEventItem 
-									key={item.id}
-									id={item.id}
-									period={item.period}
-									title={item.title}
-									place={item.place}
-									description={item.description}
-									type={item.type}
-									skills={item.skills}
-									foregroundColor={foregroundColor}
-									activeItemId={activeItemId}
-									setActiveItemId={setActiveItemId}
-								/>
-							))}
-						</Timeline>
-					</div>
-
-					
-				</section>
-
+				{/* VERSION DESKTOP - Partie droite avec Bio et Marquee */}
 				<div
 					className="hidden md:block absolute bottom-0 right-0 w-1/3"
 					style={{
@@ -235,34 +193,39 @@ export default function AboutPage() {
 					}}
 				>
 					{/* <img src="/assets/images/portrait.jpg" alt="Profile" className="w-1/2 h-1/2 object-cover" /> */}
-					<p className="text-sm md:text-md font-light text-foreground pr-10 pb-12 md:pb-20 text-justify opacity-80">
-						Développeur concepteur d'applications web et mobile
-						fraîchement titulaire du titre professionnel RNCP.
-						Passionné par la création d'expériences numériques
-						innovantes, je combine expertise technique et créativité
-						pour donner vie à des projets web ambitieux. Basé à
-						Bordeaux.
-					</p>
+					<div className="pr-10 pb-12 md:pb-20">
+						<BioParagraph className="text-sm md:text-md" />
+					</div>
 
-					{/* Marquee - mobile */}
-					<div className="hidden md:block md:absolute bottom-0 right-0 pb-4 pt-2 bg-red-500">
-						<Marquee
-							speed={20}
-							gradient={false}
-							pauseOnHover={false}
-							autoFill={true}
-							direction="right"
-							className="text-foreground opacity-90 hover:opacity-100 transition-opacity font-light"
-						>
-							{technos.map((tech) => (
-								<div key={tech.name} className="flex items-center mx-4">
-									{tech.icon}
-									<span className="text-sm">{tech.name}</span>
-								</div>
-							))}
-						</Marquee>
+					<div className="absolute bottom-0 right-0 pb-4 pt-2 pl-16 pr-10 w-[calc(100dvw-calc(var(--frame-size)*1.8))] self-center">
+						<TechnoMarquee />
 					</div>
 				</div>
+
+				{/* VERSION MOBILE - Contenu empilé */}
+				<section 
+					className="md:hidden absolute top-0 left-0 w-[calc(100%-calc(var(--frame-size)*1.8))] overflow-y-auto h-[calc(100dvh-calc(var(--frame-size)*2))] flex flex-col"
+					style={{
+						top: "calc(var(--frame-size) + 8rem)", // Espace pour le titre
+						left: "var(--frame-size)",
+						paddingBottom: "calc(var(--frame-size) + 10rem)", // Espace pour le défilement complet
+					}}>
+					
+					{/* Paragraphe bio - mobile */}
+					<div className="w-full pl-10 pr-12 mb-4 mt-8">
+						<BioParagraph className="text-sm" />
+					</div>
+
+					{/* Marquee - mobile */}
+					<div className="w-full mb-10 mt-4 px-4 pr-12 pl-10">
+						<TechnoMarquee />
+					</div>
+
+					{/* Timeline - mobile */}
+					<div className="w-full flex-grow mb-4 px-4">
+						<TimelineComponent />
+					</div>
+				</section>
 			</div>
 		</div>
 	);

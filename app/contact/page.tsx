@@ -1,4 +1,3 @@
-import TestContent from "@/components/TestContent";
 import Overlay from "@/components/organisms/Overlay";
 import Marquee from "react-fast-marquee";
 import Link from "next/link";
@@ -35,7 +34,7 @@ export default function ContactPage() {
 						left: "var(--frame-size)",
 					}}
 				>
-					<h2 className="text-5xl font-light text-foreground uppercase tracking-widest ml-10 mt-10">
+					<h2 className="text-2xl md:text-5xl font-light text-foreground uppercase tracking-widest ml-10 mt-10">
 						Contact
 					</h2>
 				</div>
