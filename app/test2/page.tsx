@@ -42,7 +42,7 @@ export default function Test() {
 				>
       
 
-                    <Timeline position="right" className="text-foreground w-full">
+                    <Timeline position="right" className="text-foreground w-full text-sm">
                         
                         {/* Item Année */}
                         <TimelineItem>
@@ -52,9 +52,9 @@ export default function Test() {
                                 <TimelineDot sx={{ bgcolor: foregroundColor, borderRadius: 0, width: '0.5rem', height: '0.5rem' }} />
                                 <TimelineConnector sx={{ bgcolor: foregroundColor }} />
                             </TimelineSeparator>
-                            <TimelineContent sx={{ py: '1rem', px: 2 }} className="md:px-3">
-                                <Typography variant="h6" component="span" className="text-background bg-foreground px-2 py-1 shadow-none" sx={{ fontFamily: 'Lexend', fontWeight: 'light' }}>
-                                    ?
+                            <TimelineContent sx={{ py: '1.5rem', px: 2 }} className="md:px-3 flex align-center">
+                                <Typography variant="h6" component="span" className="text-background bg-foreground px-2 py-1 shadow-none flex items-center justify-center" sx={{ fontFamily: 'Lexend', fontWeight: 'light', fontSize: '1rem' }}>
+                                    Aujourd'hui
                                 </Typography>
                             </TimelineContent>
                         </TimelineItem>
@@ -68,18 +68,19 @@ export default function Test() {
                                 <TimelineConnector sx={{ bgcolor: foregroundColor }} />
                             </TimelineSeparator>
                             <TimelineContent sx={{ py: '1rem', px: 2 }} className="md:px-3">
-                                <Typography component="span" className="text-foreground " sx={{ fontFamily: 'Lexend', fontWeight: 'medium'}}>
+                                <Typography component="span" className="text-foreground " sx={{ fontFamily: 'Lexend', fontWeight: 'medium', fontSize: '0.9rem'}}>
                                     Septembre 2025 - Octobre 2025
                                 </Typography>
-                                <Typography className="text-foreground" sx={{ fontFamily: 'Lexend', fontWeight: 'light', fontSize: '0.9rem' }}>
+                                <Typography className="text-foreground" sx={{ fontFamily: 'Lexend', fontWeight: 'light', fontSize: '0.8rem' }}>
                                     Développeur web
                                 </Typography>
-                                <Typography className="text-foreground/60" sx={{ fontFamily: 'Inter', fontSize: '0.8rem' }}>
+                                <Typography className="text-foreground/60" sx={{ fontFamily: 'Inter', fontSize: '0.7rem' }}>
                                     Indépendant
                                 </Typography>
                             </TimelineContent>
                         </TimelineItem>
 
+                    
                         <TimelineItem>
                             <TimelineOppositeContent className="hidden" />
                             <TimelineSeparator>
@@ -88,18 +89,19 @@ export default function Test() {
                                 <TimelineConnector sx={{ bgcolor: foregroundColor }} />
                             </TimelineSeparator>
                             <TimelineContent sx={{ py: '1rem', px: 2 }} className="md:px-3">
-                                <Typography component="span" className="text-foreground " sx={{ fontFamily: 'Lexend', fontWeight: 'medium'}}>
+                                <Typography component="span" className="text-foreground " sx={{ fontFamily: 'Lexend', fontWeight: 'medium', fontSize: '0.9rem'}}>
                                     Juin 2025
                                 </Typography>
-                                <Typography className="text-foreground" sx={{ fontFamily: 'Lexend', fontWeight: 'light', fontSize: '0.9rem' }}>
+                                <Typography className="text-foreground" sx={{ fontFamily: 'Lexend', fontWeight: 'light', fontSize: '0.8rem' }}>
                                     Lead designer 
                                 </Typography>
-                                <Typography className="text-foreground/60" sx={{ fontFamily: 'Inter', fontSize: '0.8rem' }}>
+                                <Typography className="text-foreground/60" sx={{ fontFamily: 'Inter', fontSize: '0.7rem' }}>
                                     Worduel
                                 </Typography>
                             </TimelineContent>
                         </TimelineItem>
 
+                        {/* Item Année */}
                         <TimelineItem>
                             <TimelineOppositeContent className="hidden" />
                             <TimelineSeparator>
@@ -107,8 +109,8 @@ export default function Test() {
                                 <TimelineDot sx={{ bgcolor: foregroundColor, borderRadius: 0, width: '0.5rem', height: '0.5rem' }} />
                                 <TimelineConnector sx={{ bgcolor: foregroundColor }} />
                             </TimelineSeparator>
-                            <TimelineContent sx={{ py: '1rem', px: 2 }} className="md:px-3">
-                                <Typography variant="h6" component="span" className="text-background bg-foreground px-2 py-1 shadow-none" sx={{ fontFamily: 'Lexend', fontWeight: 'light' }}>
+                            <TimelineContent sx={{ py: '1.5rem', px: 2 }} className="md:px-3 flex align-center">
+                                <Typography component="span" className="text-background bg-foreground px-2 py-1 shadow-none flex items-center justify-center" sx={{ fontFamily: 'Lexend', fontWeight: 'light', fontSize: '1rem'}}>
                                     2025
                                 </Typography>
                             </TimelineContent>
