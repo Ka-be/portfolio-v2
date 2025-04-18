@@ -1,6 +1,5 @@
 import type { Metadata, Viewport } from "next";
 import { Lexend, Inter } from "next/font/google";
-// import "../reset.css";
 import "../styles/globals.css";
 import { ThemeProvider } from "@/lib/contexts/ThemeContext";
 

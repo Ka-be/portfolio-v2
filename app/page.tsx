@@ -27,10 +27,10 @@ export default function Home() {
 						left: "var(--frame-size)",
 					}}
 				>
-					<h1 className="text-3xl md:text-5xl font-light text-foreground uppercase tracking-widest ml-1 mt-1 md:ml-10 md:mt-10 font-lexend">
+					<h1 className="text-3xl md:text-5xl font-light text-foreground uppercase tracking-widest ml-4 mt-4 md:ml-10 md:mt-10 font-lexend">
 						Kevin <br /> Bourgitteau
 					</h1>
-					<h2 className="text-xl md:text-2xl font-light text-foreground tracking-wide ml-1 md:ml-10">
+					<h2 className="text-xl md:text-2xl font-light text-foreground tracking-wide ml-4 md:ml-10">
 						Concepteur / Développeur d'applications
 					</h2>
 				</div>
@@ -42,13 +42,10 @@ export default function Home() {
 						right: "var(--frame-size)",
 					}}
 				>
-					<p className="text-sm md:text-lg font-light text-foreground pr-4 pb-1 md:pr-10 md:pb-10 text-justify opacity-80">
-						Développeur concepteur d'applications web et mobile
-						fraîchement titulaire du titre professionnel RNCP.
-						Passionné par la création d'expériences numériques
-						innovantes, je combine expertise technique et créativité
-						pour donner vie à des projets web ambitieux. Basé à
-						Bordeaux.
+					<p className="text-sm font-light text-foreground pr-4 pb-4 md:pr-10 md:pb-10 text-justify opacity-80">
+						Basé sur Bordeaux (et natif de la région), je suis développeur full stack et concepteur d'applications.
+						Récemment titulaire du titre professionnel CDA, passionné par la création d'expériences et d'interfaces,
+						je met à profit mes compétences en design et en développement pour transformer des idées ou de simples esquisses en projets concrets.
 					</p>
 				</div>
 			</div>
