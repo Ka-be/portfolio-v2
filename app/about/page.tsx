@@ -113,7 +113,11 @@ export default function AboutPage() {
 	// Composant réutilisable pour le paragraphe bio
 	const BioParagraph = ({ className = "" }) => (
 		<div className="flex flex-col items-end">
-			<img src="/assets/images/portrait.jpg" alt="Profile" className="w-1/2 h-1/2 object-cover mb-4" />
+			<img 
+				src="/assets/images/portrait.jpg" 
+				alt="Profile" 
+				className="w-1/2 h-1/2 object-cover mb-4 filter grayscale" 
+			/>
 			<p className={`font-light text-foreground text-justify opacity-80 mb-4 ${className}`}>
 				Développeur concepteur d'applications web et mobile
 				fraîchement titulaire du titre professionnel RNCP.
