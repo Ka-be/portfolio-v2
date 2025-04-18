@@ -43,9 +43,9 @@ export default function Home() {
 					}}
 				>
 					<p className="text-sm font-light text-foreground pr-4 pb-4 md:pr-10 md:pb-10 text-justify opacity-80">
-						Basé sur Bordeaux (et natif de la région), je suis développeur full stack et concepteur d'applications.
-						Récemment titulaire du titre professionnel CDA, passionné par la création d'expériences et d'interfaces,
-						je met à profit mes compétences en design et en développement pour transformer des idées ou de simples esquisses en projets concrets.
+						Basé à Bordeaux, où l’océan n’est jamais bien loin, je suis développeur full stack et concepteur d’applications.
+						Récemment diplômé du titre professionnel CDA, passionné par la création d’interfaces et d’expériences fluides,
+						je mets à profit mes compétences en design et en développement pour transformer idées et maquettes en projets concrets — avec le sens du détail et la régularité d’une belle houle.
 					</p>
 				</div>
 			</div>
