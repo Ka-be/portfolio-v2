@@ -16,9 +16,36 @@ import {
 } from "react-icons/si";
 import { ArrowDownRight } from "lucide-react";
 
+// Type pour les sections bio
+type BioSectionProps = {
+	id: string;
+	title: string;
+	content: React.ReactNode;
+};
+
+// Type pour le titre de la page
+type PageTitleProps = {
+	subtitle: string;
+	className?: string;
+};
+
 export default function ParcoursPage() {
 	const foregroundColor = useCssVariable('--foreground', '#333333');
 	const [activeItemId, setActiveItemId] = useState<number | null>(null);
+
+	// Configuration des sections bio
+	const bioSections: BioSectionProps[] = [
+		{
+			id: 'pharma',
+			title: 'De la pharma au code',
+			content: "J'ai commencé ma carrière dans l'industrie pharmaceutique, après l'obtention d'une licence professionnelle orientée qualité en 2013, puis d'un diplôme de Responsable Qualité Sécurité Environnement (niveau 6) en 2016, le tout en alternance. Pendant 6 ans, j'ai occupé le poste de spécialiste assurance qualité qualification/validation, dans lequel j'ai pu développer des compétences solides en gestion de projet, en conformité réglementaire et en rigueur opérationnelle — le tout dans un environnement ultra exigeant."
+		},
+		{
+			id: 'web',
+			title: 'Du process à la créativité',
+			content: <>En 2018, l'envie de changement s'est faite sentir. Passionné de web et animé par une fibre créative, j'ai commencé à me former en autodidacte, avant de franchir le cap en 2022 : quitter mon CDI pour suivre une formation de Développeur Web (niveau 5) chez <Link href="https://www.studi.com/" target="_blank" className="font-bold hover:bg-foreground hover:text-background transition-colors ">Studi</Link>. J'ai ensuite poursuivi avec une formation de Concepteur Développeur d'Applications (niveau 6) chez <Link href="https://www.oclock.io/" target="_blank" className="font-bold hover:bg-foreground hover:text-background transition-colors">O'clock</Link>, en alternance chez <Link href="https://www.sanofi.com/" target="_blank" className="font-bold hover:bg-foreground hover:text-background transition-colors">Sanofi</Link>. J'y ai allié mon ancien et nouveau monde — pharma et développement — en créant des applications métier de A à Z. Aujourd'hui, fraîchement diplômé, je suis à la recherche d'une nouvelle opportunité pour mettre à profit mes compétences techniques, ma créativité et mes connaissances sur les technos suivantes : </>
+		}
+	];
 
 	const technos = [
 		{
@@ -111,6 +138,33 @@ export default function ParcoursPage() {
 		},
 	];
 
+	// Composant réutilisable pour le titre de la page
+	const PageTitle = ({ subtitle, className = "" }: PageTitleProps) => (
+		<div className={`text-right ${className}`}>
+			<h2 className="text-2xl md:text-5xl font-light text-foreground uppercase tracking-widest">
+				Parcours
+			</h2>
+			<h3 className="text-lg md:text-2xl font-light text-foreground tracking-widest">
+				{subtitle}
+			</h3>
+		</div>
+	);
+
+	// Composant réutilisable pour un bouton bio
+	const BioButton = ({ id, title, isExpanded, onClick }: { id: string; title: string; isExpanded: boolean; onClick: () => void }) => (
+		<button 
+			onClick={onClick}
+			className="flex items-center justify-end w-full text-right font-light text-background opacity-80 hover:opacity-100 transition-opacity group bg-foreground px-3 py-1"
+		>
+			<h2 className="text-xs md:text-sm group-hover:text-background/70 transition-colors uppercase md:tracking-widest">{title}</h2>
+			<ArrowDownRight 
+				className={`ml-2 transition-transform ${isExpanded ? 'rotate-45' : ''}`}
+				size={16}
+				strokeWidth={1.5}
+			/>
+		</button>
+	);
+
 	// Composant réutilisable pour la timeline
 	const TimelineComponent = () => (
 		<Timeline position="right" className="text-foreground w-full text-sm">
@@ -168,45 +222,21 @@ export default function ParcoursPage() {
 					className="w-1/3 h-1/3 object-cover mb-4 filter grayscale" 
 				/>
 				
-				{/* Premier paragraphe */}
-				<div className="w-full mb-4">
-					<button 
-						onClick={() => toggleSection('pharma')}
-						className="flex items-center justify-end w-full text-right font-light text-background opacity-80 hover:opacity-100 transition-opacity group bg-foreground px-3 py-1"
-					>
-						<h2 className="text-xs md:text-sm group-hover:text-background/70 transition-colors uppercase md:tracking-widest">De la pharma au code </h2>
-						<ArrowDownRight 
-							className={`ml-2 transition-transform ${expandedSection === 'pharma' ? 'rotate-45' : ''}`}
-							size={16}
-							strokeWidth={1.5}
+				{bioSections.map((section, index) => (
+					<div key={section.id} className={`w-full ${index < bioSections.length - 1 ? 'mb-4' : ''}`}>
+						<BioButton 
+							id={section.id}
+							title={section.title}
+							isExpanded={expandedSection === section.id}
+							onClick={() => toggleSection(section.id)}
 						/>
-					</button>
-					{expandedSection === 'pharma' && (
-						<p className={`mt-2 font-light text-foreground text-justify opacity-80 text-sm ${className}`}>
-							J'ai commencé ma carrière dans l'industrie pharmaceutique, après l'obtention d'une licence professionnelle orientée qualité en 2013, puis d'un diplôme de Responsable Qualité Sécurité Environnement (niveau 6) en 2016, le tout en alternance. Pendant 6 ans, j'ai occupé le poste de spécialiste assurance qualité qualification/validation, dans lequel j'ai pu développer des compétences solides en gestion de projet, en conformité réglementaire et en rigueur opérationnelle — le tout dans un environnement ultra exigeant.
-						</p>
-					)}
-				</div>
-				
-				{/* Deuxième paragraphe */}
-				<div className="w-full">
-					<button 
-						onClick={() => toggleSection(	'web')}
-						className="flex items-center justify-end w-full text-right font-light text-background opacity-80 hover:opacity-100 transition-opacity group bg-foreground px-3 py-1"
-					>
-						<h2 className="text-xs md:text-sm group-hover:text-background/70 transition-colors uppercase md:tracking-widest">Du process à la créativité</h2>
-						<ArrowDownRight 
-							className={`ml-2 transition-transform ${expandedSection === 'web' ? 'rotate-45' : ''}`}
-							size={16}
-							strokeWidth={1.5}
-						/>
-					</button>
-					{expandedSection === 'web' && (
-						<p className={`mt-2 font-light text-foreground text-justify opacity-80 text-sm ${className}`}>
-							En 2018, l'envie de changement s'est faite sentir. Passionné de web et animé par une fibre créative, j'ai commencé à me former en autodidacte, avant de franchir le cap en 2022 : quitter mon CDI pour suivre une formation de Développeur Web (niveau 5) chez <Link href="https://www.studi.com/" target="_blank" className="font-bold hover:bg-foreground hover:text-background transition-colors ">Studi</Link>. J'ai ensuite poursuivi avec une formation de Concepteur Développeur d'Applications (niveau 6) chez <Link href="https://www.oclock.io/" target="_blank" className="font-bold hover:bg-foreground hover:text-background transition-colors">O'clock</Link>, en alternance chez <Link href="https://www.sanofi.com/" target="_blank" className="font-bold hover:bg-foreground hover:text-background transition-colors">Sanofi</Link>. J'y ai allié mon ancien et nouveau monde — pharma et développement — en créant des applications métier de A à Z. Aujourd'hui, fraîchement diplômé, je suis à la recherche d'une nouvelle opportunité pour mettre à profit mes compétences techniques et ma double expertise.
-						</p>
-					)}
-				</div>
+						{expandedSection === section.id && (
+							<p className={`mt-2 font-light text-foreground text-justify opacity-80 text-sm ${className}`}>
+								{section.content}
+							</p>
+						)}
+					</div>
+				))}
 			</div>
 		);
 	};
@@ -230,7 +260,7 @@ export default function ParcoursPage() {
 				pauseOnHover={false}
 				autoFill={true}
 				direction="right"
-				className={`text-foreground opacity-90 hover:opacity-100 transition-opacity font-light  ${className}`}
+				className={`text-foreground opacity-90 hover:opacity-100 transition-opacity font-light ${className}`}
 			>
 				{technoElements}
 			</Marquee>
@@ -265,12 +295,7 @@ export default function ParcoursPage() {
 						right: "var(--frame-size)",
 					}}
 				>
-					<h2 className="text-2xl md:text-5xl font-light text-foreground uppercase tracking-widest ml-10 mt-10">
-						Parcours
-					</h2>
-					<h3 className="text-lg md:text-2xl font-light text-foreground tracking-widest ml-10">
-						Pas classique, mais ça me plait.
-					</h3>
+					<PageTitle subtitle="Atypique & cohérent" className="ml-10 mt-10" />
 				</div>
 
 				{/* VERSION DESKTOP - Partie gauche avec Timeline */}
@@ -296,12 +321,7 @@ export default function ParcoursPage() {
 				>
 					{/* Titre - Version Desktop */}
 					<div className="text-right pr-10 pt-10 pb-5">
-						<h2 className="text-5xl font-light text-foreground uppercase tracking-widest">
-							Parcours
-						</h2>
-						<h3 className="text-2xl font-light text-foreground tracking-widest">
-							Pas classique, mais ça me plait.
-						</h3>
+						<PageTitle subtitle="Atypique & cohérent" />
 					</div>
 
 					{/* Bio - Version Desktop */}
@@ -337,7 +357,7 @@ export default function ParcoursPage() {
 					</div>
 
 					{/* Marquee - mobile */}
-					<div className="w-full mb-10 mt-4 px-4 pr-12 pl-10 ">
+					<div className="w-full mb-10 mt-4 px-4 pr-12 pl-10">
 						<TechnoMarquee />
 					</div>
 
