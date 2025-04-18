@@ -11,7 +11,8 @@ import { timelineData } from "@/data/timeline";
 import { 
 	SiReact, SiNextdotjs, SiTailwindcss, SiTypescript, SiNodedotjs, 
 	SiDocker, SiGit, SiGithub, SiPrisma, SiPostgresql, SiMongodb, 
-	SiRedis, SiExpress
+	SiRedis, SiExpress, SiLinux, SiVite, SiVitest, SiJest, SiThreedotjs, 
+	SiSwagger, SiCypress, SiFigma, SiApollographql
 } from "react-icons/si";
 
 export default function AboutPage() {
@@ -56,6 +57,10 @@ export default function AboutPage() {
 			icon: <SiPrisma size={16} className="mr-2" />
 		},
 		{
+			name: "Apollo",
+			icon: <SiApollographql size={16} className="mr-2" />
+		},
+		{
 			name: "PostgreSQL",
 			icon: <SiPostgresql size={16} className="mr-2" />
 		},
@@ -70,6 +75,38 @@ export default function AboutPage() {
 		{
 			name: "Express",
 			icon: <SiExpress size={16} className="mr-2" />
+		},
+		{
+			name: "Linux",
+			icon: <SiLinux size={16} className="mr-2" />
+		},
+		{
+			name: "Vite",
+			icon: <SiVite size={16} className="mr-2" />
+		},
+		{
+			name: "Vitest",
+			icon: <SiVitest size={16} className="mr-2" />
+		},
+		{
+			name: "Jest",
+			icon: <SiJest size={16} className="mr-2" />
+		},
+		{
+			name: "Three.js",
+			icon: <SiThreedotjs size={16} className="mr-2" />
+		},
+		{
+			name: "Swagger",
+			icon: <SiSwagger size={16} className="mr-2" />
+		},
+		{
+			name: "Cypress",
+			icon: <SiCypress size={16} className="mr-2" />
+		},
+		{
+			name: "Figma",
+			icon: <SiFigma size={16} className="mr-2" />
 		},
 	];
 
@@ -166,7 +203,7 @@ export default function AboutPage() {
 	// Marquee du haut mémorisé
 	const HeaderMarquee = useMemo(() => (
 		<Marquee
-			speed={40}
+			speed={50}
 			gradient={false}
 			pauseOnHover={true}
 			autoFill={true}
