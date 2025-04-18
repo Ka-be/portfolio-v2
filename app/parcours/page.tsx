@@ -14,7 +14,7 @@ import {
 	SiRedis, SiExpress, SiLinux, SiVite, SiVitest, SiJest, SiThreedotjs, 
 	SiSwagger, SiCypress, SiFigma, SiApollographql
 } from "react-icons/si";
-import { ChevronDown } from 'lucide-react';
+import { ArrowDownRight } from "lucide-react";
 
 export default function ParcoursPage() {
 	const foregroundColor = useCssVariable('--foreground', '#333333');
@@ -161,7 +161,7 @@ export default function ParcoursPage() {
 		};
 
 		return (
-			<div className="flex flex-col items-end  self-start align-top bg-red-500">
+			<div className="flex flex-col items-end self-start">
 				<img 
 					src="/assets/images/portrait.jpg" 
 					alt="Profile" 
@@ -172,11 +172,11 @@ export default function ParcoursPage() {
 				<div className="w-full mb-4">
 					<button 
 						onClick={() => toggleSection('pharma')}
-						className="flex items-center justify-between w-full text-left font-light text-foreground opacity-80 hover:opacity-100 transition-opacity group"
+						className="flex items-center justify-end w-full text-right font-light text-background opacity-80 hover:opacity-100 transition-opacity group bg-foreground px-3 py-1"
 					>
-						<b className="text-sm group-hover:text-foreground/70 transition-colors">De la pharma au code : une reconversion pensée et assumée</b>
-						<ChevronDown 
-							className={`ml-2 transition-transform ${expandedSection === 'pharma' ? 'rotate-180' : ''}`}
+						<h2 className="text-xs md:text-sm group-hover:text-background/70 transition-colors uppercase md:tracking-widest">De la pharma au code </h2>
+						<ArrowDownRight 
+							className={`ml-2 transition-transform ${expandedSection === 'pharma' ? 'rotate-45' : ''}`}
 							size={16}
 							strokeWidth={1.5}
 						/>
@@ -191,12 +191,12 @@ export default function ParcoursPage() {
 				{/* Deuxième paragraphe */}
 				<div className="w-full">
 					<button 
-						onClick={() => toggleSection('web')}
-						className="flex items-center justify-between w-full text-left font-light text-foreground opacity-80 hover:opacity-100 transition-opacity group"
+						onClick={() => toggleSection(	'web')}
+						className="flex items-center justify-end w-full text-right font-light text-background opacity-80 hover:opacity-100 transition-opacity group bg-foreground px-3 py-1"
 					>
-						<b className="text-sm group-hover:text-foreground/70 transition-colors">Du process à la créativité : le virage web</b>
-						<ChevronDown 
-							className={`ml-2 transition-transform ${expandedSection === 'web' ? 'rotate-180' : ''}`}
+						<h2 className="text-xs md:text-sm group-hover:text-background/70 transition-colors uppercase md:tracking-widest">Du process à la créativité</h2>
+						<ArrowDownRight 
+							className={`ml-2 transition-transform ${expandedSection === 'web' ? 'rotate-45' : ''}`}
 							size={16}
 							strokeWidth={1.5}
 						/>
@@ -230,7 +230,7 @@ export default function ParcoursPage() {
 				pauseOnHover={false}
 				autoFill={true}
 				direction="right"
-				className={`text-foreground opacity-90 hover:opacity-100 transition-opacity font-light ${className}`}
+				className={`text-foreground opacity-90 hover:opacity-100 transition-opacity font-light  ${className}`}
 			>
 				{technoElements}
 			</Marquee>
@@ -257,9 +257,9 @@ export default function ParcoursPage() {
 			</Link>
 			<Overlay />
 			<div className="w-[calc(100%-calc(var(--frame-size)*1.8))] h-[calc(100dvh-calc(var(--frame-size)*2))] font-lexend flex items-center justify-center m-[var(--frame-size)]">
-				{/* Titre - Toujours visible en haut */}
+				{/* Titre - Visible uniquement sur mobile */}
 				<div
-					className="absolute top-0 right-0 w-auto h-auto pb-5 pr-10 text-right bg-background z-10 bg-green-500"
+					className="md:hidden absolute top-0 right-0 w-auto h-auto pb-5 pr-10 text-right bg-background z-10"
 					style={{
 						top: "var(--frame-size)",
 						right: "var(--frame-size)",
@@ -287,20 +287,39 @@ export default function ParcoursPage() {
 
 				{/* VERSION DESKTOP - Partie droite avec Bio et Marquee */}
 				<div
-					className="hidden md:block absolute bottom-0 right-0 w-1/3"
+					className="hidden md:flex md:flex-col md:justify-between absolute top-0 right-0 w-1/3 h-[calc(100%-var(--frame-size)*2)]"
+					style={{
+						top: "var(--frame-size)",
+						right: "var(--frame-size)",
+						bottom: "var(--frame-size)",
+					}}
+				>
+					{/* Titre - Version Desktop */}
+					<div className="text-right pr-10 pt-10 pb-5">
+						<h2 className="text-5xl font-light text-foreground uppercase tracking-widest">
+							Parcours
+						</h2>
+						<h3 className="text-2xl font-light text-foreground tracking-widest">
+							Pas classique, mais ça me plait.
+						</h3>
+					</div>
+
+					{/* Bio - Version Desktop */}
+					<div className="flex-grow pr-10 overflow-y-auto">
+						<BioParagraph className="text-sm" />
+					</div>
+				</div>
+				
+				{/* Marquee fixe en bas pour desktop */}
+				<div 
+					className="hidden md:block fixed z-10 pr-10 w-1/3 pb-4"
 					style={{
 						bottom: "var(--frame-size)",
 						right: "var(--frame-size)",
+						height: "2rem"
 					}}
 				>
-					{/* <img src="/assets/images/portrait.jpg" alt="Profile" className="w-1/2 h-1/2 object-cover" /> */}
-					<div className="pr-10 pb-12 md:pb-20">
-						<BioParagraph className="text-sm md:text-md" />
-					</div>
-
-					<div className="absolute bottom-0 right-0 pb-4 pt-2 w-full self-center pr-10 bg-blue-500">
-						<TechnoMarquee />
-					</div>
+					<TechnoMarquee />
 				</div>
 
 				{/* VERSION MOBILE - Contenu empilé */}
@@ -318,7 +337,7 @@ export default function ParcoursPage() {
 					</div>
 
 					{/* Marquee - mobile */}
-					<div className="w-full mb-10 mt-4 px-4 pr-12 pl-10">
+					<div className="w-full mb-10 mt-4 px-4 pr-12 pl-10 ">
 						<TechnoMarquee />
 					</div>
 
