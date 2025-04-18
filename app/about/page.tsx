@@ -5,7 +5,7 @@ import Marquee from "react-fast-marquee";
 import Link from "next/link";
 import { Timeline } from "@mui/lab";
 import useCssVariable from "@/hooks/useCssVariable";
-import React, { useState } from "react";
+import React, { useState, useMemo } from "react";
 import TimelineEventItem from "@/components/molecules/TimelineEventItem";
 import { timelineData } from "@/data/timeline";
 import { 
@@ -122,46 +122,58 @@ export default function AboutPage() {
 		</p>
 	);
 
-	// Composant réutilisable pour le marquee des technologies
-	const TechnoMarquee = ({ className = "" }) => (
+	// Composition des icônes et textes pour le marquee
+	const technoElements = useMemo(() => {
+		return technos.map((tech) => (
+			<div key={tech.name} className="flex items-center mx-4">
+				{tech.icon}
+				<span className="text-sm">{tech.name}</span>
+			</div>
+		));
+	}, []);
+
+	// Composant mémorisé pour le marquee des technologies
+	const TechnoMarquee = useMemo(() => {
+		return ({ className = "" }) => (
+			<Marquee
+				speed={20}
+				gradient={false}
+				pauseOnHover={false}
+				autoFill={true}
+				direction="right"
+				className={`text-foreground opacity-90 hover:opacity-100 transition-opacity font-light ${className}`}
+			>
+				{technoElements}
+			</Marquee>
+		);
+	}, [technoElements]);
+
+	// Marquee du haut mémorisé
+	const HeaderMarquee = useMemo(() => (
 		<Marquee
-			speed={20}
+			speed={40}
 			gradient={false}
-			pauseOnHover={false}
+			pauseOnHover={true}
 			autoFill={true}
-			direction="right"
-			className={`text-foreground opacity-90 hover:opacity-100 transition-opacity font-light ${className}`}
+			className="bg-foreground text-background z-30 absolute top-1 left-0 h-6 tracking-widest cursor-pointer opacity-90 hover:opacity-100 transition-opacity font-light"
 		>
-			{technos.map((tech) => (
-				<div key={tech.name} className="flex items-center mx-4">
-					{tech.icon}
-					<span className="text-sm">{tech.name}</span>
-				</div>
-			))}
+			<span className="mx-4">OPEN TO WORK • DISPONIBLE</span>
 		</Marquee>
-	);
+	), []);
 
 	return (
 		<div className="h-[100dvh] w-[100dvw] overflow-hidden relative">
 			<Link href="/contact">
-				<Marquee
-					speed={40}
-					gradient={false}
-					pauseOnHover={true}
-					autoFill={true}
-					className="bg-foreground text-background z-30 absolute top-1 left-0 h-6 tracking-widest cursor-pointer opacity-90 hover:opacity-100 transition-opacity font-light"
-				>
-					<span className="mx-4">OPEN TO WORK • DISPONIBLE</span>
-				</Marquee>
+				{HeaderMarquee}
 			</Link>
 			<Overlay />
 			<div className="w-[calc(100%-calc(var(--frame-size)*1.8))] h-[calc(100dvh-calc(var(--frame-size)*2))] font-lexend flex items-center justify-center m-[var(--frame-size)]">
 				{/* Titre - Toujours visible en haut */}
 				<div
-					className="absolute top-0 left-0 w-auto h-auto pr-10"
+					className="absolute top-0 right-0 w-auto h-auto pb-5 pr-10 text-right bg-background z-10"
 					style={{
 						top: "var(--frame-size)",
-						left: "var(--frame-size)",
+						right: "var(--frame-size)",
 					}}
 				>
 					<h2 className="text-2xl md:text-5xl font-light text-foreground uppercase tracking-widest ml-10 mt-10">
@@ -179,7 +191,7 @@ export default function AboutPage() {
 						top: "var(--frame-size)",
 						left: "var(--frame-size)",
 					}}>
-					<div className="self-center md:ml-5 w-full">
+					<div className="self-start md:ml-5 w-full h-full pt-10 overflow-y-auto">
 						<TimelineComponent />
 					</div>
 				</section>
@@ -197,7 +209,7 @@ export default function AboutPage() {
 						<BioParagraph className="text-sm md:text-md" />
 					</div>
 
-					<div className="absolute bottom-0 right-0 pb-4 pt-2 pl-16 pr-10 w-[calc(100dvw-calc(var(--frame-size)*1.8))] self-center">
+					<div className="absolute bottom-0 right-0 pb-4 pt-2 w-full self-center pr-10">
 						<TechnoMarquee />
 					</div>
 				</div>
