@@ -64,7 +64,7 @@ export default function ProjectsPage() {
 					}}
 				>
 					<ul className="overflow-y-auto max-h-full scrollbar-thin scrollbar-track-transparent scrollbar-thumb-foreground/20 hover:scrollbar-thumb-foreground/40 pr-4">
-						{projects.map((project) => (
+						{[...projects].reverse().map((project) => (
 							<li
 								key={project.id}
 								className={`text-md font-light text-foreground text-justify py-4 border-t border-foreground flex items-center cursor-pointer transition-all duration-300 ${
@@ -79,7 +79,9 @@ export default function ProjectsPage() {
 										size={64}
 										strokeWidth={0.8}
 										className={`transition-transform duration-300 ${
-											selectedProject?.id === project.id ? "rotate-45" : ""
+											selectedProject?.id === project.id
+												? "rotate-45"
+												: ""
 										}`}
 									/>
 								</div>

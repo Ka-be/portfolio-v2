@@ -53,7 +53,7 @@ const Project = ({
 					<h3 className="text-3xl font-light">
 						{title}
 					</h3>
-					<p className="text-md font-light text-foreground leading-relaxed">
+					<p className="text-sm text-justify font-light text-foreground leading-relaxed">
 						{description}
 					</p>
 					<div className="flex flex-wrap gap-2 pt-1">
