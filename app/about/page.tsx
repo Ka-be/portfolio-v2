@@ -114,6 +114,14 @@ export default function AboutPage() {
 	const BioParagraph = ({ className = "" }) => (
 		<div className="flex flex-col items-end">
 			<img src="/assets/images/portrait.jpg" alt="Profile" className="w-1/2 h-1/2 object-cover mb-4" />
+			<p className={`font-light text-foreground text-justify opacity-80 mb-4 ${className}`}>
+				Développeur concepteur d'applications web et mobile
+				fraîchement titulaire du titre professionnel RNCP.
+				Passionné par la création d'expériences numériques
+				innovantes, je combine expertise technique et créativité
+				pour donner vie à des projets web ambitieux. Basé à
+				Bordeaux.
+			</p>
 			<p className={`font-light text-foreground text-justify opacity-80 ${className}`}>
 				Développeur concepteur d'applications web et mobile
 				fraîchement titulaire du titre professionnel RNCP.
