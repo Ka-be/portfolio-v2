@@ -15,7 +15,7 @@ import {
 	SiSwagger, SiCypress, SiFigma, SiApollographql
 } from "react-icons/si";
 
-export default function AboutPage() {
+export default function ParcoursPage() {
 	const foregroundColor = useCssVariable('--foreground', '#333333');
 	const [activeItemId, setActiveItemId] = useState<number | null>(null);
 

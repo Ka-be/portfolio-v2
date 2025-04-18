@@ -36,7 +36,7 @@ const Navbar = () => {
 	const links = [
 		{ path: "/", label: "Accueil", icon: Home },
 		{ path: "/projects", label: "Projets", icon: FolderOpen },
-		{ path: "/about", label: "Parcours", icon: User },
+		{ path: "/parcours", label: "Parcours", icon: User },
 		{ path: "/contact", label: "Contact", icon: Mail },
 	];
 
