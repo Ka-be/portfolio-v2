@@ -55,7 +55,7 @@ export const projects: Project[] = [
 	},
 	{
 		id: 4,
-		title: "Un autre projet",
+		title: "Lucette Surfwear",
 		description: "Encore un projet cool.",
 		images: [
 			"https://dummyimage.com/600x400/000/fff&text=1",
@@ -67,7 +67,7 @@ export const projects: Project[] = [
 	},
 	{
 		id: 5,
-		title: "Un autre projet",
+		title: "Pokedex",
 		description: "Encore un projet cool.",
 		images: ["https://dummyimage.com/600x400/000/fff&text=1"],
 		link: "/",
@@ -76,7 +76,7 @@ export const projects: Project[] = [
 	},
 	{
 		id: 6,
-		title: "Un autre projet",
+		title: "Weather App",
 		description: "Encore un projet cool.",
 		images: ["https://dummyimage.com/600x400/000/fff&text=1"],
 		link: "/",
@@ -85,7 +85,7 @@ export const projects: Project[] = [
 	},
 	{
 		id: 7,
-		title: "Un autre projet",
+		title: "Star Wars intro",
 		description: "Encore un projet cool.",
 		images: ["https://dummyimage.com/600x400/000/fff&text=1"],
 		link: "/",
@@ -94,7 +94,7 @@ export const projects: Project[] = [
 	},
 	{
 		id: 8,
-		title: "Un autre projet",
+		title: "Metropolis",
 		description: "Encore un projet cool.",
 		images: ["https://dummyimage.com/600x400/000/fff&text=1"],
 		link: "/",
@@ -103,7 +103,7 @@ export const projects: Project[] = [
 	},
 	{
 		id: 9,
-		title: "Un autre projet",
+		title: "Joe's gelatos",
 		description: "Encore un projet cool.",
 		images: ["https://dummyimage.com/600x400/000/fff&text=1"],
 		link: "/",
@@ -112,7 +112,7 @@ export const projects: Project[] = [
 	},
 	{
 		id: 10,
-		title: "Un autre projet",
+		title: "Khord",
 		description: "Encore un projet cool.",
 		images: ["https://dummyimage.com/600x400/000/fff&text=1"],
 		link: "/",
@@ -121,7 +121,7 @@ export const projects: Project[] = [
 	},
 	{
 		id: 11,
-		title: "Un autre projet",
+		title: "Analog",
 		description: "Encore un projet cool.",
 		images: ["https://dummyimage.com/600x400/000/fff&text=1"],
 		link: "/",
@@ -130,11 +130,38 @@ export const projects: Project[] = [
 	},
 	{
 		id: 12,
-		title: "Dernier projet",
+		title: "Roll the game",
 		description: "Encore un projet cool.",
 		images: ["https://dummyimage.com/600x400/000/fff&text=1"],
 		link: "/",
 		github: "/",
 		technos: ["React", "TypeScript"],
 	},
+	{
+		id: 13,
+		title: "Surfrider",
+		description: "Encore un projet cool.",
+		images: ["https://dummyimage.com/600x400/000/fff&text=1"],
+		link: "/",
+		github: "/",
+		technos: ["React", "TypeScript"],
+	},
+	{
+		id: 14,
+		title: "Uncoflow",
+		description: "Encore un projet cool.",
+		images: ["https://dummyimage.com/600x400/000/fff&text=1"],
+		link: "/",
+		github: "/",
+		technos: ["React", "TypeScript"],
+	},
+	{
+		id: 15,
+		title: "Ce portfolio",
+		description: "Encore un projet cool.",
+		images: ["https://dummyimage.com/600x400/000/fff&text=1"],
+		link: "/",
+		github: "/",
+		technos: ["React", "TypeScript", "Supabase", "Tailwind", "Framer Motion", "Next.js"],
+	}
 ];
