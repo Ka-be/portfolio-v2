@@ -14,6 +14,7 @@ import {
 	SiRedis, SiExpress, SiLinux, SiVite, SiVitest, SiJest, SiThreedotjs, 
 	SiSwagger, SiCypress, SiFigma, SiApollographql
 } from "react-icons/si";
+import { ChevronDown } from 'lucide-react';
 
 export default function ParcoursPage() {
 	const foregroundColor = useCssVariable('--foreground', '#333333');
@@ -148,31 +149,67 @@ export default function ParcoursPage() {
 	);
 
 	// Composant réutilisable pour le paragraphe bio
-	const BioParagraph = ({ className = "" }) => (
-		<div className="flex flex-col items-end">
-			<img 
-				src="/assets/images/portrait.jpg" 
-				alt="Profile" 
-				className="w-1/2 h-1/2 object-cover mb-4 filter grayscale" 
-			/>
-			<p className={`font-light text-foreground text-justify opacity-80 mb-4 ${className}`}>
-				Développeur concepteur d'applications web et mobile
-				fraîchement titulaire du titre professionnel RNCP.
-				Passionné par la création d'expériences numériques
-				innovantes, je combine expertise technique et créativité
-				pour donner vie à des projets web ambitieux. Basé à
-				Bordeaux.
-			</p>
-			<p className={`font-light text-foreground text-justify opacity-80 ${className}`}>
-				Développeur concepteur d'applications web et mobile
-				fraîchement titulaire du titre professionnel RNCP.
-				Passionné par la création d'expériences numériques
-				innovantes, je combine expertise technique et créativité
-				pour donner vie à des projets web ambitieux. Basé à
-				Bordeaux.
-			</p>
-		</div>
-	);
+	const BioParagraph = ({ className = "" }) => {
+		const [expandedSection, setExpandedSection] = useState<string | null>(null);
+
+		const toggleSection = (sectionId: string) => {
+			if (expandedSection === sectionId) {
+				setExpandedSection(null);
+			} else {
+				setExpandedSection(sectionId);
+			}
+		};
+
+		return (
+			<div className="flex flex-col items-end  self-start align-top bg-red-500">
+				<img 
+					src="/assets/images/portrait.jpg" 
+					alt="Profile" 
+					className="w-1/3 h-1/3 object-cover mb-4 filter grayscale" 
+				/>
+				
+				{/* Premier paragraphe */}
+				<div className="w-full mb-4">
+					<button 
+						onClick={() => toggleSection('pharma')}
+						className="flex items-center justify-between w-full text-left font-light text-foreground opacity-80 hover:opacity-100 transition-opacity group"
+					>
+						<b className="text-sm group-hover:text-foreground/70 transition-colors">De la pharma au code : une reconversion pensée et assumée</b>
+						<ChevronDown 
+							className={`ml-2 transition-transform ${expandedSection === 'pharma' ? 'rotate-180' : ''}`}
+							size={16}
+							strokeWidth={1.5}
+						/>
+					</button>
+					{expandedSection === 'pharma' && (
+						<p className={`mt-2 font-light text-foreground text-justify opacity-80 text-sm ${className}`}>
+							J'ai commencé ma carrière dans l'industrie pharmaceutique, après l'obtention d'une licence professionnelle orientée qualité en 2013, puis d'un diplôme de Responsable Qualité Sécurité Environnement (niveau 6) en 2016, le tout en alternance. Pendant 6 ans, j'ai occupé le poste de spécialiste assurance qualité qualification/validation, dans lequel j'ai pu développer des compétences solides en gestion de projet, en conformité réglementaire et en rigueur opérationnelle — le tout dans un environnement ultra exigeant.
+						</p>
+					)}
+				</div>
+				
+				{/* Deuxième paragraphe */}
+				<div className="w-full">
+					<button 
+						onClick={() => toggleSection('web')}
+						className="flex items-center justify-between w-full text-left font-light text-foreground opacity-80 hover:opacity-100 transition-opacity group"
+					>
+						<b className="text-sm group-hover:text-foreground/70 transition-colors">Du process à la créativité : le virage web</b>
+						<ChevronDown 
+							className={`ml-2 transition-transform ${expandedSection === 'web' ? 'rotate-180' : ''}`}
+							size={16}
+							strokeWidth={1.5}
+						/>
+					</button>
+					{expandedSection === 'web' && (
+						<p className={`mt-2 font-light text-foreground text-justify opacity-80 text-sm ${className}`}>
+							En 2018, l'envie de changement s'est faite sentir. Passionné de web et animé par une fibre créative, j'ai commencé à me former en autodidacte, avant de franchir le cap en 2022 : quitter mon CDI pour suivre une formation de Développeur Web (niveau 5) chez Studi. J'ai ensuite poursuivi avec une formation de Concepteur Développeur d'Applications (niveau 6) chez O'clock, en alternance chez Sanofi. J'y ai allié mon ancien et nouveau monde — pharma et développement — en créant des applications métier de A à Z. Aujourd'hui, fraîchement diplômé, je suis à la recherche d'une nouvelle opportunité pour mettre à profit mes compétences techniques et ma double expertise.
+						</p>
+					)}
+				</div>
+			</div>
+		);
+	};
 
 	// Composition des icônes et textes pour le marquee
 	const technoElements = useMemo(() => {
@@ -222,7 +259,7 @@ export default function ParcoursPage() {
 			<div className="w-[calc(100%-calc(var(--frame-size)*1.8))] h-[calc(100dvh-calc(var(--frame-size)*2))] font-lexend flex items-center justify-center m-[var(--frame-size)]">
 				{/* Titre - Toujours visible en haut */}
 				<div
-					className="absolute top-0 right-0 w-auto h-auto pb-5 pr-10 text-right bg-background z-10"
+					className="absolute top-0 right-0 w-auto h-auto pb-5 pr-10 text-right bg-background z-10 bg-green-500"
 					style={{
 						top: "var(--frame-size)",
 						right: "var(--frame-size)",
@@ -261,7 +298,7 @@ export default function ParcoursPage() {
 						<BioParagraph className="text-sm md:text-md" />
 					</div>
 
-					<div className="absolute bottom-0 right-0 pb-4 pt-2 w-full self-center pr-10">
+					<div className="absolute bottom-0 right-0 pb-4 pt-2 w-full self-center pr-10 bg-blue-500">
 						<TechnoMarquee />
 					</div>
 				</div>
