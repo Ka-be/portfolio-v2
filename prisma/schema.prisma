@@ -16,25 +16,56 @@ datasource db {
 }
 
 model Project {
-  id        Int   @id @default(autoincrement())
-  title     String
+  id          Int      @id @default(autoincrement())
+  title       String
   description String
-  images     String[]
-  link     String?
-  github     String?
-  technos     String[]
-  createdAt DateTime @default(now())
+  images      String[]
+  link        String?
+  github      String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  // Relation N:M
+  skills ProjectSkill[]
 }
 
-model TimelineEvent {
-  id        Int   @id @default(autoincrement())
-  title     String
+model Event {
+  id          Int          @id @default(autoincrement())
+  title       String
   description String
-  period String
-  place String
-  type String
-  skills String[]
-  createdAt DateTime @default(now())
+  period      String
+  place       String
+  type        String
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+  skills      EventSkill[]
 }
 
+model Skill {
+  id        Int            @id @default(autoincrement())
+  name      String         @unique
+  createdAt DateTime       @default(now())
+  updatedAt DateTime       @updatedAt
+  projects  ProjectSkill[]
+  events    EventSkill[]
+}
 
+model ProjectSkill {
+  project   Project @relation(fields: [projectId], references: [id])
+  projectId Int
+
+  skill   Skill @relation(fields: [skillId], references: [id])
+  skillId Int
+
+  @@id([projectId, skillId])
+}
+
+model EventSkill {
+  event   Event @relation(fields: [eventId], references: [id])
+  eventId Int
+
+  skill   Skill @relation(fields: [skillId], references: [id])
+  skillId Int
+
+  @@id([eventId, skillId])
+}
