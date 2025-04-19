@@ -1,0 +1,53 @@
+@startuml
+entity "PROJECT" as Project {
+    *id : INT
+    --
+    title : VARCHAR
+    description : TEXT
+    images : TEXT
+    web_link : VARCHAR
+    github_link : VARCHAR
+    created_at : DATETIME
+    updated_at : DATETIME
+}
+
+entity "EVENT" as Event {
+    *id : INT
+    --
+    title : VARCHAR
+    description : TEXT
+    type : VARCHAR
+    place : VARCHAR
+    period : VARCHAR
+    created_at : DATETIME
+    updated_at : DATETIME
+}
+
+entity "SKILL" as Skill {
+    *id : INT
+    --
+    name : VARCHAR
+    created_at : DATETIME
+    updated_at : DATETIME
+}
+
+entity "PROJECT_SKILL" {
+    *project_id : INT
+    *skill_id : INT
+    --
+    created_at : DATETIME
+}
+
+entity "EVENT_SKILL" {
+    *event_id : INT
+    *skill_id : INT
+    --
+    created_at : DATETIME
+}
+
+Project "1" -- "0,n" PROJECT_SKILL : utilise
+PROJECT_SKILL "0,n" -- "1" Skill : avec
+
+Event "1" -- "0,n" EVENT_SKILL : implique
+EVENT_SKILL "0,n" -- "1" Skill : avec
+@enduml
