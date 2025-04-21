@@ -7,7 +7,7 @@ export default function Home() {
 			<main className="flex-1 flex flex-col items-center justify-center">
 				<AnimatedLogo />
 				<h1 className="text-xl uppercase font-light tracking-widest mt-4">
-					Work in progress
+					Work in progress.
 				</h1>
 			</main>
 			<Footer />
