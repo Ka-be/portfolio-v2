@@ -108,7 +108,7 @@ const ContactForm = () => {
 							value={formData.email}
 							onChange={handleChange}
 							required
-							className="bg-transparent border border-foreground p-2 text-foreground hover:border-foreground/30 focus:bg-foreground focus:text-background outline-none transition-colors duration-300"
+							className="bg-transparent border border-foreground/30 p-2 text-foreground hover:border-foreground focus:bg-foreground focus:text-background outline-none transition-colors duration-300"
 						/>
 					</div>
 					<div className="flex flex-col gap-2">
@@ -123,7 +123,7 @@ const ContactForm = () => {
 							id="name"
 							value={formData.name}
 							onChange={handleChange}
-							className="bg-transparent border border-foreground p-2 text-foreground hover:border-foreground/30 focus:bg-foreground focus:text-background outline-none transition-colors duration-300"
+							className="bg-transparent border border-foreground/30 p-2 text-foreground hover:border-foreground focus:bg-foreground focus:text-background outline-none transition-colors duration-300"
 						/>
 					</div>
 					<div className="flex flex-col gap-2">
@@ -138,7 +138,7 @@ const ContactForm = () => {
 							value={formData.message}
 							onChange={handleChange}
 							rows={4}
-							className="bg-transparent border border-foreground p-2 text-foreground hover:border-foreground/30 focus:bg-foreground focus:text-background outline-none transition-colors duration-300 resize-none"
+							className="bg-transparent border border-foreground/30 p-2 text-foreground hover:border-foreground focus:bg-foreground focus:text-background outline-none transition-colors duration-300 resize-none"
 						/>
 					</div>
 				</>
