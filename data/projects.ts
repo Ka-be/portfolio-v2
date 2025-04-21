@@ -104,26 +104,26 @@ export const projects: Project[] = [
 	{
 		id: 13,
 		title: "Opération prospection",
-		description: "Encore un projet cool.",
+		description: "Page de vente ",
 		images: [
 			"https://dummyimage.com/600x400/000/fff&text=1",
 			"https://dummyimage.com/600x400/000/fff&text=2",
 		],
 		github: "/",
 		link: "https://operation-prospection.holostudio.fr/",
-		technos: ["Showit", "JavaScript"],
+		technos: ["Showit", "JavaScript", "CSS"],
 	},
 	{
 		id: 14,
 		title: "Lucette Surfwear",
-		description: "Encore un projet cool.",
+		description: "Design et création du site e-shop pour Lucette Surfwear, marque de vêtements de surf médocaine.",
 		images: [
 			"https://dummyimage.com/600x400/000/fff&text=1",
 			"https://dummyimage.com/600x400/000/fff&text=2",
 		],
 		link: "/",
 		github: "/",
-		technos: ["React", "TypeScript"],
+		technos: ["Javascript", "Shopify"],
 	},
 	{
 		id: 15,
@@ -155,7 +155,7 @@ export const projects: Project[] = [
 		id: 16,
 		title: "Dishly",
 		description:
-			"Worduel est un jeu de type Wordle avec une interface simple et intuitive et une dimension multi-joueur.",
+			"Dishly est une application de suivre d'organiser et de suivre facilement ses recettes de cuisine.",
 		images: ["https://dummyimage.com/600x400/000/fff&text=1"],
 		link: "",
 		github: "https://github.com/Ka-be/dishly/",
