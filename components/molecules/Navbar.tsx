@@ -93,7 +93,7 @@ const Navbar = () => {
 				}}
 			>
 				
-				<div className="flex items-center">
+				<div className="flex items-center w-[4dvmin]">
 					<Link
 						href="/"
 						className="opacity-70 hover:opacity-100 transition-opacity h-[4dvmin]"
