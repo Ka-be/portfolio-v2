@@ -1,6 +1,6 @@
 "use client";
 
-import { Suspense, lazy, useState, useRef, ReactNode } from "react";
+import { Suspense, lazy, useState, ReactNode } from "react";
 import { Canvas } from "@react-three/fiber";
 import { motion, AnimatePresence } from "framer-motion";
 import Loader from "../atoms/Loader";

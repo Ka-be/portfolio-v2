@@ -44,99 +44,8 @@ export default function ParcoursPage() {
 		{
 			id: 'web',
 			title: 'Du process à la créativité',
-			content: <>En 2018, l'envie de changement s'est faite sentir. Passionné de web et animé par une fibre créative, j'ai commencé à me former en autodidacte, avant de franchir le cap en 2022 : quitter mon CDI pour suivre une formation de Développeur Web (niveau 5) chez <Link href="https://www.studi.com/" target="_blank" className="font-bold hover:bg-foreground hover:text-background transition-colors ">Studi</Link>. J'ai ensuite poursuivi avec une formation de Concepteur Développeur d'Applications (niveau 6) chez <Link href="https://www.oclock.io/" target="_blank" className="font-bold hover:bg-foreground hover:text-background transition-colors">O'clock</Link>, en alternance chez <Link href="https://www.sanofi.com/" target="_blank" className="font-bold hover:bg-foreground hover:text-background transition-colors">Sanofi</Link>. J'y ai allié mon ancien et nouveau monde — pharma et développement — en créant des applications métier de A à Z. Aujourd'hui, fraîchement diplômé, je suis à la recherche d'une nouvelle opportunité pour mettre à profit mes compétences techniques, ma créativité et mes connaissances sur les technos suivantes : </>
+			content: <>En 2018, l&apos;envie de changement s&apos;est faite sentir. Passionné de web et animé par une fibre créative, j&apos;ai commencé à me former en autodidacte, avant de franchir le cap en 2022 : quitter mon CDI pour suivre une formation de Développeur Web (niveau 5) chez <Link href="https://www.studi.com/" target="_blank" className="font-bold hover:bg-foreground hover:text-background transition-colors ">Studi</Link>. J&apos;ai ensuite poursuivi avec une formation de Concepteur Développeur d&apos;Applications (niveau 6) chez <Link href="https://www.oclock.io/" target="_blank" className="font-bold hover:bg-foreground hover:text-background transition-colors">O&apos;clock</Link>, en alternance chez <Link href="https://www.sanofi.com/" target="_blank" className="font-bold hover:bg-foreground hover:text-background transition-colors">Sanofi</Link>. J&apos;y ai allié mon ancien et nouveau monde — pharma et développement — en créant des applications métier de A à Z. Aujourd&apos;hui, fraîchement diplômé, je suis à la recherche d&apos;une nouvelle opportunité pour mettre à profit mes compétences techniques, ma créativité et mes connaissances sur les technos suivantes : </>
 		}
-	];
-
-	const technos = [
-		{
-			name: "React",
-			icon: <SiReact size={16} className="mr-2" />
-		},
-		{
-			name: "Next.js",
-			icon: <SiNextdotjs size={16} className="mr-2" />
-		},
-		{
-			name: "Tailwind CSS",
-			icon: <SiTailwindcss size={16} className="mr-2" />
-		},
-		{
-			name: "TypeScript",
-			icon: <SiTypescript size={16} className="mr-2" />
-		},
-		{
-			name: "Node.js",
-			icon: <SiNodedotjs size={16} className="mr-2" />
-		},
-		{
-			name: "Docker",
-			icon: <SiDocker size={16} className="mr-2" />
-		},
-		{
-			name: "Git",
-			icon: <SiGit size={16} className="mr-2" />
-		},
-		{
-			name: "GitHub",
-			icon: <SiGithub size={16} className="mr-2" />
-		},
-		{
-			name: "Prisma",
-			icon: <SiPrisma size={16} className="mr-2" />
-		},
-		{
-			name: "Apollo",
-			icon: <SiApollographql size={16} className="mr-2" />
-		},
-		{
-			name: "PostgreSQL",
-			icon: <SiPostgresql size={16} className="mr-2" />
-		},
-		{
-			name: "MongoDB",
-			icon: <SiMongodb size={16} className="mr-2" />
-		},
-		{
-			name: "Redis",
-			icon: <SiRedis size={16} className="mr-2" />
-		},
-		{
-			name: "Express",
-			icon: <SiExpress size={16} className="mr-2" />
-		},
-		{
-			name: "Linux",
-			icon: <SiLinux size={16} className="mr-2" />
-		},
-		{
-			name: "Vite",
-			icon: <SiVite size={16} className="mr-2" />
-		},
-		{
-			name: "Vitest",
-			icon: <SiVitest size={16} className="mr-2" />
-		},
-		{
-			name: "Jest",
-			icon: <SiJest size={16} className="mr-2" />
-		},
-		{
-			name: "Three.js",
-			icon: <SiThreedotjs size={16} className="mr-2" />
-		},
-		{
-			name: "Swagger",
-			icon: <SiSwagger size={16} className="mr-2" />
-		},
-		{
-			name: "Cypress",
-			icon: <SiCypress size={16} className="mr-2" />
-		},
-		{
-			name: "Figma",
-			icon: <SiFigma size={16} className="mr-2" />
-		},
 	];
 
 	// Composant réutilisable pour le titre de la page
@@ -246,13 +155,104 @@ export default function ParcoursPage() {
 
 	// Composition des icônes et textes pour le marquee
 	const technoElements = useMemo(() => {
+		const technos = [
+			{
+				name: "React",
+				icon: <SiReact size={16} className="mr-2" />
+			},
+			{
+				name: "Next.js",
+				icon: <SiNextdotjs size={16} className="mr-2" />
+			},
+			{
+				name: "Tailwind CSS",
+				icon: <SiTailwindcss size={16} className="mr-2" />
+			},
+			{
+				name: "TypeScript",
+				icon: <SiTypescript size={16} className="mr-2" />
+			},
+			{
+				name: "Node.js",
+				icon: <SiNodedotjs size={16} className="mr-2" />
+			},
+			{
+				name: "Docker",
+				icon: <SiDocker size={16} className="mr-2" />
+			},
+			{
+				name: "Git",
+				icon: <SiGit size={16} className="mr-2" />
+			},
+			{
+				name: "GitHub",
+				icon: <SiGithub size={16} className="mr-2" />
+			},
+			{
+				name: "Prisma",
+				icon: <SiPrisma size={16} className="mr-2" />
+			},
+			{
+				name: "Apollo",
+				icon: <SiApollographql size={16} className="mr-2" />
+			},
+			{
+				name: "PostgreSQL",
+				icon: <SiPostgresql size={16} className="mr-2" />
+			},
+			{
+				name: "MongoDB",
+				icon: <SiMongodb size={16} className="mr-2" />
+			},
+			{
+				name: "Redis",
+				icon: <SiRedis size={16} className="mr-2" />
+			},
+			{
+				name: "Express",
+				icon: <SiExpress size={16} className="mr-2" />
+			},
+			{
+				name: "Linux",
+				icon: <SiLinux size={16} className="mr-2" />
+			},
+			{
+				name: "Vite",
+				icon: <SiVite size={16} className="mr-2" />
+			},
+			{
+				name: "Vitest",
+				icon: <SiVitest size={16} className="mr-2" />
+			},
+			{
+				name: "Jest",
+				icon: <SiJest size={16} className="mr-2" />
+			},
+			{
+				name: "Three.js",
+				icon: <SiThreedotjs size={16} className="mr-2" />
+			},
+			{
+				name: "Swagger",
+				icon: <SiSwagger size={16} className="mr-2" />
+			},
+			{
+				name: "Cypress",
+				icon: <SiCypress size={16} className="mr-2" />
+			},
+			{
+				name: "Figma",
+				icon: <SiFigma size={16} className="mr-2" />
+			},
+		];
+		
 		return technos.map((tech) => (
 			<div key={tech.name} className="flex items-center mx-4">
 				{tech.icon}
 				<span className="text-sm">{tech.name}</span>
 			</div>
 		));
-	}, [technos]);
+	}, []);
 
 	// Composant qui renvoie les éléments du Marquee
 	const MarqueeComponent = () => (
@@ -260,7 +260,8 @@ export default function ParcoursPage() {
 			speed={30}
 			gradient={false}
 			pauseOnHover={true}
-			className="h-10 tracking-widest cursor-default hover:text-background/70 transition-colors duration-300 ease-in-out"
+			direction="right"
+			className="h-10 tracking-widest text-foreground/80 hover:text-foreground transition-colors duration-300 ease-in-out"
 		>
 			{technoElements}
 		</Marquee>
