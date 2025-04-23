@@ -27,7 +27,7 @@ const Project = ({
 
 	const imageContainerClasses = isMobile
 		? "flex justify-center items-center w-full px-12"
-		: "flex justify-center items-center w-1/2 ml-12";
+		: "flex justify-center items-center w-1/2 ml-12 ";
 
 	const contentContainerClasses = isMobile
 		? "flex flex-col gap-4"
