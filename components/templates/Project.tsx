@@ -36,7 +36,7 @@ const Project = ({
 	return (
 		<section className={containerClasses}>
 			<div className={imageContainerClasses}>
-				<Carousel>
+				{/* <Carousel>
   					<CarouselContent >
     					{images.map((image, index) => (
 							<CarouselItem key={index}>
@@ -46,7 +46,7 @@ const Project = ({
   					</CarouselContent>
   					<CarouselPrevious />
   					<CarouselNext />
-				</Carousel>
+				</Carousel> */}
 			</div>
 			<div className={contentContainerClasses}>
 				<div className="space-y-2">
