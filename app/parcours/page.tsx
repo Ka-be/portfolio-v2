@@ -5,7 +5,7 @@ import Marquee from "react-fast-marquee";
 import Link from "next/link";
 import { Timeline } from "@mui/lab";
 import useCssVariable from "@/hooks/useCssVariable";
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, useCallback } from "react";
 import TimelineEventItem from "@/components/molecules/TimelineEventItem";
 import { timelineData } from "@/data/timeline";
 import { 
@@ -30,9 +30,35 @@ type PageTitleProps = {
 	className?: string;
 };
 
+// Créer un contexte pour gérer l'état de la timeline séparément
+const TimelineContext = React.createContext<{
+	activeItemId: number | null;
+	setActiveItemId: React.Dispatch<React.SetStateAction<number | null>>;
+}>({
+	activeItemId: null,
+	setActiveItemId: () => {},
+});
+
+// Créer un contexte pour les bio sections
+const BioContext = React.createContext<{
+	expandedSection: string | null;
+	toggleSection: (id: string) => void;
+}>({
+	expandedSection: null,
+	toggleSection: () => {},
+});
+
 export default function ParcoursPage() {
 	const foregroundColor = useCssVariable('--foreground', '#333333');
+	
+	// État isolé pour la timeline
 	const [activeItemId, setActiveItemId] = useState<number | null>(null);
+	
+	// État isolé pour les bio sections
+	const [expandedSection, setExpandedSection] = useState<string | null>(null);
+	const toggleBioSection = useCallback((sectionId: string) => {
+		setExpandedSection(prev => prev === sectionId ? null : sectionId);
+	}, []);
 
 	// Configuration des sections bio
 	const bioSections: BioSectionProps[] = [
@@ -61,7 +87,7 @@ export default function ParcoursPage() {
 	);
 
 	// Composant réutilisable pour un bouton bio
-	const BioButton = ({ id, title, isExpanded, onClick }: { id: string; title: string; isExpanded: boolean; onClick: () => void }) => (
+	const BioButton = React.memo(({ id, title, isExpanded, onClick }: { id: string; title: string; isExpanded: boolean; onClick: () => void }) => (
 		<button 
 			onClick={onClick}
 			className="flex items-center justify-end w-full text-right font-light text-background opacity-80 hover:opacity-100 transition-opacity group bg-foreground px-3 py-1"
@@ -73,86 +99,91 @@ export default function ParcoursPage() {
 				strokeWidth={1.5}
 			/>
 		</button>
-	);
+	));
+	
+	BioButton.displayName = 'BioButton';
 
-	// Composant réutilisable pour la timeline
-	const TimelineComponent = () => (
-		<Timeline position="right" className="text-foreground w-full text-sm">
-			{/* Item Année fixe pour "Aujourd'hui" */}
-			<TimelineEventItem 
-				id={-1}
-				period="En recherche active"
-				title=""
-				place=""
-				description=""
-				foregroundColor={foregroundColor}
-				isYear={true}
-				activeItemId={activeItemId}
-				setActiveItemId={setActiveItemId}
-			/>
-			
-			{/* Items dynamiques depuis timelineData */}
-			{[...timelineData]
-				.sort((a, b) => b.id - a.id) 
-				.map((item) => (
-				<TimelineEventItem 
-					key={item.id}
-					id={item.id}
-					period={item.period}
-					title={item.title}
-					place={item.place}
-					description={item.description}
-					type={item.type}
-					skills={item.skills}
-					foregroundColor={foregroundColor}
-					activeItemId={activeItemId}
-					setActiveItemId={setActiveItemId}
-				/>
-			))}
-		</Timeline>
-	);
-
-	// Composant réutilisable pour le paragraphe bio
-	const BioParagraph = ({ className = "" }) => {
-		const [expandedSection, setExpandedSection] = useState<string | null>(null);
-
-		const toggleSection = (sectionId: string) => {
-			if (expandedSection === sectionId) {
-				setExpandedSection(null);
-			} else {
-				setExpandedSection(sectionId);
-			}
-		};
-
-		return (
-			<div className="flex flex-col items-end self-start">
-				<Image 
-					src="/assets/images/portrait.jpg" 
-					alt="Profile" 
-					width={200}
-					height={200}
-					className="w-1/3 h-1/3 object-cover mb-4 filter grayscale" 
-				/>
-				
-				{bioSections.map((section, index) => (
-					<div key={section.id} className={`w-full ${index < bioSections.length - 1 ? 'mb-4' : ''}`}>
-						<BioButton 
-							id={section.id}
-							title={section.title}
-							isExpanded={expandedSection === section.id}
-							onClick={() => toggleSection(section.id)}
+	// Composant réutilisable pour la timeline - mémorisé
+	const TimelineComponent = useMemo(() => {
+		const TimelineEl = () => (
+			<TimelineContext.Provider value={{ activeItemId, setActiveItemId }}>
+				<Timeline position="right" className="text-foreground w-full text-sm">
+					{/* Item Année fixe pour "Aujourd'hui" */}
+					<TimelineEventItem 
+						id={-1}
+						period="En recherche active"
+						title=""
+						place=""
+						description=""
+						foregroundColor={foregroundColor}
+						isYear={true}
+						activeItemId={activeItemId}
+						setActiveItemId={setActiveItemId}
+					/>
+					
+					{/* Items dynamiques depuis timelineData */}
+					{[...timelineData]
+						.sort((a, b) => b.id - a.id) 
+						.map((item) => (
+						<TimelineEventItem 
+							key={item.id}
+							id={item.id}
+							period={item.period}
+							title={item.title}
+							place={item.place}
+							description={item.description}
+							type={item.type}
+							skills={item.skills}
+							foregroundColor={foregroundColor}
+							activeItemId={activeItemId}
+							setActiveItemId={setActiveItemId}
 						/>
-						{expandedSection === section.id && (
-							<p className={`mt-2 font-light text-foreground text-justify opacity-80 text-sm ${className}`}>
-								{section.content}
-							</p>
-						)}
-					</div>
-				))}
-			</div>
+					))}
+				</Timeline>
+			</TimelineContext.Provider>
 		);
-	};
+		
+		TimelineEl.displayName = 'TimelineEl';
+		return TimelineEl;
+	}, [foregroundColor, activeItemId, setActiveItemId]);
 
+	// Composant réutilisable pour le paragraphe bio avec état isolé
+	const BioParagraph = useMemo(() => {
+		const BioEl = ({ className = "" }: { className?: string }) => (
+			<BioContext.Provider value={{ expandedSection, toggleSection: toggleBioSection }}>
+				<div className="flex flex-col items-end self-start">
+					<Image 
+						src="/assets/images/portrait.jpg" 
+						alt="Profile" 
+						width={200}
+						height={200}
+						className="w-1/3 h-1/3 object-cover mb-4 filter grayscale" 
+						priority
+					/>
+					
+					{bioSections.map((section, index) => (
+						<div key={section.id} className={`w-full ${index < bioSections.length - 1 ? 'mb-4' : ''}`}>
+							<BioButton 
+								id={section.id}
+								title={section.title}
+								isExpanded={expandedSection === section.id}
+								onClick={() => toggleBioSection(section.id)}
+							/>
+							{expandedSection === section.id && (
+								<p className={`mt-2 font-light text-foreground text-justify opacity-80 text-sm ${className}`}>
+									{section.content}
+								</p>
+							)}
+						</div>
+					))}
+				</div>
+			</BioContext.Provider>
+		);
+		
+		BioEl.displayName = 'BioEl';
+		return BioEl;
+	}, [bioSections, expandedSection, toggleBioSection]);
+	
 	// Composition des icônes et textes pour le marquee
 	const technoElements = useMemo(() => {
 		const technos = [
@@ -254,20 +285,23 @@ export default function ParcoursPage() {
 		));
 	}, []);
 
-	// Composant qui renvoie les éléments du Marquee
-	const MarqueeComponent = () => (
-		<Marquee
-			speed={30}
-			gradient={false}
-			pauseOnHover={true}
-			direction="right"
-			className="h-10 tracking-widest text-foreground/80 hover:text-foreground transition-colors duration-300 ease-in-out"
-		>
-			{technoElements}
-		</Marquee>
-	);
-	
-	MarqueeComponent.displayName = 'MarqueeComponent';
+	// Composant qui renvoie les éléments du Marquee - mémorisé pour éviter les rerenders
+	const MarqueeComponent = useMemo(() => {
+		const MarqueeEl = () => (
+			<Marquee
+				speed={30}
+				gradient={false}
+				pauseOnHover={true}
+				direction="right"
+				className="h-10 tracking-widest text-foreground/80 hover:text-foreground transition-colors duration-300 ease-in-out"
+			>
+				{technoElements}
+			</Marquee>
+		);
+		
+		MarqueeEl.displayName = 'MarqueeEl';
+		return MarqueeEl;
+	}, [technoElements]);
 
 	// Marquee du haut mémorisé
 	const HeaderMarquee = useMemo(() => (

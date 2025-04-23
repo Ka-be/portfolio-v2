@@ -154,6 +154,17 @@
     padding: 0;
     overflow-x: hidden;
   }
+
+  /* Style de sélection de texte personnalisé */
+  ::selection {
+    background-color: hsl(var(--foreground));
+    color: hsl(var(--background));
+  }
+
+  ::-moz-selection {
+    background-color: hsl(var(--foreground));
+    color: hsl(var(--background));
+  }
 }
 
 /* Personnalisation de la barre de défilement */
