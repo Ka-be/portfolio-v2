@@ -39,7 +39,7 @@ export default function ParcoursPage() {
 		{
 			id: 'pharma',
 			title: 'De la pharma au code',
-			content: "J&apos;ai commencé ma carrière dans l&apos;industrie pharmaceutique, après l&apos;obtention d&apos;une licence professionnelle orientée qualité en 2013, puis d&apos;un diplôme de Responsable Qualité Sécurité Environnement (niveau 6) en 2016, le tout en alternance. Pendant 6 ans, j&apos;ai occupé le poste de spécialiste assurance qualité qualification/validation, dans lequel j&apos;ai pu développer des compétences solides en gestion de projet, en conformité réglementaire et en rigueur opérationnelle — le tout dans un environnement ultra exigeant."
+			content: <>J&apos;ai commencé ma carrière dans l&apos;industrie pharmaceutique, après l&apos;obtention d&apos;une licence professionnelle orientée qualité en 2013, puis d&apos;un diplôme de Responsable Qualité Sécurité Environnement (niveau 6) en 2016, le tout en alternance. Pendant 6 ans, j&apos;ai occupé le poste de spécialiste assurance qualité qualification/validation, dans lequel j&apos;ai pu développer des compétences solides en gestion de projet, en conformité réglementaire et en rigueur opérationnelle — le tout dans un environnement ultra exigeant.</>
 		},
 		{
 			id: 'web',
