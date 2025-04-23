@@ -1,11 +1,9 @@
 import React from "react";
 import Badge from "@/components/atoms/Badge";
 import ProjectLink from "@/components/atoms/ProjectLink";
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 interface ProjectProps {
 	title: string;
 	description: string;
-	images: string[];
 	technos?: string[];
 	link?: string;
 	github?: string;
@@ -15,7 +13,6 @@ interface ProjectProps {
 const Project = ({
 	title,
 	description,
-	images,
 	technos,
 	link,
 	github,

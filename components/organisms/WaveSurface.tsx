@@ -1,6 +1,6 @@
 "use client";
 
-import { Suspense, lazy, useEffect, useState, useRef, ReactNode } from "react";
+import { Suspense, lazy, useState, useRef, ReactNode } from "react";
 import { Canvas } from "@react-three/fiber";
 import { motion, AnimatePresence } from "framer-motion";
 import Loader from "../atoms/Loader";
@@ -33,7 +33,6 @@ const StaticContainer = ({ children }: StaticContainerProps) => (
 // Composant pour le Canvas avec chargement différé
 const DynamicCanvas = () => {
   const [canvasReady, setCanvasReady] = useState(false);
-  const containerRef = useRef<HTMLDivElement>(null);
 
   const handleLoaderComplete = () => {
     setTimeout(() => setCanvasReady(true), 200);

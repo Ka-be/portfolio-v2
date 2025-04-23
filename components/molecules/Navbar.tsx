@@ -4,12 +4,11 @@ import { usePathname } from "next/navigation";
 import { useState, useEffect } from "react";
 import DarkModeToggle from "../atoms/DarkModeToggle";
 import Logo from "../atoms/Logo";
-import { Home, FolderOpen, User, Mail, Menu, X } from "lucide-react";
+import { Home, FolderOpen, User, Mail, Menu } from "lucide-react";
 
 const Navbar = () => {
 	const pathname = usePathname();
 	const [activePath, setActivePath] = useState("");
-	const [isDark, setIsDark] = useState(true);
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
 
 	useEffect(() => {

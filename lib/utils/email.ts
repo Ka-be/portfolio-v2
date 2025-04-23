@@ -22,7 +22,7 @@ export const sendEmail = async (formData: ContactFormInput): Promise<void> => {
             templateParams,
             process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!
         )
-    } catch (error: any) {
+    } catch (error: unknown) {
         console.error('Erreur lors de l\'envoi du mail via EmailJS:', error)
         throw new Error('Erreur lors de l\'envoi du mail via EmailJS')
     }

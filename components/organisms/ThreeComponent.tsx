@@ -7,7 +7,7 @@ import { Canvas, useFrame } from '@react-three/fiber';
 
 
 
-const Sphere = ({ position, radius, color, args }: { position: [number, number, number], radius: number, color: string, args: [number, number, number] }) => {
+const Sphere = ({ position, color, args }: { position: [number, number, number], color: string, args: [number, number, number] }) => {
     const ref = useRef<import('three').Mesh>(null);
 
     const [isHovered, setIsHovered] = useState(false);
@@ -39,7 +39,7 @@ const ThreeComponent = () => {
             <Canvas style={{ width: '100vw', height: '50vh' }}>
                 <directionalLight position={[1, 1, 2]} />
                 <ambientLight intensity={0.3} />
-                <Sphere position={[0, 0, 0]} radius={1} color={'white'} args={[1, 32, 20]} /> 
+                <Sphere position={[0, 0, 0]} color={'white'} args={[1, 32, 20]} /> 
 
             </Canvas>
         </div>

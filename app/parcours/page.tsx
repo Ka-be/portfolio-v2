@@ -15,6 +15,7 @@ import {
 	SiSwagger, SiCypress, SiFigma, SiApollographql
 } from "react-icons/si";
 import { ArrowDownRight } from "lucide-react";
+import Image from "next/image";
 
 // Type pour les sections bio
 type BioSectionProps = {
@@ -38,7 +39,7 @@ export default function ParcoursPage() {
 		{
 			id: 'pharma',
 			title: 'De la pharma au code',
-			content: "J'ai commencé ma carrière dans l'industrie pharmaceutique, après l'obtention d'une licence professionnelle orientée qualité en 2013, puis d'un diplôme de Responsable Qualité Sécurité Environnement (niveau 6) en 2016, le tout en alternance. Pendant 6 ans, j'ai occupé le poste de spécialiste assurance qualité qualification/validation, dans lequel j'ai pu développer des compétences solides en gestion de projet, en conformité réglementaire et en rigueur opérationnelle — le tout dans un environnement ultra exigeant."
+			content: "J&apos;ai commencé ma carrière dans l&apos;industrie pharmaceutique, après l&apos;obtention d&apos;une licence professionnelle orientée qualité en 2013, puis d&apos;un diplôme de Responsable Qualité Sécurité Environnement (niveau 6) en 2016, le tout en alternance. Pendant 6 ans, j&apos;ai occupé le poste de spécialiste assurance qualité qualification/validation, dans lequel j&apos;ai pu développer des compétences solides en gestion de projet, en conformité réglementaire et en rigueur opérationnelle — le tout dans un environnement ultra exigeant."
 		},
 		{
 			id: 'web',
@@ -216,9 +217,11 @@ export default function ParcoursPage() {
 
 		return (
 			<div className="flex flex-col items-end self-start">
-				<img 
+				<Image 
 					src="/assets/images/portrait.jpg" 
 					alt="Profile" 
+					width={200}
+					height={200}
 					className="w-1/3 h-1/3 object-cover mb-4 filter grayscale" 
 				/>
 				
@@ -249,23 +252,21 @@ export default function ParcoursPage() {
 				<span className="text-sm">{tech.name}</span>
 			</div>
 		));
-	}, []);
+	}, [technos]);
 
-	// Composant mémorisé pour le marquee des technologies
-	const TechnoMarquee = useMemo(() => {
-		return ({ className = "" }) => (
-			<Marquee
-				speed={20}
-				gradient={false}
-				pauseOnHover={false}
-				autoFill={true}
-				direction="right"
-				className={`text-foreground opacity-90 hover:opacity-100 transition-opacity font-light ${className}`}
-			>
-				{technoElements}
-			</Marquee>
-		);
-	}, [technoElements]);
+	// Composant qui renvoie les éléments du Marquee
+	const MarqueeComponent = () => (
+		<Marquee
+			speed={30}
+			gradient={false}
+			pauseOnHover={true}
+			className="h-10 tracking-widest cursor-default hover:text-background/70 transition-colors duration-300 ease-in-out"
+		>
+			{technoElements}
+		</Marquee>
+	);
+	
+	MarqueeComponent.displayName = 'MarqueeComponent';
 
 	// Marquee du haut mémorisé
 	const HeaderMarquee = useMemo(() => (
@@ -339,7 +340,7 @@ export default function ParcoursPage() {
 						height: "2rem"
 					}}
 				>
-					<TechnoMarquee />
+					<MarqueeComponent />
 				</div>
 
 				{/* VERSION MOBILE - Contenu empilé */}
@@ -358,7 +359,7 @@ export default function ParcoursPage() {
 
 					{/* Marquee - mobile */}
 					<div className="w-full mb-10 mt-4 px-4 pr-12 pl-10">
-						<TechnoMarquee />
+						<MarqueeComponent />
 					</div>
 
 					{/* Timeline - mobile */}

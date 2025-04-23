@@ -22,12 +22,6 @@ interface FormData {
 	message: string;
 }
 
-interface FormErrors {
-	email?: string;
-	name?: string;
-	message?: string;
-}
-
 const ContactForm = () => {
 	const [formData, setFormData] = useState<FormData>({
 		email: "",
@@ -37,7 +31,6 @@ const ContactForm = () => {
 
 	const [isSubmitted, setIsSubmitted] = useState(false);
 	const [isPending, setIsPending] = useState(false);
-	const [isHovered, setIsHovered] = useState(false);
 	const [submittedName, setSubmittedName] = useState("");
 
 	const handleChange = (
@@ -140,10 +133,6 @@ const ContactForm = () => {
 			<button
 				type="submit"
 				disabled={isSubmitted || isPending}
-				onMouseEnter={() =>
-					!isSubmitted && !isPending && setIsHovered(true)
-				}
-				onMouseLeave={() => setIsHovered(false)}
 				className="relative inline-flex items-center justify-center p-2 overflow-hidden font-medium text-background bg-foreground transition duration-300 ease-out border border-foreground group disabled:opacity-50 disabled:cursor-not-allowed w-full h-full"
 			>
 				{isSubmitted ? (

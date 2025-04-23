@@ -15,7 +15,6 @@ const WavingGrid = ({ isMobile }: WavingGridProps) => {
   const [peaks, setPeaks] = useState<{x: number, y: number, amplitude: number, speed: number}[]>([]);
   const [foregroundColor, setForegroundColor] = useState<string>('');
   
-  const [mousePosition, setMousePosition] = useState<{x: number, y: number} | null>(null);
   const [mouseDisturbances, setMouseDisturbances] = useState<{x: number, y: number, startTime: number, strength: number}[]>([]);
   
   const lastMouseMoveTime = useRef<number>(0);
@@ -33,8 +32,6 @@ const WavingGrid = ({ isMobile }: WavingGridProps) => {
       lastMouseMoveTime.current = now;
       const x = (event.clientX / window.innerWidth) * 2 - 1;
       const y = -((event.clientY / window.innerHeight) * 2 - 1);
-      
-      setMousePosition({ x, y });
       
       if (mouseDisturbances.length === 0 || now - mouseDisturbances[mouseDisturbances.length - 1].startTime > 800) {
         const sceneX = x * viewport.width;
