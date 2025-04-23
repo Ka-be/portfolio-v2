@@ -2,9 +2,8 @@
 
 import React, { useState, FormEvent } from "react";
 import regex from "@/lib/utils/regex";
-import Link from "next/link";
 import { Send, Check, Loader2 } from "lucide-react";
-
+import { sendEmail } from "@/lib/utils/email";
 const validateEmail = (email: string): boolean => {
 	return regex.email.test(email);
 };
@@ -52,41 +51,30 @@ const ContactForm = () => {
 	};
 
 	const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
-		e.preventDefault();
-
-		const isEmailValid = validateEmail(formData.email);
-		const isNameValid = formData.name ? validateName(formData.name) : true;
-		const isMessageValid = formData.message
-			? validateMessage(formData.message)
-			: true;
-
+		e.preventDefault()
+	  
+		const isEmailValid = validateEmail(formData.email)
+		const isNameValid = formData.name ? validateName(formData.name) : true
+		const isMessageValid = formData.message ? validateMessage(formData.message) : true
+	  
 		if (isEmailValid && isNameValid && isMessageValid) {
-			try {
-				setIsPending(true);
-				setSubmittedName(formData.name);
-
-				// Simuler un délai pour l'animation
-				await new Promise((resolve) => setTimeout(resolve, 1500));
-
-				setFormData({
-					email: "",
-					name: "",
-					message: "",
-				});
-				setIsSubmitted(true);
-			} catch (error) {
-				console.error("Erreur lors de l'envoi du formulaire:", error);
-			} finally {
-				setIsPending(false);
-			}
-		} else {
-			console.log("Erreurs de validation :", {
-				email: !isEmailValid ? "Email invalide" : null,
-				name: !isNameValid ? "Nom invalide" : null,
-				message: !isMessageValid ? "Message invalide" : null,
-			});
+		  	try {
+				setIsPending(true)
+				setSubmittedName(formData.name)
+		
+				await sendEmail(formData)
+		
+				setFormData({ email: "", name: "", message: "" })
+				setIsSubmitted(true)
+		
+				console.log("✅ Mail envoyé avec succès")
+		  	} catch (error) {
+				console.error("❌ Erreur lors de l'envoi du formulaire :", error)
+		  	} finally {
+				setIsPending(false)
+		  	}
 		}
-	};
+	}
 
 	return (
 		<form
