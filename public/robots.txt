@@ -8,7 +8,6 @@ Sitemap: https://kevinbourgitteau.fr/sitemap.xml
 # Optimisations spécifiques pour Google
 User-agent: Googlebot
 Allow: /
-Crawl-delay: 1
 
 # Optimisations pour les images Google
 User-agent: Googlebot-Image
@@ -20,3 +19,7 @@ User-agent: Twitterbot
 Allow: /
 User-agent: facebookexternalhit
 Allow: / 
+
+# Autoriser LinkedIn à crawler les pages
+User-agent: LinkedInBot
+Allow: /

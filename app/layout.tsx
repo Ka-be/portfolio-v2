@@ -79,7 +79,7 @@ export const metadata: Metadata = {
 			"Designer et développeur Full Stack spécialisé en création d'applications web & mobile modernes. Expert React, Next.js, TypeScript et design UX/UI à Bordeaux.",
 		images: [
 			{
-				url: "/assets/images/og-image.webp",
+				url: "https://kevinbourgitteau.fr/assets/images/og-image.webp",
 				width: 1200,
 				height: 630,
 				alt: "Kevin Bourgitteau - Développeur Full Stack & Designer UX/UI",
@@ -91,7 +91,7 @@ export const metadata: Metadata = {
 		title: "Kevin Bourgitteau | Dévloppeur Full Stack & UX/UI Designer - Bordeaux",
 		description:
 			"Développeur Full stack & Designer créant des applications web & mobile modernes avec React, Next.js et TypeScript. Expert UX/UI basé à Bordeaux.",
-		images: ["/assets/images/og-image.webp"],
+		images: ["https://kevinbourgitteau.fr/assets/images/og-image.webp"],
 	},
 	alternates: {
 		canonical: "https://kevinbourgitteau.fr",
