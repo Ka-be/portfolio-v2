@@ -21,7 +21,7 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-	title: "Kevin Bourgitteau | Développeur Full Stack & Designer UX/UI - Bordeaux",
+	title: "Kevin Bourgitteau | Concepteur / Développeur d'applications - Bordeaux",
 	description:
 		"Développeur Full Stack JavaScript spécialisé en design et développement d'applications web & mobile. Maîtrise de React, Next.js, TypeScript, Node.js. Basé à Bordeaux, je crée des interfaces modernes et intuitives avec une approche design-first.",
 	keywords: [
@@ -73,7 +73,7 @@ export const metadata: Metadata = {
 		type: "website",
 		locale: "fr_FR",
 		url: "https://kevinbourgitteau.fr",
-		siteName: "Kevin Bourgitteau - Développeur Full Stack & Designer UX/UI",
+		siteName: "Kevin Bourgitteau | Concepteur / Développeur d'applications - Bordeaux",
 		title: "Kevin Bourgitteau | Développeur Full Stack & Designer UX/UI - Bordeaux",
 		description:
 			"Designer et développeur Full Stack spécialisé en création d'applications web & mobile modernes. Expert React, Next.js, TypeScript et design UX/UI à Bordeaux.",
@@ -82,13 +82,13 @@ export const metadata: Metadata = {
 				url: "https://kevinbourgitteau.fr/assets/images/og-image.webp",
 				width: 1200,
 				height: 630,
-				alt: "Kevin Bourgitteau - Développeur Full Stack & Designer UX/UI",
+				alt: "Kevin Bourgitteau | Concepteur / Développeur d'applications - Bordeaux",
 			},
 		],
 	},
 	twitter: {
 		card: "summary_large_image",
-		title: "Kevin Bourgitteau | Dévloppeur Full Stack & UX/UI Designer - Bordeaux",
+		title: "Kevin Bourgitteau | Concepteur / Développeur d'applications - Bordeaux",
 		description:
 			"Développeur Full stack & Designer créant des applications web & mobile modernes avec React, Next.js et TypeScript. Expert UX/UI basé à Bordeaux.",
 		images: ["https://kevinbourgitteau.fr/assets/images/og-image.webp"],
